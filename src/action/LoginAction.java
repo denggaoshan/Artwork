@@ -1,7 +1,5 @@
 package action;
 
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -53,16 +51,7 @@ public class LoginAction extends ActionSupport{
     
     public String execute(){
     	getService().login(userName, password);
-    	///current user
-    	 ActionContext ctx = ActionContext.getContext();
-    	 HttpServletRequest request =(HttpServletRequest)ctx.get(ServletActionContext.HTTP_REQUEST);
-    	 HttpSession session = request.getSession();
-    	 User  val = (User) session.getAttribute("currentUser");
-    	 if(val==null){
-    		 return "false";
-    	 }else{
-    		 this.setNickname(val.getNickname());
-    	 }
+    	
     	 return "success";
     }
 }
