@@ -13,7 +13,7 @@ public class Auction implements java.io.Serializable {
 	private String guid;
 	private User user;
 	private Commodity commodity;
-	private Long price;
+	private Double price;
 	private Timestamp createdOn;
 
 	// Constructors
@@ -23,7 +23,7 @@ public class Auction implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Auction(String guid, User user, Commodity commodity, Long price,
+	public Auction(String guid, User user, Commodity commodity, Double price,
 			Timestamp createdOn) {
 		this.guid = guid;
 		this.user = user;
@@ -58,11 +58,11 @@ public class Auction implements java.io.Serializable {
 		this.commodity = commodity;
 	}
 
-	public Long getPrice() {
+	public Double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 

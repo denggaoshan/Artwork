@@ -15,10 +15,10 @@ public class Orders implements java.io.Serializable {
 	private Address addressByToAddress;
 	private Address addressByFromAddress;
 	private Commodity commodity;
-	private Long price;
+	private Double price;
 	private Short discountType;
-	private Long discountValue;
-	private Long donePrice;
+	private Double discountValue;
+	private Double donePrice;
 	private String expressNumber;
 	private Timestamp createdOn;
 	private Short dealStatus;
@@ -31,8 +31,8 @@ public class Orders implements java.io.Serializable {
 
 	/** full constructor */
 	public Orders(String guid, User user, Address addressByToAddress,
-			Address addressByFromAddress, Commodity commodity, Long price,
-			Short discountType, Long discountValue, Long donePrice,
+			Address addressByFromAddress, Commodity commodity, Double price,
+			Short discountType, Double discountValue, Double donePrice,
 			String expressNumber, Timestamp createdOn, Short dealStatus) {
 		this.guid = guid;
 		this.user = user;
@@ -90,11 +90,11 @@ public class Orders implements java.io.Serializable {
 		this.commodity = commodity;
 	}
 
-	public Long getPrice() {
+	public Double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -106,19 +106,19 @@ public class Orders implements java.io.Serializable {
 		this.discountType = discountType;
 	}
 
-	public Long getDiscountValue() {
+	public Double getDiscountValue() {
 		return this.discountValue;
 	}
 
-	public void setDiscountValue(Long discountValue) {
+	public void setDiscountValue(Double discountValue) {
 		this.discountValue = discountValue;
 	}
 
-	public Long getDonePrice() {
+	public Double getDonePrice() {
 		return this.donePrice;
 	}
 
-	public void setDonePrice(Long donePrice) {
+	public void setDonePrice(Double donePrice) {
 		this.donePrice = donePrice;
 	}
 

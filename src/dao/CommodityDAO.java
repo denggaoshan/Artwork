@@ -27,6 +27,7 @@ public class CommodityDAO extends BaseHibernateDAO {
 	// property constants
 	public static final String NAME = "name";
 	public static final String PRICE = "price";
+	public static final String BID_INCREMENT = "bidIncrement";
 	public static final String ABSTRACT_ = "abstract_";
 	public static final String DESCRIPTION = "description";
 	public static final String KEYWORD = "keyword";
@@ -105,6 +106,10 @@ public class CommodityDAO extends BaseHibernateDAO {
 
 	public List findByPrice(Object price) {
 		return findByProperty(PRICE, price);
+	}
+
+	public List findByBidIncrement(Object bidIncrement) {
+		return findByProperty(BID_INCREMENT, bidIncrement);
 	}
 
 	public List findByAbstract_(Object abstract_) {

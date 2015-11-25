@@ -1,11 +1,17 @@
 package action;
 
+import org.hibernate.Session;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import service.Service;
+import service.UserService;
+
 
 import com.opensymphony.xwork2.ActionSupport;
+
+import entity.User;
+
+import hibernate.SessionFactory;
 
 public class RegisterAction extends ActionSupport{
 	
@@ -25,18 +31,23 @@ public class RegisterAction extends ActionSupport{
         this.password = password;
     }
     
-    private Service service;
+    private UserService userService;
     
-    public void setService(Service service){
-    	this.service = service;
+    public void setUserService(UserService service){
+    	this.userService = service;
     }
     
-    public Service getService(){
-    	return service;
+    public UserService getUserService(){
+    	return userService;
     }
     
     public String execute(){
-    	getService().register(userName, password);
+    	    	
+    	User user = new User();
+    	getUserService().register(user);
+    	
+    	Session session = SessionFactory.getSession();
+    	session.saveOrUpdate(user);
     	
     	return "success";
     }

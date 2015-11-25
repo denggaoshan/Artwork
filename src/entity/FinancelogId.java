@@ -14,7 +14,7 @@ public class FinancelogId implements java.io.Serializable {
 	private Short type;
 	private String userGuid;
 	private String orderGuid;
-	private Long price;
+	private Double price;
 	private Short status;
 	private Timestamp createTime;
 	private Timestamp doneTime;
@@ -27,7 +27,7 @@ public class FinancelogId implements java.io.Serializable {
 
 	/** full constructor */
 	public FinancelogId(String guid, Short type, String userGuid,
-			String orderGuid, Long price, Short status, Timestamp createTime,
+			String orderGuid, Double price, Short status, Timestamp createTime,
 			Timestamp doneTime) {
 		this.guid = guid;
 		this.type = type;
@@ -73,11 +73,11 @@ public class FinancelogId implements java.io.Serializable {
 		this.orderGuid = orderGuid;
 	}
 
-	public Long getPrice() {
+	public Double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 

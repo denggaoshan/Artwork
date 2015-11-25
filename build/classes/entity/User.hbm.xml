@@ -46,8 +46,8 @@
         <property name="weiBo" type="java.lang.String">
             <column name="WeiBo" length="50" />
         </property>
-        <property name="balance" type="java.lang.Long">
-            <column name="Balance" precision="10" scale="0" not-null="true" />
+        <property name="balance" type="java.lang.Double">
+            <column name="Balance" precision="15" not-null="true" />
         </property>
         <property name="isDisable" type="java.lang.Boolean">
             <column name="IsDisable" not-null="true" />

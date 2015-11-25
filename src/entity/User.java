@@ -25,7 +25,7 @@ public class User implements java.io.Serializable {
 	private Boolean isCheckedMailbox;
 	private String identity;
 	private String weiBo;
-	private Long balance;
+	private Double balance;
 	private Boolean isDisable;
 	private String lastLoginIp;
 	private Timestamp lastLoginTime;
@@ -52,7 +52,7 @@ public class User implements java.io.Serializable {
 	/** minimal constructor */
 	public User(String guid, Role role, String account, String password,
 			String avatar, String nickName, Short age, Boolean sex,
-			Long balance, Boolean isDisable, String lastLoginIp,
+			Double balance, Boolean isDisable, String lastLoginIp,
 			Timestamp lastLoginTime, Boolean isOnline, Timestamp registerTime) {
 		this.guid = guid;
 		this.role = role;
@@ -74,7 +74,7 @@ public class User implements java.io.Serializable {
 	public User(String guid, Role role, String account, String password,
 			String avatar, String nickName, Short age, Boolean sex,
 			String phone, String mailbox, Boolean isCheckedMailbox,
-			String identity, String weiBo, Long balance, Boolean isDisable,
+			String identity, String weiBo, Double balance, Boolean isDisable,
 			String lastLoginIp, Timestamp lastLoginTime, Boolean isOnline,
 			Timestamp registerTime, Set systemlogs, Set storesForAuditGuid,
 			Set storesForOwnerGuid, Set advertorialsesForAuditGuid,
@@ -219,11 +219,11 @@ public class User implements java.io.Serializable {
 		this.weiBo = weiBo;
 	}
 
-	public Long getBalance() {
+	public Double getBalance() {
 		return this.balance;
 	}
 
-	public void setBalance(Long balance) {
+	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
 

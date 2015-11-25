@@ -19,8 +19,8 @@
             <key-property name="orderGuid" type="java.lang.String">
                 <column name="OrderGuid" length="36" />
             </key-property>
-            <key-property name="price" type="java.lang.Long">
-                <column name="Price" precision="10" scale="0" />
+            <key-property name="price" type="java.lang.Double">
+                <column name="Price" precision="15" />
             </key-property>
             <key-property name="status" type="java.lang.Short">
                 <column name="Status" />

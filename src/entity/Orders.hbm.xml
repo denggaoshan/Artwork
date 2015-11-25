@@ -22,17 +22,17 @@
         <many-to-one name="commodity" class="entity.Commodity" fetch="select">
             <column name="CommodityGuid" length="36" not-null="true" />
         </many-to-one>
-        <property name="price" type="java.lang.Long">
-            <column name="Price" precision="10" scale="0" not-null="true" />
+        <property name="price" type="java.lang.Double">
+            <column name="Price" precision="15" not-null="true" />
         </property>
         <property name="discountType" type="java.lang.Short">
             <column name="DiscountType" not-null="true" />
         </property>
-        <property name="discountValue" type="java.lang.Long">
-            <column name="DiscountValue" precision="10" scale="0" not-null="true" />
+        <property name="discountValue" type="java.lang.Double">
+            <column name="DiscountValue" precision="15" not-null="true" />
         </property>
-        <property name="donePrice" type="java.lang.Long">
-            <column name="DonePrice" precision="10" scale="0" not-null="true" />
+        <property name="donePrice" type="java.lang.Double">
+            <column name="DonePrice" precision="15" not-null="true" />
         </property>
         <property name="expressNumber" type="java.lang.String">
             <column name="ExpressNumber" length="50" not-null="true" />

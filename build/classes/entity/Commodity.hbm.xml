@@ -22,8 +22,11 @@
         <property name="name" type="java.lang.String">
             <column name="Name" not-null="true" />
         </property>
-        <property name="price" type="java.lang.Long">
-            <column name="Price" precision="10" scale="0" not-null="true" />
+        <property name="price" type="java.lang.Double">
+            <column name="Price" precision="15" not-null="true" />
+        </property>
+        <property name="bidIncrement" type="java.lang.Double">
+            <column name="BidIncrement" precision="15" />
         </property>
         <property name="abstract_" type="java.lang.String">
             <column name="Abstract" length="65535" not-null="true" />

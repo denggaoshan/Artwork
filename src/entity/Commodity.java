@@ -17,7 +17,8 @@ public class Commodity implements java.io.Serializable {
 	private Store store;
 	private Commoditycategory commoditycategory;
 	private String name;
-	private Long price;
+	private Double price;
+	private Double bidIncrement;
 	private String abstract_;
 	private String description;
 	private String keyword;
@@ -41,7 +42,7 @@ public class Commodity implements java.io.Serializable {
 
 	/** minimal constructor */
 	public Commodity(String guid, User user, Store store,
-			Commoditycategory commoditycategory, String name, Long price,
+			Commoditycategory commoditycategory, String name, Double price,
 			String abstract_, String description, String keyword,
 			String homeImage, String parameters, Timestamp createdOn,
 			Short type, Boolean topMost, Timestamp onlineTime,
@@ -67,18 +68,19 @@ public class Commodity implements java.io.Serializable {
 
 	/** full constructor */
 	public Commodity(String guid, User user, Store store,
-			Commoditycategory commoditycategory, String name, Long price,
-			String abstract_, String description, String keyword,
-			String homeImage, String parameters, Timestamp createdOn,
-			Short type, Boolean topMost, Timestamp onlineTime,
-			Timestamp offlineTime, Short dealStatus, Set orderses,
-			Set userlogs, Set auctions) {
+			Commoditycategory commoditycategory, String name, Double price,
+			Double bidIncrement, String abstract_, String description,
+			String keyword, String homeImage, String parameters,
+			Timestamp createdOn, Short type, Boolean topMost,
+			Timestamp onlineTime, Timestamp offlineTime, Short dealStatus,
+			Set orderses, Set userlogs, Set auctions) {
 		this.guid = guid;
 		this.user = user;
 		this.store = store;
 		this.commoditycategory = commoditycategory;
 		this.name = name;
 		this.price = price;
+		this.bidIncrement = bidIncrement;
 		this.abstract_ = abstract_;
 		this.description = description;
 		this.keyword = keyword;
@@ -137,12 +139,20 @@ public class Commodity implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public Long getPrice() {
+	public Double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public Double getBidIncrement() {
+		return this.bidIncrement;
+	}
+
+	public void setBidIncrement(Double bidIncrement) {
+		this.bidIncrement = bidIncrement;
 	}
 
 	public String getAbstract_() {
