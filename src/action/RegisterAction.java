@@ -6,6 +6,7 @@ import org.apache.struts2.ServletActionContext;
 import org.hibernate.Session;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.util.Assert;
 
 import service.UserService;
 import utils.Utils;
@@ -57,6 +58,7 @@ public class RegisterAction extends ActionSupport{
     	HttpServletRequest request = ServletActionContext.getRequest();
     	String ip=Utils.getClientIpAddress(request);
     	
+    	Assert.isTrue(userName!=null && password!=null&&nickName!=null&&ip!=null);
     	getUserService().register(userName, password, nickName,ip);
     	
     	User user = Utils.getCurrentUser();

@@ -30,7 +30,7 @@ public class Commodity implements java.io.Serializable {
 	private Timestamp onlineTime;
 	private Timestamp offlineTime;
 	private Short dealStatus;
-	private Set orderses = new HashSet(0);
+	private Set orders = new HashSet(0);
 	private Set userlogs = new HashSet(0);
 	private Set auctions = new HashSet(0);
 
@@ -41,14 +41,13 @@ public class Commodity implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Commodity(String guid, User user, Store store,
+	public Commodity(String guid, Store store,
 			Commoditycategory commoditycategory, String name, Double price,
 			String abstract_, String description, String keyword,
 			String homeImage, String parameters, Timestamp createdOn,
 			Short type, Boolean topMost, Timestamp onlineTime,
 			Timestamp offlineTime, Short dealStatus) {
 		this.guid = guid;
-		this.user = user;
 		this.store = store;
 		this.commoditycategory = commoditycategory;
 		this.name = name;
@@ -73,7 +72,7 @@ public class Commodity implements java.io.Serializable {
 			String keyword, String homeImage, String parameters,
 			Timestamp createdOn, Short type, Boolean topMost,
 			Timestamp onlineTime, Timestamp offlineTime, Short dealStatus,
-			Set orderses, Set userlogs, Set auctions) {
+			Set orders, Set userlogs, Set auctions) {
 		this.guid = guid;
 		this.user = user;
 		this.store = store;
@@ -92,7 +91,7 @@ public class Commodity implements java.io.Serializable {
 		this.onlineTime = onlineTime;
 		this.offlineTime = offlineTime;
 		this.dealStatus = dealStatus;
-		this.orderses = orderses;
+		this.orders = orders;
 		this.userlogs = userlogs;
 		this.auctions = auctions;
 	}
@@ -243,12 +242,12 @@ public class Commodity implements java.io.Serializable {
 		this.dealStatus = dealStatus;
 	}
 
-	public Set getOrderses() {
-		return this.orderses;
+	public Set getOrders() {
+		return this.orders;
 	}
 
-	public void setOrderses(Set orderses) {
-		this.orderses = orderses;
+	public void setOrders(Set orders) {
+		this.orders = orders;
 	}
 
 	public Set getUserlogs() {

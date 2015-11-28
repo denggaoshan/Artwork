@@ -16,7 +16,7 @@ public class Advertorialscategory implements java.io.Serializable {
 	private String name;
 	private String description;
 	private String abstract_;
-	private Set advertorialses = new HashSet(0);
+	private Set advertorials = new HashSet(0);
 	private Set advertorialscategories = new HashSet(0);
 
 	// Constructors
@@ -26,11 +26,9 @@ public class Advertorialscategory implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Advertorialscategory(String guid,
-			Advertorialscategory advertorialscategory, String name,
-			String description, String abstract_) {
+	public Advertorialscategory(String guid, String name, String description,
+			String abstract_) {
 		this.guid = guid;
-		this.advertorialscategory = advertorialscategory;
 		this.name = name;
 		this.description = description;
 		this.abstract_ = abstract_;
@@ -39,14 +37,14 @@ public class Advertorialscategory implements java.io.Serializable {
 	/** full constructor */
 	public Advertorialscategory(String guid,
 			Advertorialscategory advertorialscategory, String name,
-			String description, String abstract_, Set advertorialses,
+			String description, String abstract_, Set advertorials,
 			Set advertorialscategories) {
 		this.guid = guid;
 		this.advertorialscategory = advertorialscategory;
 		this.name = name;
 		this.description = description;
 		this.abstract_ = abstract_;
-		this.advertorialses = advertorialses;
+		this.advertorials = advertorials;
 		this.advertorialscategories = advertorialscategories;
 	}
 
@@ -93,12 +91,12 @@ public class Advertorialscategory implements java.io.Serializable {
 		this.abstract_ = abstract_;
 	}
 
-	public Set getAdvertorialses() {
-		return this.advertorialses;
+	public Set getAdvertorials() {
+		return this.advertorials;
 	}
 
-	public void setAdvertorialses(Set advertorialses) {
-		this.advertorialses = advertorialses;
+	public void setAdvertorials(Set advertorials) {
+		this.advertorials = advertorials;
 	}
 
 	public Set getAdvertorialscategories() {

@@ -88,4 +88,10 @@ public class UserServiceImp implements UserService
 		Utils.setCurrentUser(user);
 	}
 
+	@Override
+	public void getAllArtists() {
+		List<User> alluser = getUserDao().findAll();
+	
+	}
+
 }

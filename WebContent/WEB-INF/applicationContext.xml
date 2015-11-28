@@ -16,21 +16,34 @@
 	<bean name="service" class="service.imp.ServiceImp"></bean> 
    -->
    
+   <!-- 给Action注入Service -->
    <bean id="LoginAction" class="action.LoginAction">
-      <property name="userService" ref="service"/>
+      <property name="userService" ref="userService"/>
    </bean>
    
    <bean id="RegisterAction" class="action.RegisterAction">
-      <property name="userService" ref="service"/>
+      <property name="userService" ref="userService"/>
    </bean>
+   
+	<bean id="IndexAction" class="action.IndexAction">
+	  <property name="userService" ref="userService"/>
+	</bean>
 
-   <bean name="service" class="service.imp.UserServiceImp">
+
+   <!-- 给Service实现类注入DAO -->
+   <bean name="userService" class="service.imp.UserServiceImp">
    	  <property name="userDao" ref="userDAO"/>
    	   <property name="roleDao" ref="roleDAO"/>
    </bean>
    
+    <bean name="advertorialService" class="service.imp.AdvertorialServiceImp">
+   	  <property name="advertorialDAO" ref="advertorialDAO"/>
+   </bean>
    
+   
+     <!-- Dao -->
     <bean name="userDAO" class="dao.UserDAO"/>
     <bean name="roleDAO" class="dao.RoleDAO"/>
+    <bean name="advertorialDAO" class="dao.AdvertorialDAO"/>
 </beans>
 

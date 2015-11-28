@@ -11,7 +11,7 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="commoditycategory" class="entity.Commoditycategory" fetch="select">
-            <column name="SupplierID" length="36" not-null="true" />
+            <column name="SupplierID" length="36" />
         </many-to-one>
         <property name="name" type="java.lang.String">
             <column name="Name" length="50" not-null="true" unique="true" />
@@ -24,13 +24,13 @@
         </property>
         <set name="commoditycategories" inverse="true">
             <key>
-                <column name="SupplierID" length="36" not-null="true" />
+                <column name="SupplierID" length="36" />
             </key>
             <one-to-many class="entity.Commoditycategory" />
         </set>
         <set name="commodities" inverse="true">
             <key>
-                <column name="CommodityGuid" length="36" not-null="true" />
+                <column name="CategoryGuid" length="36" not-null="true" />
             </key>
             <one-to-many class="entity.Commodity" />
         </set>

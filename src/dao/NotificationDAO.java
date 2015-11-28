@@ -8,21 +8,21 @@ import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 
-import entity.Notifications;
+import entity.Notification;
 
 /**
  * A data access object (DAO) providing persistence and search support for
- * Notifications entities. Transaction control of the save(), update() and
+ * Notification entities. Transaction control of the save(), update() and
  * delete() operations can directly support Spring container-managed
  * transactions or they can be augmented to handle user-managed Spring
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see entity.Notifications
+ * @see entity.Notification
  * @author MyEclipse Persistence Tools
  */
-public class NotificationsDAO extends BaseHibernateDAO {
-	private static final Log log = LogFactory.getLog(NotificationsDAO.class);
+public class NotificationDAO extends BaseHibernateDAO {
+	private static final Log log = LogFactory.getLog(NotificationDAO.class);
 	// property constants
 	public static final String TITLE = "title";
 	public static final String NOTI_CONTENT = "notiContent";
@@ -32,8 +32,8 @@ public class NotificationsDAO extends BaseHibernateDAO {
 	public static final String IS_READ = "isRead";
 	public static final String IS_HIDE = "isHide";
 
-	public void save(Notifications transientInstance) {
-		log.debug("saving Notifications instance");
+	public void save(Notification transientInstance) {
+		log.debug("saving Notification instance");
 		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
@@ -43,8 +43,8 @@ public class NotificationsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void delete(Notifications persistentInstance) {
-		log.debug("deleting Notifications instance");
+	public void delete(Notification persistentInstance) {
+		log.debug("deleting Notification instance");
 		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -54,11 +54,11 @@ public class NotificationsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Notifications findById(java.lang.String id) {
-		log.debug("getting Notifications instance with id: " + id);
+	public Notification findById(java.lang.String id) {
+		log.debug("getting Notification instance with id: " + id);
 		try {
-			Notifications instance = (Notifications) getSession().get(
-					"entity.Notifications", id);
+			Notification instance = (Notification) getSession().get(
+					"entity.Notification", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -66,10 +66,10 @@ public class NotificationsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(Notifications instance) {
-		log.debug("finding Notifications instance by example");
+	public List findByExample(Notification instance) {
+		log.debug("finding Notification instance by example");
 		try {
-			List results = getSession().createCriteria("entity.Notifications")
+			List results = getSession().createCriteria("entity.Notification")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -81,10 +81,10 @@ public class NotificationsDAO extends BaseHibernateDAO {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding Notifications instance with property: "
+		log.debug("finding Notification instance with property: "
 				+ propertyName + ", value: " + value);
 		try {
-			String queryString = "from Notifications as model where model."
+			String queryString = "from Notification as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -124,9 +124,9 @@ public class NotificationsDAO extends BaseHibernateDAO {
 	}
 
 	public List findAll() {
-		log.debug("finding all Notifications instances");
+		log.debug("finding all Notification instances");
 		try {
-			String queryString = "from Notifications";
+			String queryString = "from Notification";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -135,10 +135,10 @@ public class NotificationsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Notifications merge(Notifications detachedInstance) {
-		log.debug("merging Notifications instance");
+	public Notification merge(Notification detachedInstance) {
+		log.debug("merging Notification instance");
 		try {
-			Notifications result = (Notifications) getSession().merge(
+			Notification result = (Notification) getSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -148,8 +148,8 @@ public class NotificationsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachDirty(Notifications instance) {
-		log.debug("attaching dirty Notifications instance");
+	public void attachDirty(Notification instance) {
+		log.debug("attaching dirty Notification instance");
 		try {
 			getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -159,8 +159,8 @@ public class NotificationsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachClean(Notifications instance) {
-		log.debug("attaching clean Notifications instance");
+	public void attachClean(Notification instance) {
+		log.debug("attaching clean Notification instance");
 		try {
 			getSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");

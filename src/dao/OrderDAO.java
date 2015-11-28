@@ -8,21 +8,21 @@ import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 
-import entity.Orders;
+import entity.Order;
 
 /**
- * A data access object (DAO) providing persistence and search support for
- * Orders entities. Transaction control of the save(), update() and delete()
- * operations can directly support Spring container-managed transactions or they
- * can be augmented to handle user-managed Spring transactions. Each of these
- * methods provides additional information for how to configure it for the
- * desired type of transaction control.
+ * A data access object (DAO) providing persistence and search support for Order
+ * entities. Transaction control of the save(), update() and delete() operations
+ * can directly support Spring container-managed transactions or they can be
+ * augmented to handle user-managed Spring transactions. Each of these methods
+ * provides additional information for how to configure it for the desired type
+ * of transaction control.
  * 
- * @see entity.Orders
+ * @see entity.Order
  * @author MyEclipse Persistence Tools
  */
-public class OrdersDAO extends BaseHibernateDAO {
-	private static final Log log = LogFactory.getLog(OrdersDAO.class);
+public class OrderDAO extends BaseHibernateDAO {
+	private static final Log log = LogFactory.getLog(OrderDAO.class);
 	// property constants
 	public static final String PRICE = "price";
 	public static final String DISCOUNT_TYPE = "discountType";
@@ -31,8 +31,8 @@ public class OrdersDAO extends BaseHibernateDAO {
 	public static final String EXPRESS_NUMBER = "expressNumber";
 	public static final String DEAL_STATUS = "dealStatus";
 
-	public void save(Orders transientInstance) {
-		log.debug("saving Orders instance");
+	public void save(Order transientInstance) {
+		log.debug("saving Order instance");
 		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
@@ -42,8 +42,8 @@ public class OrdersDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void delete(Orders persistentInstance) {
-		log.debug("deleting Orders instance");
+	public void delete(Order persistentInstance) {
+		log.debug("deleting Order instance");
 		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -53,10 +53,10 @@ public class OrdersDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Orders findById(java.lang.String id) {
-		log.debug("getting Orders instance with id: " + id);
+	public Order findById(java.lang.String id) {
+		log.debug("getting Order instance with id: " + id);
 		try {
-			Orders instance = (Orders) getSession().get("entity.Orders", id);
+			Order instance = (Order) getSession().get("entity.Order", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -64,10 +64,10 @@ public class OrdersDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(Orders instance) {
-		log.debug("finding Orders instance by example");
+	public List findByExample(Order instance) {
+		log.debug("finding Order instance by example");
 		try {
-			List results = getSession().createCriteria("entity.Orders")
+			List results = getSession().createCriteria("entity.Order")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -79,10 +79,10 @@ public class OrdersDAO extends BaseHibernateDAO {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding Orders instance with property: " + propertyName
+		log.debug("finding Order instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
-			String queryString = "from Orders as model where model."
+			String queryString = "from Order as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -118,9 +118,9 @@ public class OrdersDAO extends BaseHibernateDAO {
 	}
 
 	public List findAll() {
-		log.debug("finding all Orders instances");
+		log.debug("finding all Order instances");
 		try {
-			String queryString = "from Orders";
+			String queryString = "from Order";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -129,10 +129,10 @@ public class OrdersDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Orders merge(Orders detachedInstance) {
-		log.debug("merging Orders instance");
+	public Order merge(Order detachedInstance) {
+		log.debug("merging Order instance");
 		try {
-			Orders result = (Orders) getSession().merge(detachedInstance);
+			Order result = (Order) getSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -141,8 +141,8 @@ public class OrdersDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachDirty(Orders instance) {
-		log.debug("attaching dirty Orders instance");
+	public void attachDirty(Order instance) {
+		log.debug("attaching dirty Order instance");
 		try {
 			getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -152,8 +152,8 @@ public class OrdersDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachClean(Orders instance) {
-		log.debug("attaching clean Orders instance");
+	public void attachClean(Order instance) {
+		log.debug("attaching clean Order instance");
 		try {
 			getSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");

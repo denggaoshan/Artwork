@@ -42,7 +42,7 @@ header{height:50px; background-color:#f0eff5; position:relative; border-bottom:1
 .head-pic dl{padding:3px; background-color:#fff;width:140px; height:140px; overflow:hidden; border:2px solid #e3e3e3; border-radius:100px}
 .login li{margin-bottom:25px}
 .input{border:none; background-color:#fff;padding:15px 10px; width:100%; font-size:15px; color:#555}
-.loginBtn,.passBtn{width:100%;height:50px;text-align:center; color:#fff; font-size:18px; display:block; margin:10px 0; line-height:50px}
+.loginBtn,.passBtn{height:50px;text-align:center; color:#fff; font-size:18px; display:block; margin:10px 0; line-height:50px}
 .loginBtn{background-color:#5ca7ba}
 .passBtn{background-color:#b3b3b3}
 .login p a{font-size:16px; color:#5ca7ba; margin:10px}
@@ -52,7 +52,7 @@ header{height:50px; background-color:#f0eff5; position:relative; border-bottom:1
 .head-search li,.tab-list li{float:left}
 .head-search code{ width:40px; height:40px; overflow: hidden; border-radius:100px; display:inline-block; position:absolute; right:10px; top:5px}
 .search-input{border:solid #dadcc7; border-width:0 1px 0 1px; padding:0 4px;height:48px;background-color:#fff; width:60%; font-size:14px}
-.inputIcon{background:url(../img/icons/button-searchgrey.png) 10px 14px no-repeat; background-size:22px 22px; padding-left:32px;}
+.inputIcon{background:url(../img/icons/button-searchgrey.png) 10px 14px no-repeat; background-size:22px 22px; padding-left:37px;}
 .searchBtn{background:url(../img/icons/searchIcon.png) no-repeat; width:31px; height:31px; margin:8px 5px 0 10px; text-align:center; display:inline-block; background-size:cover; cursor:pointer;margin-left:22px}
 .logo{background:url(../img/icons/logo.png) no-repeat; width:40px; height:40px; margin:5px; background-size:cover; display:inline-block; position:absolute; left:10px; top:0}
 .tab-list{border-top:none; clear:both}

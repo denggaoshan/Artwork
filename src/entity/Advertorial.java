@@ -3,10 +3,10 @@ package entity;
 import java.sql.Timestamp;
 
 /**
- * Advertorials entity. @author MyEclipse Persistence Tools
+ * Advertorial entity. @author MyEclipse Persistence Tools
  */
 
-public class Advertorials implements java.io.Serializable {
+public class Advertorial implements java.io.Serializable {
 
 	// Fields
 
@@ -30,23 +30,21 @@ public class Advertorials implements java.io.Serializable {
 	private Short verifyStatus;
 	private String homeImage;
 	private Boolean isDisplay;
-	private String attachment;
 
 	// Constructors
 
 	/** default constructor */
-	public Advertorials() {
+	public Advertorial() {
 	}
 
 	/** full constructor */
-	public Advertorials(String guid, User userByAuditGuid,
+	public Advertorial(String guid, User userByAuditGuid,
 			User userByAuthorGuid, Advertorialscategory advertorialscategory,
 			String topic, String abstract_, String content, String keyword,
 			Timestamp createdOn, Timestamp updatedOn, Short targetType,
 			String targetGuid, Timestamp onlineTime, Timestamp offlineTime,
 			Short position, Integer clickCount, Boolean topMost,
-			Short verifyStatus, String homeImage, Boolean isDisplay,
-			String attachment) {
+			Short verifyStatus, String homeImage, Boolean isDisplay) {
 		this.guid = guid;
 		this.userByAuditGuid = userByAuditGuid;
 		this.userByAuthorGuid = userByAuthorGuid;
@@ -67,7 +65,6 @@ public class Advertorials implements java.io.Serializable {
 		this.verifyStatus = verifyStatus;
 		this.homeImage = homeImage;
 		this.isDisplay = isDisplay;
-		this.attachment = attachment;
 	}
 
 	// Property accessors
@@ -231,14 +228,6 @@ public class Advertorials implements java.io.Serializable {
 
 	public void setIsDisplay(Boolean isDisplay) {
 		this.isDisplay = isDisplay;
-	}
-
-	public String getAttachment() {
-		return this.attachment;
-	}
-
-	public void setAttachment(String attachment) {
-		this.attachment = attachment;
 	}
 
 }

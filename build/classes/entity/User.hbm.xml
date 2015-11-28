@@ -82,35 +82,35 @@
             </key>
             <one-to-many class="entity.Store" />
         </set>
-        <set name="advertorialsesForAuditGuid" inverse="true">
+        <set name="advertorialsForAuditGuid" inverse="true">
             <key>
                 <column name="AuditGuid" length="36" not-null="true" />
             </key>
-            <one-to-many class="entity.Advertorials" />
+            <one-to-many class="entity.Advertorial" />
         </set>
         <set name="commodities" inverse="true">
             <key>
-                <column name="TargetUser" length="36" not-null="true" />
+                <column name="TargetUser" length="36" />
             </key>
             <one-to-many class="entity.Commodity" />
         </set>
-        <set name="orderses" inverse="true">
+        <set name="orders" inverse="true">
             <key>
                 <column name="UserGuid" length="36" not-null="true" />
             </key>
-            <one-to-many class="entity.Orders" />
+            <one-to-many class="entity.Order" />
         </set>
-        <set name="notificationsesForFromGuid" inverse="true">
+        <set name="notificationsForFromGuid" inverse="true">
             <key>
                 <column name="FromGuid" length="36" not-null="true" />
             </key>
-            <one-to-many class="entity.Notifications" />
+            <one-to-many class="entity.Notification" />
         </set>
-        <set name="advertorialsesForAuthorGuid" inverse="true">
+        <set name="advertorialsForAuthorGuid" inverse="true">
             <key>
                 <column name="AuthorGuid" length="36" not-null="true" />
             </key>
-            <one-to-many class="entity.Advertorials" />
+            <one-to-many class="entity.Advertorial" />
         </set>
         <set name="auctions" inverse="true">
             <key>
@@ -118,11 +118,11 @@
             </key>
             <one-to-many class="entity.Auction" />
         </set>
-        <set name="notificationsesForToGuid" inverse="true">
+        <set name="notificationsForToGuid" inverse="true">
             <key>
                 <column name="ToGuid" length="36" not-null="true" />
             </key>
-            <one-to-many class="entity.Notifications" />
+            <one-to-many class="entity.Notification" />
         </set>
         <set name="userlogs" inverse="true">
             <key>

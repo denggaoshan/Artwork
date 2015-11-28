@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import org.springframework.util.Assert;
+
 import service.UserService;
 import utils.Utils;
 
@@ -45,6 +47,7 @@ public class LoginAction extends ActionSupport{
    
     public String execute(){
     	System.out.println("Action "+userName+" "+password);
+    	Assert.isTrue(userName!=null && password!=null);
     	getUserService().login(userName, password);
     	User user = Utils.getCurrentUser();
     	if(user!=null){

@@ -25,17 +25,17 @@
         <property name="phone" type="java.lang.String">
             <column name="Phone" length="20" not-null="true" />
         </property>
-        <set name="ordersesForFromAddress" inverse="true">
+        <set name="ordersForFromAddress" inverse="true">
             <key>
                 <column name="FromAddress" length="36" not-null="true" />
             </key>
-            <one-to-many class="entity.Orders" />
+            <one-to-many class="entity.Order" />
         </set>
-        <set name="ordersesForToAddress" inverse="true">
+        <set name="ordersForToAddress" inverse="true">
             <key>
                 <column name="ToAddress" length="36" not-null="true" />
             </key>
-            <one-to-many class="entity.Orders" />
+            <one-to-many class="entity.Order" />
         </set>
     </class>
 </hibernate-mapping>

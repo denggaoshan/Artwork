@@ -4,14 +4,11 @@ import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
-import utils.Utils;
-
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
 
-public class User implements java.io.Serializable 
-{
+public class User implements java.io.Serializable {
 
 	// Fields
 
@@ -37,13 +34,13 @@ public class User implements java.io.Serializable
 	private Set systemlogs = new HashSet(0);
 	private Set storesForAuditGuid = new HashSet(0);
 	private Set storesForOwnerGuid = new HashSet(0);
-	private Set advertorialsesForAuditGuid = new HashSet(0);
+	private Set advertorialsForAuditGuid = new HashSet(0);
 	private Set commodities = new HashSet(0);
-	private Set orderses = new HashSet(0);
-	private Set notificationsesForFromGuid = new HashSet(0);
-	private Set advertorialsesForAuthorGuid = new HashSet(0);
+	private Set orders = new HashSet(0);
+	private Set notificationsForFromGuid = new HashSet(0);
+	private Set advertorialsForAuthorGuid = new HashSet(0);
 	private Set auctions = new HashSet(0);
-	private Set notificationsesForToGuid = new HashSet(0);
+	private Set notificationsForToGuid = new HashSet(0);
 	private Set userlogs = new HashSet(0);
 
 	// Constructors
@@ -78,11 +75,10 @@ public class User implements java.io.Serializable
 			String identity, String weiBo, Double balance, Boolean isDisable,
 			String lastLoginIp, Timestamp lastLoginTime, Boolean isOnline,
 			Timestamp registerTime, Set systemlogs, Set storesForAuditGuid,
-			Set storesForOwnerGuid, Set advertorialsesForAuditGuid,
-			Set commodities, Set orderses, Set notificationsesForFromGuid,
-			Set advertorialsesForAuthorGuid, Set auctions,
-			Set notificationsesForToGuid, Set userlogs) 
-	{
+			Set storesForOwnerGuid, Set advertorialsForAuditGuid,
+			Set commodities, Set orders, Set notificationsForFromGuid,
+			Set advertorialsForAuthorGuid, Set auctions,
+			Set notificationsForToGuid, Set userlogs) {
 		this.guid = guid;
 		this.role = role;
 		this.account = account;
@@ -105,13 +101,13 @@ public class User implements java.io.Serializable
 		this.systemlogs = systemlogs;
 		this.storesForAuditGuid = storesForAuditGuid;
 		this.storesForOwnerGuid = storesForOwnerGuid;
-		this.advertorialsesForAuditGuid = advertorialsesForAuditGuid;
+		this.advertorialsForAuditGuid = advertorialsForAuditGuid;
 		this.commodities = commodities;
-		this.orderses = orderses;
-		this.notificationsesForFromGuid = notificationsesForFromGuid;
-		this.advertorialsesForAuthorGuid = advertorialsesForAuthorGuid;
+		this.orders = orders;
+		this.notificationsForFromGuid = notificationsForFromGuid;
+		this.advertorialsForAuthorGuid = advertorialsForAuthorGuid;
 		this.auctions = auctions;
-		this.notificationsesForToGuid = notificationsesForToGuid;
+		this.notificationsForToGuid = notificationsForToGuid;
 		this.userlogs = userlogs;
 	}
 
@@ -293,12 +289,12 @@ public class User implements java.io.Serializable
 		this.storesForOwnerGuid = storesForOwnerGuid;
 	}
 
-	public Set getAdvertorialsesForAuditGuid() {
-		return this.advertorialsesForAuditGuid;
+	public Set getAdvertorialsForAuditGuid() {
+		return this.advertorialsForAuditGuid;
 	}
 
-	public void setAdvertorialsesForAuditGuid(Set advertorialsesForAuditGuid) {
-		this.advertorialsesForAuditGuid = advertorialsesForAuditGuid;
+	public void setAdvertorialsForAuditGuid(Set advertorialsForAuditGuid) {
+		this.advertorialsForAuditGuid = advertorialsForAuditGuid;
 	}
 
 	public Set getCommodities() {
@@ -309,28 +305,28 @@ public class User implements java.io.Serializable
 		this.commodities = commodities;
 	}
 
-	public Set getOrderses() {
-		return this.orderses;
+	public Set getOrders() {
+		return this.orders;
 	}
 
-	public void setOrderses(Set orderses) {
-		this.orderses = orderses;
+	public void setOrders(Set orders) {
+		this.orders = orders;
 	}
 
-	public Set getNotificationsesForFromGuid() {
-		return this.notificationsesForFromGuid;
+	public Set getNotificationsForFromGuid() {
+		return this.notificationsForFromGuid;
 	}
 
-	public void setNotificationsesForFromGuid(Set notificationsesForFromGuid) {
-		this.notificationsesForFromGuid = notificationsesForFromGuid;
+	public void setNotificationsForFromGuid(Set notificationsForFromGuid) {
+		this.notificationsForFromGuid = notificationsForFromGuid;
 	}
 
-	public Set getAdvertorialsesForAuthorGuid() {
-		return this.advertorialsesForAuthorGuid;
+	public Set getAdvertorialsForAuthorGuid() {
+		return this.advertorialsForAuthorGuid;
 	}
 
-	public void setAdvertorialsesForAuthorGuid(Set advertorialsesForAuthorGuid) {
-		this.advertorialsesForAuthorGuid = advertorialsesForAuthorGuid;
+	public void setAdvertorialsForAuthorGuid(Set advertorialsForAuthorGuid) {
+		this.advertorialsForAuthorGuid = advertorialsForAuthorGuid;
 	}
 
 	public Set getAuctions() {
@@ -341,12 +337,12 @@ public class User implements java.io.Serializable
 		this.auctions = auctions;
 	}
 
-	public Set getNotificationsesForToGuid() {
-		return this.notificationsesForToGuid;
+	public Set getNotificationsForToGuid() {
+		return this.notificationsForToGuid;
 	}
 
-	public void setNotificationsesForToGuid(Set notificationsesForToGuid) {
-		this.notificationsesForToGuid = notificationsesForToGuid;
+	public void setNotificationsForToGuid(Set notificationsForToGuid) {
+		this.notificationsForToGuid = notificationsForToGuid;
 	}
 
 	public Set getUserlogs() {

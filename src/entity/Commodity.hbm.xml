@@ -11,13 +11,13 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="user" class="entity.User" fetch="select">
-            <column name="TargetUser" length="36" not-null="true" />
+            <column name="TargetUser" length="36" />
         </many-to-one>
         <many-to-one name="store" class="entity.Store" fetch="select">
             <column name="OwnerStore" length="36" not-null="true" />
         </many-to-one>
         <many-to-one name="commoditycategory" class="entity.Commoditycategory" fetch="select">
-            <column name="CommodityGuid" length="36" not-null="true" />
+            <column name="CategoryGuid" length="36" not-null="true" />
         </many-to-one>
         <property name="name" type="java.lang.String">
             <column name="Name" not-null="true" />
@@ -61,11 +61,11 @@
         <property name="dealStatus" type="java.lang.Short">
             <column name="DealStatus" not-null="true" />
         </property>
-        <set name="orderses" inverse="true">
+        <set name="orders" inverse="true">
             <key>
                 <column name="CommodityGuid" length="36" not-null="true" />
             </key>
-            <one-to-many class="entity.Orders" />
+            <one-to-many class="entity.Order" />
         </set>
         <set name="userlogs" inverse="true">
             <key>

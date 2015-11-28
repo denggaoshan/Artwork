@@ -3,10 +3,10 @@ package entity;
 import java.sql.Timestamp;
 
 /**
- * Notifications entity. @author MyEclipse Persistence Tools
+ * Notification entity. @author MyEclipse Persistence Tools
  */
 
-public class Notifications implements java.io.Serializable {
+public class Notification implements java.io.Serializable {
 
 	// Fields
 
@@ -25,11 +25,11 @@ public class Notifications implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public Notifications() {
+	public Notification() {
 	}
 
 	/** full constructor */
-	public Notifications(String guid, User userByFromGuid, User userByToGuid,
+	public Notification(String guid, User userByFromGuid, User userByToGuid,
 			String title, String notiContent, String fromUser, String toUser,
 			Short messageType, Boolean isRead, Boolean isHide,
 			Timestamp sendTime) {

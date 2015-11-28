@@ -28,31 +28,23 @@ public class RoleDAO extends BaseHibernateDAO {
 	public static final String DESCRIPTION = "description";
 	public static final String COUNT = "count";
 
-	public void save(Role transientInstance) 
-	{
+	public void save(Role transientInstance) {
 		log.debug("saving Role instance");
-		try 
-		{
+		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
-		} 
-		catch (RuntimeException re) 
-		{
+		} catch (RuntimeException re) {
 			log.error("save failed", re);
 			throw re;
 		}
 	}
 
-	public void delete(Role persistentInstance) 
-	{
+	public void delete(Role persistentInstance) {
 		log.debug("deleting Role instance");
-		try 
-		{
+		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
-		} 
-		catch (RuntimeException re) 
-		{
+		} catch (RuntimeException re) {
 			log.error("delete failed", re);
 			throw re;
 		}

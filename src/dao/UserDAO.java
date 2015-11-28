@@ -22,8 +22,7 @@ import entity.User;
  * @see entity.User
  * @author MyEclipse Persistence Tools
  */
-public class UserDAO extends BaseHibernateDAO 
-{
+public class UserDAO extends BaseHibernateDAO {
 	private static final Log log = LogFactory.getLog(UserDAO.class);
 	// property constants
 	public static final String ACCOUNT = "account";
@@ -42,16 +41,12 @@ public class UserDAO extends BaseHibernateDAO
 	public static final String LAST_LOGIN_IP = "lastLoginIp";
 	public static final String IS_ONLINE = "isOnline";
 
-	public void save(User transientInstance) 
-	{
+	public void save(User transientInstance) {
 		log.debug("saving User instance");
-		try 
-		{
+		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
-		} 
-		catch (RuntimeException re) 
-		{
+		} catch (RuntimeException re) {
 			log.error("save failed", re);
 			throw re;
 		}

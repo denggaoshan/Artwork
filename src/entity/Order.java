@@ -3,10 +3,10 @@ package entity;
 import java.sql.Timestamp;
 
 /**
- * Orders entity. @author MyEclipse Persistence Tools
+ * Order entity. @author MyEclipse Persistence Tools
  */
 
-public class Orders implements java.io.Serializable {
+public class Order implements java.io.Serializable {
 
 	// Fields
 
@@ -26,11 +26,11 @@ public class Orders implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public Orders() {
+	public Order() {
 	}
 
 	/** full constructor */
-	public Orders(String guid, User user, Address addressByToAddress,
+	public Order(String guid, User user, Address addressByToAddress,
 			Address addressByFromAddress, Commodity commodity, Double price,
 			Short discountType, Double discountValue, Double donePrice,
 			String expressNumber, Timestamp createdOn, Short dealStatus) {

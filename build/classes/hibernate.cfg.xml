@@ -36,6 +36,9 @@
 		<mapping resource="entity/Allotprivilege.hbm.xml" />
 		<mapping resource="entity/Systemlog.hbm.xml" />
 		<mapping resource="entity/Orders.hbm.xml" />
+		<mapping resource="entity/Advertorial.hbm.xml" />
+		<mapping resource="entity/Notification.hbm.xml" />
+		<mapping resource="entity/Order.hbm.xml" />
 
 	</session-factory>
 

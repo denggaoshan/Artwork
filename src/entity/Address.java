@@ -17,8 +17,8 @@ public class Address implements java.io.Serializable {
 	private String location;
 	private String postcode;
 	private String phone;
-	private Set ordersesForFromAddress = new HashSet(0);
-	private Set ordersesForToAddress = new HashSet(0);
+	private Set ordersForFromAddress = new HashSet(0);
+	private Set ordersForToAddress = new HashSet(0);
 
 	// Constructors
 
@@ -40,15 +40,15 @@ public class Address implements java.io.Serializable {
 	/** full constructor */
 	public Address(String guid, Short masterType, String masterValue,
 			String location, String postcode, String phone,
-			Set ordersesForFromAddress, Set ordersesForToAddress) {
+			Set ordersForFromAddress, Set ordersForToAddress) {
 		this.guid = guid;
 		this.masterType = masterType;
 		this.masterValue = masterValue;
 		this.location = location;
 		this.postcode = postcode;
 		this.phone = phone;
-		this.ordersesForFromAddress = ordersesForFromAddress;
-		this.ordersesForToAddress = ordersesForToAddress;
+		this.ordersForFromAddress = ordersForFromAddress;
+		this.ordersForToAddress = ordersForToAddress;
 	}
 
 	// Property accessors
@@ -101,20 +101,20 @@ public class Address implements java.io.Serializable {
 		this.phone = phone;
 	}
 
-	public Set getOrdersesForFromAddress() {
-		return this.ordersesForFromAddress;
+	public Set getOrdersForFromAddress() {
+		return this.ordersForFromAddress;
 	}
 
-	public void setOrdersesForFromAddress(Set ordersesForFromAddress) {
-		this.ordersesForFromAddress = ordersesForFromAddress;
+	public void setOrdersForFromAddress(Set ordersForFromAddress) {
+		this.ordersForFromAddress = ordersForFromAddress;
 	}
 
-	public Set getOrdersesForToAddress() {
-		return this.ordersesForToAddress;
+	public Set getOrdersForToAddress() {
+		return this.ordersForToAddress;
 	}
 
-	public void setOrdersesForToAddress(Set ordersesForToAddress) {
-		this.ordersesForToAddress = ordersesForToAddress;
+	public void setOrdersForToAddress(Set ordersForToAddress) {
+		this.ordersForToAddress = ordersForToAddress;
 	}
 
 }

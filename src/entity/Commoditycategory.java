@@ -26,10 +26,9 @@ public class Commoditycategory implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Commoditycategory(String guid, Commoditycategory commoditycategory,
-			String name, String description, String abstract_) {
+	public Commoditycategory(String guid, String name, String description,
+			String abstract_) {
 		this.guid = guid;
-		this.commoditycategory = commoditycategory;
 		this.name = name;
 		this.description = description;
 		this.abstract_ = abstract_;
