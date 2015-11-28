@@ -12,7 +12,9 @@ public class MD5test {
 	public void test() {
 		Utils util = new Utils();
 		String str = util.MD5("123456");
-		System.out.println(str);
+		System.out.println(util.createGUID());
+		
+		
 	}
 
 }

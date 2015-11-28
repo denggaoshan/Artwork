@@ -2,6 +2,7 @@ package utils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.*;
+import java.util.UUID;
 
 public class Utils {
 	public String MD5(String md5) {
@@ -16,6 +17,12 @@ public class Utils {
 		    } catch (java.security.NoSuchAlgorithmException e) {
 		    }
 		    return null;
+		}
+	
+	public String createGUID() {
+		   UUID uuid = UUID.randomUUID();
+		   String ret = uuid.toString();
+				   return ret;
 		}
 	
 	
