@@ -44,7 +44,7 @@ public class LoginAction extends ActionSupport{
     public String execute(){
     	    	
     	System.out.println("Action "+userName+" "+password);
-    	
+    	getUserService().login(userName, password);
     	return "success";
     }
 }
