@@ -1,10 +1,14 @@
 package action;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.Session;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import service.UserService;
+import utils.Utils;
 
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -50,7 +54,16 @@ public class RegisterAction extends ActionSupport{
     }
     
     public String execute(){
-    	getUserService().register(userName, password, nickName);
-    	return "success";
+    	HttpServletRequest request = ServletActionContext.getRequest();
+    	String ip=Utils.getClientIpAddress(request);
+    	
+    	getUserService().register(userName, password, nickName,ip);
+    	
+    	User user = Utils.getCurrentUser();
+    	if(user!=null){
+    		return "success";
+    	}
+    	return "fail";
+    	
     }
 }

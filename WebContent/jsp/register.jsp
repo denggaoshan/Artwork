@@ -14,21 +14,23 @@
 			<a href="index.jsp"><i class="closeIcon"></i></a>
 			<dl><img src="img/logo.png" alt="logo" /></dl>
 		</div>
-		<div class="login">
+		
+		<form class="login" action="RegisterAction.action" method="post" onsubmit="return check();">
 			<ul>
 				<li>
-					<input type="text" class="input ursename" name="uname" placeholder="请输入用户名">
+					<input type="text" class="input ursename" name="username" placeholder="请输入用户名">
 				</li>
 				<li>
-					<input type="password" class="input password" name="upass" placeholder="请输入密码">
+					<input type="password" class="input password" name="password" placeholder="请输入密码">
 				</li>
 				<li>
-					<input type="text" class="input nickname" name="nickname" placeholder="请输入昵称">
+					<input type="text" class="input nickname" name="nickName" placeholder="请输入昵称">
 				</li>
-				<li><a href="javascript:;" class="loginBtn" onClick="check()">注 册</a></li>
+				<li><button type="submit" href="javascript:;" class="loginBtn" onClick="check()">注 册</button></li>
 			</ul>
 			<p><a href="login.jsp" class="fl">直接登录</a> <a href="password.html" class="fr">忘记密码</a></p>
-		</div>
+		</form>
+		
 		<div class="tips"></div>
 	</body>
 	<script src="js/jquery.js"></script>
@@ -50,6 +52,7 @@
 				$('.tips').show().text("昵称不能为空！");closeTips();
 				return false;
 			}
+			return true;
 		}
 		function closeTips(){setTimeout("$('.tips').hide()",3000);}
 	</script>

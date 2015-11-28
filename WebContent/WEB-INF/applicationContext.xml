@@ -26,9 +26,11 @@
 
    <bean name="service" class="service.imp.UserServiceImp">
    	  <property name="userDao" ref="userDAO"/>
+   	   <property name="roleDao" ref="roleDAO"/>
    </bean>
    
    
     <bean name="userDAO" class="dao.UserDAO"/>
+    <bean name="roleDAO" class="dao.RoleDAO"/>
 </beans>
 

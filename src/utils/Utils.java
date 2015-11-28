@@ -1,9 +1,9 @@
 package utils;
 
-
 import java.io.UnsupportedEncodingException;
-import java.security.*;
-import java.util.UUID;
+import java.util.*;
+import javax.servlet.http.HttpServletRequest;
+import java.sql.*;
 
 import com.opensymphony.xwork2.ActionContext;
 
@@ -44,6 +44,37 @@ public class Utils {
 	public static void setCurrentUser(User user){
 		ActionContext ctx = ActionContext.getContext();
 		ctx.getSession().put("user", user);
+	}
+	
+	
+	public static Timestamp getCurrentTime(){
+		Calendar calendar = Calendar.getInstance();
+		java.util.Date now = calendar.getTime();
+		Timestamp currentTimestamp = new Timestamp(now.getTime());
+		return currentTimestamp;
+	}
+	
+	private static final String[] HEADERS_TO_TRY = { 
+	    "X-Forwarded-For",
+	    "Proxy-Client-IP",
+	    "WL-Proxy-Client-IP",
+	    "HTTP_X_FORWARDED_FOR",
+	    "HTTP_X_FORWARDED",
+	    "HTTP_X_CLUSTER_CLIENT_IP",
+	    "HTTP_CLIENT_IP",
+	    "HTTP_FORWARDED_FOR",
+	    "HTTP_FORWARDED",
+	    "HTTP_VIA",
+	    "REMOTE_ADDR" };
+
+	public static String getClientIpAddress(HttpServletRequest request) {
+	    for (String header : HEADERS_TO_TRY) {
+	        String ip = request.getHeader(header);
+	        if (ip != null && ip.length() != 0 && !"unknown".equalsIgnoreCase(ip)) {
+	            return ip;
+	        }
+	    }
+	    return request.getRemoteAddr();
 	}
 	
 }

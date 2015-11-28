@@ -15,7 +15,8 @@
 		</action>
 
 		<action name="RegisterAction" class="RegisterAction">
-    		
+    		<result name="success">success.jsp</result>
+			<result name="fail">login.jsp</result>
 		</action>
 		
 		<action name="UploadAction" class="action.UploadAction">

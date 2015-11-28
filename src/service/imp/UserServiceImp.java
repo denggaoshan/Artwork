@@ -1,5 +1,6 @@
 package service.imp;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,14 +10,18 @@ import org.hibernate.Transaction;
 
 import com.opensymphony.xwork2.ActionContext;
 
+import dao.RoleDAO;
 import dao.UserDAO;
+import entity.Role;
 import entity.User;
 import service.UserService;
 import utils.Utils;
 
 public class UserServiceImp implements UserService
 {
+	
     private UserDAO userDao;
+    
     
     public void setUserDao(UserDAO userDao){
     	this.userDao = userDao;
@@ -26,6 +31,14 @@ public class UserServiceImp implements UserService
     	return userDao;
     }
 	
+    private RoleDAO roleDao;
+    public void setRoleDao(RoleDAO roleDao){
+    	this.roleDao = roleDao;
+    }
+    
+    public RoleDAO getRoleDao(){
+    	return roleDao;
+    }
     
 	@Override
 	public void login(String username, String password) 
@@ -47,9 +60,32 @@ public class UserServiceImp implements UserService
 	}
 
 	@Override
-	public void register(String username, String password, String Nickname) {
-		// TODO Auto-generated method stub
+	public void register(String username, String password, String nickName,
+			String ip) {
 		
+		Session s=getUserDao().getSession();
+		Transaction tx=s.beginTransaction();
+
+		
+		User user = new User();
+		user.setGuid(Utils.createGUID());
+		user.setAccount(username);
+		user.setPassword(Utils.MD5(password));
+		user.setAvatar("/uploadImg/default.png");
+		user.setNickName(nickName);
+		user.setBalance(0.0);
+		user.setIsDisable(false);
+		user.setLastLoginIp(ip);
+		user.setRegisterTime(Utils.getCurrentTime());
+		user.setLastLoginTime(Utils.getCurrentTime());
+		user.setIsOnline(true);
+		
+		Role role = ((List<Role>)getRoleDao().findByName("buyer")).get(0);
+		user.setRole(role);
+		
+		getUserDao().save(user);
+		tx.commit();
+		Utils.setCurrentUser(user);
 	}
-	
+
 }
