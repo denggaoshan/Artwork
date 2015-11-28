@@ -1,11 +1,13 @@
 package utils;
 
-public class Utils 
-{
-	public static String MD5(String md5) 
-	{
-		   try 
-		   {
+
+import java.io.UnsupportedEncodingException;
+import java.security.*;
+import java.util.UUID;
+
+public class Utils {
+	public String MD5(String md5) {
+		   try {
 		        java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
 		        byte[] array = md.digest(md5.getBytes());
 		        StringBuffer sb = new StringBuffer();
@@ -22,4 +24,11 @@ public class Utils
 		   return null;
 	}
 
+	
+	public String createGUID() {
+		   UUID uuid = UUID.randomUUID();
+		   String ret = uuid.toString();
+				   return ret;
+		}
+	
 }
