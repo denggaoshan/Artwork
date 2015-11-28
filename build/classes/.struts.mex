@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="struts2" location="10,10" size="180,350">
+    <action name="LoginAction" location="15,23" size="150,40">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="success.jsp" />
+      </result>
+    </action>
+    <action name="RegisterAction" location="15,163" size="150,40" />
+    <action name="UploadAction" location="15,303" size="150,40" />
+  </package>
+  <webResource name="success.jsp" path="/jsp/success.jsp" location="0,0" size="150,55" />
+</Struts2Diagram>
+

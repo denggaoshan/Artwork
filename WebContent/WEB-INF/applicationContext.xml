@@ -15,5 +15,14 @@
     
 	<bean name="service" class="service.imp.ServiceImp"></bean> 
    -->
+   
+   
+   <bean id="LoginAction" class="action.LoginAction">
+      <property name="userService" ref="service"/>
+   </bean>
+
+   <bean name="service" class="service.imp.UserServiceImp"/>
+   
+    
 </beans>
 

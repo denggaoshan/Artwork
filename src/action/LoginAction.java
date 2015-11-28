@@ -13,6 +13,7 @@ import entity.User;
 
 import hibernate.SessionFactory;
 
+
 public class LoginAction extends ActionSupport{
 	
     private String userName;
@@ -33,16 +34,15 @@ public class LoginAction extends ActionSupport{
     
     private UserService userService;
     
-    public void setUserService(UserService service){
-    	this.userService = service;
+    public void setUserService(UserService userService){
+    	this.userService = userService;
     }
     
     public UserService getUserService(){
     	return userService;
     }
-    
+   
     public String execute(){
-    	    	
     	System.out.println("Action "+userName+" "+password);
     	getUserService().login(userName, password);
     	return "success";
