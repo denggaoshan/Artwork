@@ -43,11 +43,7 @@ public class LoginAction extends ActionSupport{
     
     public String execute(){
     	    	
-    	User user = new User();
-    	getUserService().register(user);
-    	
-    	Session session = SessionFactory.getSession();
-    	session.saveOrUpdate(user);
+    	System.out.println("Action "+userName+" "+password);
     	
     	return "success";
     }

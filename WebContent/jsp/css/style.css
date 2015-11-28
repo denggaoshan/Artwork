@@ -34,18 +34,18 @@ header{height:50px; background-color:#f0eff5; position:relative; border-bottom:1
 
 .head-pic img,.artist-list img,.login img,.foot img,.head-search img,.user img,.work img,.buy-list img,.shop-list img,.order-list img,.bank-list img,.news img,.my-order img,.my-pm img,.pay-list img,.adpic p img,.artist img,.exhibition img,.painting img,.painting-list img,.painting-show img{width:100%; height:auto;font-size:0;overflow:hidden; display:block;display:-webkit-box}
 
-.closeIcon,.goBack{background:url(../img//icons/homeIcon.png) no-repeat; width:35px; height:35px; background-size:cover}
+.closeIcon,.goBack{background:url(../img/icons/homeIcon.png) no-repeat; width:35px; height:35px; background-size:cover}
 .closeIcon{position:absolute; right:20px; top:20px;display:block}
 
 /*login*/
 .head-pic,.login{margin:40px 15%; width:70%}
 .head-pic dl{padding:3px; background-color:#fff;width:140px; height:140px; overflow:hidden; border:2px solid #e3e3e3; border-radius:100px}
 .login li{margin-bottom:25px}
-.input{border:none; background-color:#fff;padding:15px 0; width:100%; font-size:15px; color:#555}
-a.loginBtn,a.passBtn{height:50px;text-align:center; color:#fff; font-size:18px; display:block; margin:10px 0; line-height:50px}
-a.loginBtn{background-color:#000}
-a.passBtn{background-color:#b3b3b3}
-.login p a{font-size:16px; color:#027cfb; margin:10px}
+.input{border:none; background-color:#fff;padding:15px 10px; width:100%; font-size:15px; color:#555}
+.loginBtn,.passBtn{width:100%;height:50px;text-align:center; color:#fff; font-size:18px; display:block; margin:10px 0; line-height:50px}
+.loginBtn{background-color:#5ca7ba}
+.passBtn{background-color:#b3b3b3}
+.login p a{font-size:16px; color:#5ca7ba; margin:10px}
 
 /*head-search*/
 .head-search,.tab-list{border:solid #dbdbdb; border-width:1px 0 1px 0; height:50px; background-color:#fff; position:relative}

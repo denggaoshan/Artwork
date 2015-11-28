@@ -26,10 +26,10 @@
             <column name="NickName" length="50" not-null="true" />
         </property>
         <property name="age" type="java.lang.Short">
-            <column name="Age" not-null="true" />
+            <column name="Age" />
         </property>
         <property name="sex" type="java.lang.Boolean">
-            <column name="Sex" not-null="true" />
+            <column name="Sex" />
         </property>
         <property name="phone" type="java.lang.String">
             <column name="Phone" length="20" />

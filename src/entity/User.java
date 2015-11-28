@@ -51,17 +51,15 @@ public class User implements java.io.Serializable {
 
 	/** minimal constructor */
 	public User(String guid, Role role, String account, String password,
-			String avatar, String nickName, Short age, Boolean sex,
-			Double balance, Boolean isDisable, String lastLoginIp,
-			Timestamp lastLoginTime, Boolean isOnline, Timestamp registerTime) {
+			String avatar, String nickName, Double balance, Boolean isDisable,
+			String lastLoginIp, Timestamp lastLoginTime, Boolean isOnline,
+			Timestamp registerTime) {
 		this.guid = guid;
 		this.role = role;
 		this.account = account;
 		this.password = password;
 		this.avatar = avatar;
 		this.nickName = nickName;
-		this.age = age;
-		this.sex = sex;
 		this.balance = balance;
 		this.isDisable = isDisable;
 		this.lastLoginIp = lastLoginIp;
