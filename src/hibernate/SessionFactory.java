@@ -9,7 +9,8 @@ import org.hibernate.cfg.Configuration;
  * current thread of execution.  Follows the Thread Local Session
  * pattern, see {@link http://hibernate.org/42.html }.
  */
-public class SessionFactory {
+public class SessionFactory 
+{
 
     /** 
      * Location of hibernate.cfg.xml file.
