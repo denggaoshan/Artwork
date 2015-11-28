@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import service.UserService;
+import utils.Utils;
 
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -45,6 +46,12 @@ public class LoginAction extends ActionSupport{
     public String execute(){
     	System.out.println("Action "+userName+" "+password);
     	getUserService().login(userName, password);
-    	return "success";
+    	User user = Utils.getCurrentUser();
+    	if(user!=null){
+    		return "success";
+    	}else{
+    		return "fail";
+    	}
+    	
     }
 }

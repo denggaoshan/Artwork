@@ -16,13 +16,19 @@
 	<bean name="service" class="service.imp.ServiceImp"></bean> 
    -->
    
-   
    <bean id="LoginAction" class="action.LoginAction">
       <property name="userService" ref="service"/>
    </bean>
-
-   <bean name="service" class="service.imp.UserServiceImp"/>
    
-    
+   <bean id="RegisterAction" class="action.RegisterAction">
+      <property name="userService" ref="service"/>
+   </bean>
+
+   <bean name="service" class="service.imp.UserServiceImp">
+   	  <property name="userDao" ref="userDAO"/>
+   </bean>
+   
+   
+    <bean name="userDAO" class="dao.UserDAO"/>
 </beans>
 

@@ -11,9 +11,10 @@
 	 
 		<action name="LoginAction" class="LoginAction">
 			<result name="success">success.jsp</result>
+			<result name="fail">login.jsp</result>
 		</action>
 
-		<action name="RegisterAction" class="action.RegisterAction">
+		<action name="RegisterAction" class="RegisterAction">
     		
 		</action>
 		

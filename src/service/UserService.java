@@ -4,7 +4,7 @@ import entity.User;
 
 public interface UserService {
 	
-	public void register(User user);
+	public void register(String username,String password,String Nickname);
 	public void login(String username,String password);
 	
 }

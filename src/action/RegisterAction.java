@@ -17,6 +17,14 @@ public class RegisterAction extends ActionSupport{
 	
     private String userName;
     private String password;
+    private String nickName;
+    
+    public String getNickName() {
+        return nickName;
+    }
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
     
     public String getUsername() {
         return userName;
@@ -31,9 +39,18 @@ public class RegisterAction extends ActionSupport{
         this.password = password;
     }
     
-    public String execute(){
-    	    	
+    private UserService userService;
     
+    public void setUserService(UserService userService){
+    	this.userService = userService;
+    }
+    
+    public UserService getUserService(){
+    	return userService;
+    }
+    
+    public String execute(){
+    	getUserService().register(userName, password, nickName);
     	return "success";
     }
 }

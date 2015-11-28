@@ -60,7 +60,7 @@ public class User implements java.io.Serializable
 		this.guid = guid;
 		this.role = role;
 		this.account = account;
-		this.password = Utils.MD5(password);
+		this.password = password;
 		this.avatar = avatar;
 		this.nickName = nickName;
 		this.balance = balance;
@@ -146,7 +146,7 @@ public class User implements java.io.Serializable
 	}
 
 	public void setPassword(String password) {
-		this.password = Utils.MD5(password);
+		this.password = password;
 	}
 
 	public String getAvatar() {

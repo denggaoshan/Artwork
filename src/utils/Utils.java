@@ -5,6 +5,10 @@ import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.util.UUID;
 
+import com.opensymphony.xwork2.ActionContext;
+
+import entity.User;
+
 public class Utils {
 	public static String MD5(String md5) {
 		   try {
@@ -30,5 +34,16 @@ public class Utils {
 		   String ret = uuid.toString();
 				   return ret;
 		}
+	
+	
+	public static User getCurrentUser(){
+		ActionContext ctx = ActionContext.getContext();
+		return (User) ctx.getSession().get("user");
+	}
+	
+	public static void setCurrentUser(User user){
+		ActionContext ctx = ActionContext.getContext();
+		ctx.getSession().put("user", user);
+	}
 	
 }
