@@ -4,11 +4,14 @@ import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
+import utils.Utils;
+
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
 
-public class User implements java.io.Serializable {
+public class User implements java.io.Serializable 
+{
 
 	// Fields
 
@@ -57,7 +60,7 @@ public class User implements java.io.Serializable {
 		this.guid = guid;
 		this.role = role;
 		this.account = account;
-		this.password = password;
+		this.password = Utils.MD5(password);
 		this.avatar = avatar;
 		this.nickName = nickName;
 		this.age = age;
@@ -80,7 +83,8 @@ public class User implements java.io.Serializable {
 			Set storesForOwnerGuid, Set advertorialsesForAuditGuid,
 			Set commodities, Set orderses, Set notificationsesForFromGuid,
 			Set advertorialsesForAuthorGuid, Set auctions,
-			Set notificationsesForToGuid, Set userlogs) {
+			Set notificationsesForToGuid, Set userlogs) 
+	{
 		this.guid = guid;
 		this.role = role;
 		this.account = account;
@@ -144,7 +148,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = Utils.MD5(password);
 	}
 
 	public String getAvatar() {
