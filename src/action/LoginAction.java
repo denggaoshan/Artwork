@@ -13,7 +13,7 @@ import entity.User;
 
 import hibernate.SessionFactory;
 
-public class RegisterAction extends ActionSupport{
+public class LoginAction extends ActionSupport{
 	
     private String userName;
     private String password;
@@ -31,9 +31,24 @@ public class RegisterAction extends ActionSupport{
         this.password = password;
     }
     
+    private UserService userService;
+    
+    public void setUserService(UserService service){
+    	this.userService = service;
+    }
+    
+    public UserService getUserService(){
+    	return userService;
+    }
+    
     public String execute(){
     	    	
-    
+    	User user = new User();
+    	getUserService().register(user);
+    	
+    	Session session = SessionFactory.getSession();
+    	session.saveOrUpdate(user);
+    	
     	return "success";
     }
 }

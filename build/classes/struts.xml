@@ -17,6 +17,11 @@
 		<action name="RegisterAction" class="action.RegisterAction">
     		<result name="success">success.jsp</result>
 		</action>
+		
+		<action name="UploadAction" class="action.UploadAction">
+    		<result name="success">success.jsp</result>
+    		<result name="false">false.jsp</result>
+		</action>
 	
 	</package>
 	
