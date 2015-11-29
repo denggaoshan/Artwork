@@ -94,7 +94,9 @@
 					</li>
 					</s:iterator>
 				</ul>
-				<ul class="col" style="margin-right:0"></ul>
+				<ul class="col" style="margin-right:0">
+				
+				</ul>
 				<a href="javascript:" class="loadMeinvMOre" id="loadMeinvMOre">加载更多</a>
 			</div>
 			<!--container end of-->
