@@ -1,6 +1,7 @@
 package service.imp;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,9 +90,17 @@ public class UserServiceImp implements UserService
 	}
 
 	@Override
-	public void getAllArtists() {
+	public List<User> getAllArtists() {
 		List<User> alluser = getUserDao().findAll();
-	
+		
+		Role role = (Role) getRoleDao().findByName("Artist").get(0);
+		List<User> ret = new ArrayList<User>();
+		for(User user:alluser){
+			if(user.getRole().equals(role)){
+				ret.add(user);
+			}
+		}
+		return ret;
 	}
 
 }

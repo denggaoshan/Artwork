@@ -9,10 +9,6 @@
     
 	<package name="struts2" namespace="/jsp" extends="struts-default">
 	 
-	 	<action name="IndexAction" class="IndexAction">
-	 		<result name="success">main.jsp</result>
-	 	</action>
-		
 		<action name="LoginAction" class="LoginAction">
 			<result name="success">success.jsp</result>
 			<result name="fail">login.jsp</result>
@@ -23,12 +19,15 @@
 			<result name="fail">login.jsp</result>
 		</action>
 		
-		<action name="UploadAction" class="action.UploadAction">
-    	
-		</action>
+		<action name="StartAction" class="IndexAction">
+                <result name="success">main.jsp</result>
+   		 </action>
+    
 	
 	</package>
 	
+	
+    
 </struts>   
   
 

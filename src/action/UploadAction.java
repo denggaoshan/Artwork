@@ -18,10 +18,8 @@ public class UploadAction extends ActionSupport {
 		private String username;
 	 	private File file;
 	    
-	    //提交过来的file的名字
 	    private String fileFileName;
 	    
-	    //提交过来的file的MIME类型
 	    private String fileContentType;
 
 	    public String getUsername()

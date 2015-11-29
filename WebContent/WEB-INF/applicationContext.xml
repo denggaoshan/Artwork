@@ -16,7 +16,7 @@
 	<bean name="service" class="service.imp.ServiceImp"></bean> 
    -->
    
-   <!-- 给Action注入Service -->
+   <!-- 给Action注入实现 Spring Struts整合 -->
    <bean id="LoginAction" class="action.LoginAction">
       <property name="userService" ref="userService"/>
    </bean>
@@ -27,9 +27,11 @@
    
 	<bean id="IndexAction" class="action.IndexAction">
 	  <property name="userService" ref="userService"/>
+	  <property name="advertorialService" ref="advertorialService"/>
 	</bean>
 
 
+  <!-- 给Action注入Service -->
    <!-- 给Service实现类注入DAO -->
    <bean name="userService" class="service.imp.UserServiceImp">
    	  <property name="userDao" ref="userDAO"/>
