@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,9 +12,10 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<meta name="renderer" content="webkit">
-		<link rel="stylesheet" href="css/style.css" type="text/css">
+		<link rel="stylesheet" href="jsp/css/style.css" type="text/css">
 	</head>
 <body class="bg">
+		<action class="IndexAction.action" />
 		
 		<section class="head-search">
 			<ul>
@@ -58,18 +59,11 @@
 					<div class="swiper-container banners-container">
 						<div class="swiper-wrapper" style="margin-left:15px;">
 						
-						<s:iterator value="artistList">
-  								<div class="swiper-slide" style="width:85px;">
-								<dl>
-								<a href="Index/artist/id/2905.html">
-								<dt>
-								<img src="<s:property value="avatar"/>" alt=""/>
-								</dt>
-								<dd>
-								<s:property value="nickName"/>
-								</dd></a></dl>
-								</div>
-						</s:iterator>
+						<s:iterator id="indexArtists" value="artistList">
+							<div class="swiper-slide" style="width:85px;">
+								<dl><a href="Index/artist/id/2905.html"><dt><img src="http://www.hihey.com/data/brandlogo/1447983375146388493.jpg" alt=""/></dt><dd>郎世宁</dd></a></dl>
+							</div>
+						</s:iterator> 
 							
 						</div>
 					</div>
@@ -81,18 +75,7 @@
 			<h2><a href="Index/goodchoice.html">精选</a></h2>
 			<div id="container" class="pt50">
 				<ul class="col">
-					<s:iterator value="advertorialList">
-					<li><div><a href="#">
-					
-					<img src="<s:property value="homeImage"/>"/>
-					</a>
-					</div>
-					<div class="water_user pdp4">
-					<dl><dt></dt><dt><s:property value="topic"/></dt>
-					<dd><s:property value="userByAuthorGuid.username"/></dd>
-					<dd><s:property value="createdOn"/></dd></dl></div>
-					</li>
-					</s:iterator>
+<li><div><a href="#"><img src="http://www.hihey.com/images/201511/goods_img/21829_G_1448494139149.jpg"></a></div><div class="water_user pdp4"><dl><dt></dt><dt>彼得·勃鲁盖尔</dt><dd>收割</dd><dd>￥0</dd><!--</li--></dl></div></li>
 				</ul>
 				<ul class="col" style="margin-right:0">
 				
