@@ -75,7 +75,19 @@
 			<h2><a href="Index/goodchoice.html">精选</a></h2>
 			<div id="container" class="pt50">
 				<ul class="col">
-<li><div><a href="#"><img src="http://www.hihey.com/images/201511/goods_img/21829_G_1448494139149.jpg"></a></div><div class="water_user pdp4"><dl><dt></dt><dt>彼得·勃鲁盖尔</dt><dd>收割</dd><dd>￥0</dd><!--</li--></dl></div></li>
+
+					<s:iterator value="advertorialList">
+					<li><div><a href="#">
+					
+					<img src="<s:property value="homeImage"/>"/>
+					</a>
+					</div>
+					<div class="water_user pdp4">
+					<dl><dt></dt><dt><s:property value="topic"/></dt>
+					<dd><s:property value="userByAuthorGuid.username"/></dd>
+					<dd><s:property value="createdOn"/></dd></dl></div>
+					</li>
+					</s:iterator>
 				</ul>
 				<ul class="col" style="margin-right:0"></ul>
 				<a href="javascript:" class="loadMeinvMOre" id="loadMeinvMOre">加载更多</a>
