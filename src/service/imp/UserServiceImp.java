@@ -94,4 +94,11 @@ public class UserServiceImp implements UserService
 	
 	}
 
+	@Override
+	public boolean userExists(String account) 
+	{
+		// TODO Auto-generated method stub
+	    List<User> ret = getUserDao().findByAccount(account);
+	    return !ret.isEmpty();
+	}
 }

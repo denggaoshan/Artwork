@@ -1,4 +1,13 @@
+#Sun Nov 29 15:22:55 CST 2015
 eclipse.preferences.version=1
+<<<<<<< HEAD
 validator.Checked=WebContent/jsp/js
+=======
+<<<<<<< HEAD
+validator.Checked=WebContent/jsp/login.jsp,WebContent/jsp/register.jsp,WebContent/jsp/js/jquery.js,WebContent/jsp/js
+=======
+validator.Checked=WebContent/jsp/fonts,WebContent/jsp/css,WebContent/jsp/img,WebContent/jsp/js
+>>>>>>> origin/master
+>>>>>>> origin/master
 validator.Revalidate=true
 validator.Unchecked=
