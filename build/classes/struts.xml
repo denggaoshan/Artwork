@@ -14,9 +14,10 @@
 	 		<result name="success">main.jsp</result>
 	 	</action>
 		
-		<action name="LoginAction" class="LoginAction">
-			<result name="success">success.jsp</result>
-			<result name="fail">login.jsp</result>
+		<action name="LoginAction" class="LoginAction" >
+			<result type="json">   
+				<param name="result">Result</param>  
+            </result> 
 		</action>
 
 		<action name="RegisterAction" class="RegisterAction">
