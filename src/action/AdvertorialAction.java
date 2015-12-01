@@ -27,14 +27,16 @@ public class AdvertorialAction extends ActionSupport
 	
 	public Advertorial getAdvertorial() 
 	{
+		Assert.notNull(advertorial);
 		return advertorial;
 	}
-
+	
 	public String execute()
     {
 		String id=  Utils.getRequest().getParameter("id");
    	    advertorial=getAdvertorialService().getAdvertorialById(id);
+		Assert.notNull(advertorial);
+   	    return "success";
 		
-		return "success";
     }
 }

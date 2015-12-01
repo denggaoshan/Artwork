@@ -59,7 +59,6 @@ public class IndexAction extends ActionSupport
 	
      public String execute()
      {
-    	System.out.println("~~~~~~index action");
     	artistList = getUserService().getAllArtists();
     	List<Advertorial> tmp = getAdvertorialService().getAdvertorial(); 
     	advertorialListLeft= new ArrayList<Advertorial>();

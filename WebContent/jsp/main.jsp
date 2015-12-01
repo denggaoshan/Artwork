@@ -81,12 +81,12 @@
 			<h2><a href="Index/goodchoice.html">精选</a></h2>
 			<div id="container" class="pt50">
 				
+				
 				<ul class="col">
 					<s:iterator value="advertorialListLeft">
-					<li>
 					
-					  <s:a href="AdvertorialAction.action?id=<s:property value='guid'/>"> 
-                      
+					<li>
+					 <s:a href="AdvertorialAction.action?id=%{guid}">
 					
 					<div>
 					<img src="<s:property value="homeImage"/>"/>
@@ -105,15 +105,17 @@
 				</ul>
 				<ul class="col" style="margin-right:0">
 				<s:iterator value="advertorialListRight">
-					<li><div><a href="#">
+					<li><div>
+					
+					<s:a href="AdvertorialAction.action?id=%{guid}">
 					
 					<img src="<s:property value="homeImage"/>"/>
-					</a>
 					</div>
 					<div class="water_user pdp4">
 					<dl><dt></dt><dt><s:property value="topic"/></dt>
 					<dd><s:property value="userByAuthorGuid.username"/></dd>
 					<dd><s:property value="createdOn"/></dd></dl></div>
+					</s:a>
 					</li>
 					</s:iterator>
 				</ul>

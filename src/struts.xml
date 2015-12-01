@@ -27,7 +27,7 @@
 		</action>
 		
 		<action name="AdvertorialAction" class="AdvertorialAction">
-			<result name="success">advertorial.jsp</result>
+			<result name="success">advertorialDetail.jsp</result>
 		</action>
 		
     
