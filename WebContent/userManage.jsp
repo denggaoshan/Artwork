@@ -6,6 +6,7 @@
 <head>
 		<meta charset="utf-8">
 		<title>个人主页 | <s:property value="#session.user.nickName"/></title>
+		<link type="image/x-icon" href="img/favicon.ico" rel="shortcut icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 		<meta http-equiv="Cache-Control" content="public">
 		<meta name="apple-mobile-web-app-capable" content="yes">

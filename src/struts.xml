@@ -8,7 +8,7 @@
     
     <constant name="struts.i18n.encoding" value="utf-8"></constant>
     
-	<package name="struts2" namespace="/jsp" extends="struts-default,json-default">
+	<package name="struts2" namespace="/" extends="struts-default,json-default">
 	 
 	 	<action name="IndexAction" class="IndexAction">
 	 		<result name="success">main.jsp</result>

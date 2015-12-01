@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>注册</title>
+
+<title>登录 | Bread</title>
+<link type="image/x-icon" href="img/favicon.ico" rel="shortcut icon">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <meta http-equiv="Cache-Control" content="public">
@@ -12,7 +14,9 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <meta name="renderer" content="webkit">
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css" type="text/css">
+
 </head>
 <body>
 	<div class="head-pic">
@@ -21,6 +25,7 @@
 			<img src="img/logo.png" alt="logo" />
 		</dl>
 	</div>
+
 	<div class="login">
 		<ul>
 			<li><input type="text" class="input username" name="username"
@@ -29,13 +34,12 @@
 			<li><input type="password" class="input password"
 				name="password" placeholder="请输入密码">
 			</li>
-			<li><input type="text" class="input nickname" name="nickName"
-				placeholder="请输入昵称">
+			<li>
+				<button class="loginBtn" onclick="check();">登 录</button>
 			</li>
-			<li><button class="loginBtn" onclick="check();">注 册</button></li>
 		</ul>
 		<p>
-			<a href="login.jsp" class="fl">直接登录</a>
+			<a href="register.jsp" class="fl">注册账号</a> 
 			<!-- <a href="password.html" class="fr">忘记密码</a> -->
 		</p>
 	</div>
@@ -47,10 +51,8 @@
 	function check() {
 		var username = $(".username").val();
 		var password = $(".password").val();
-		var nickname = $('.nickname').val();
-
 		if (username == '') {
-			$('.tips').show().text("用户名不能为空");
+			$('.tips').show().text("用户名不能为空！");
 			closeTips();
 			return false;
 		}
@@ -59,24 +61,16 @@
 			closeTips();
 			return false;
 		}
-		if (nickname == '') {
-			$('.tips').show().text("昵称不能为空！");
-			closeTips();
-			return false;
-		}
 
-		$.post("RegisterAction.action", {
+		$.post("LoginAction.action", {
 			"username" : $(".username").val(),
-			"password" : $(".password").val(),
-			"nickname" : $(".nickname").val()
+			"password" : $(".password").val()
 		}, function(data) {
 			if (data.result.state == "success") {
-				$('.tips').show().text("注册成功！");
-				closeTips();
+				$('.tips').show().text("登录成功！");closeTips();
 				window.location.href = "IndexAction.action";
 			} else {
-				$('.tips').show().text(data.result.message);
-				closeTips();
+				$('.tips').show().text(data.result.message);closeTips();
 			}
 		}, "json");
 

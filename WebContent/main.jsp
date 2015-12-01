@@ -1,28 +1,46 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
-	<head>
+<head>
 		<meta charset="utf-8">
-		<title>面包艺术网</title>
+		<title>首页 | Bread</title>
+		<link type="image/x-icon" href="img/favicon.ico" rel="shortcut icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 		<meta http-equiv="Cache-Control" content="public">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<meta name="renderer" content="webkit">
-		<link rel="stylesheet" href="jsp/css/style.css" type="text/css">
+		<link rel="stylesheet" href="css/style.css" type="text/css">
 	</head>
-
-	<body class="bg">
+<body class="bg">
+		<!-- 上传图片的连接 
+		<a href="ImageUploadForm.jsp">点我</a>
+		-->
+		
 		<section class="head-search">
 			<ul>
 				<i class="logo"></i>
 				<!-- onclick="goSearch();" -->
 				<input type="text" class="search-input inputIcon fl" name="keyword" style="margin-left:70px" placeholder="搜索艺术家/艺术品">
 				<!-- <cite class="searchBtn" onclick="goSearch();"></cite> -->
-				<code style="border-radius:0px;top:15px;font-size:15px">
-        		<a href="login.html">登录</a>
-        	</code>
+				
+        	
+        		<s:if test="#session.user==null">
+        		<code style="border-radius:0px;top:15px;font-size:15px">
+        			<a href="login.jsp">登录</a>
+        			</code>
+        		</s:if>
+        		<s:else>
+        		<code>
+        			<a href="userManage.jsp">
+        				<img src='<s:property value="#session.user.avatar"/>' alt="头像"/>
+        			</a>
+        		</code>
+        			
+        		</s:else>	
 			</ul>
 		</section>
 		<!--head-search end-->
@@ -33,13 +51,13 @@
 					<div id="scroller" style="width: 2560px; transform: translate(0px, 0px) scale(1);">
 						<ul id="thelist">
 							<li>
-								<a href="#"><img src="http://www.hihey.com/data/afficheimg/1448589272547429802.jpg" alt="" /></a>
+								<a href="#"><img src="uploadImg/Advertorial/banner1.jpg" alt="" /></a>
 							</li>
 							<li>
-								<a href="#"><img src="http://www.hihey.com/data/afficheimg/1448326236834753606.jpg" alt="" /></a>
+								<a href="#"><img src="uploadImg/Advertorial/banner2.jpg" alt="" /></a>
 							</li>
 							<li>
-								<a href="#"><img src="http://www.hihey.com/data/afficheimg/1447210173364437055.jpg" alt="" /></a>
+								<a href="#"><img src="uploadImg/Advertorial/banner3.jpg" alt="" /></a>
 							</li>
 						</ul>
 					</div>
@@ -51,22 +69,24 @@
 		<!--home-pm end-->
 		<section class="artist">
 			<ul>
-				<p><a href="Index/artistlist.html">艺术家</a></p>
+				<p><a href="#">艺术家</a></p>
 				<li>
 					<div class="swiper-container banners-container">
 						<div class="swiper-wrapper" style="margin-left:15px;">
-							<div class="swiper-slide" style="width:85px;">
-								<dl><a href="Index/artist/id/2905.html"><dt><img src="http://www.hihey.com/data/brandlogo/1447983375146388493.jpg" alt=""/></dt><dd>郎世宁</dd></a></dl>
-							</div>
-							<div class="swiper-slide" style="width:85px;">
-								<dl><a href="Index/artist/id/2907.html"><dt><img src="http://www.hihey.com/data/brandlogo/1447983692980923048.jpg" alt=""/></dt><dd>唐寅</dd></a></dl>
-							</div>
-							<div class="swiper-slide" style="width:85px;">
-								<dl><a href="Index/artist/id/691.html"><dt><img src="http://www.hihey.com/data/brandlogo/1363905175837582158.jpg" alt=""/></dt><dd>周春芽</dd></a></dl>
-							</div>
-							<div class="swiper-slide" style="width:85px;">
-								<dl><a href="Index/artist/id/473.html"><dt><img src="http://www.hihey.com/data/brandlogo/1361990788851954363.jpg" alt=""/></dt><dd>蔡志松</dd></a></dl>
-							</div>
+						
+						<s:iterator value="artistList">
+  								<div class="swiper-slide" style="width:85px;">
+								<dl>
+								<a href="#">
+								<dt>
+								<img src="<s:property value="avatar"/>" alt=""/>
+								</dt>
+								<dd>
+								<s:property value="nickName"/>
+								</dd></a></dl>
+								</div>
+						</s:iterator>
+							
 						</div>
 					</div>
 				</li>
@@ -74,12 +94,45 @@
 		</section>
 		<!--artist end-->
 		<section class="choice">
-			<h2><a href="Index/goodchoice.html">精选</a></h2>
+			<h2><a href="#">精选</a></h2>
 			<div id="container" class="pt50">
+				
+				
 				<ul class="col">
-<li><div><a href="#"><img src="http://www.hihey.com/images/201511/goods_img/21829_G_1448494139149.jpg"></a></div><div class="water_user pdp4"><dl><dt></dt><dt>彼得·勃鲁盖尔</dt><dd>收割</dd><dd>￥0</dd><!--</li--></dl></div></li>
+					<s:iterator value="advertorialListLeft">
+					
+					<li>
+					 <s:a href="AdvertorialAction.action?id=%{guid}">
+					
+					<div>
+					<img src="<s:property value="homeImage"/>"/>
+					
+					</div>
+					<div class="water_user pdp4">
+					<dl><dt></dt><dt><s:property value="topic"/></dt>
+					<dd><s:property value="userByAuthorGuid.NickName"/></dd>
+					</div>
+					
+					 </s:a>
+					</li>
+					</s:iterator>
+					
 				</ul>
-				<ul class="col" style="margin-right:0"></ul>
+				<ul class="col" style="margin-right:0">
+				<s:iterator value="advertorialListRight">
+					<li><div>
+					
+					<s:a href="AdvertorialAction.action?id=%{guid}">
+					
+					<img src="<s:property value="homeImage"/>"/>
+					</div>
+					<div class="water_user pdp4">
+					<dl><dt></dt><dt><s:property value="topic"/></dt>
+					<dd><s:property value="userByAuthorGuid.NickName"/></dd>
+					</s:a>
+					</li>
+					</s:iterator>
+				</ul>
 				<a href="javascript:" class="loadMeinvMOre" id="loadMeinvMOre">加载更多</a>
 			</div>
 			<!--container end of-->
