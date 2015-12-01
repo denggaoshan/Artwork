@@ -15,7 +15,10 @@
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 	</head>
 <body class="bg">
+		<!-- 上传图片的连接 
 		<a href="ImageUploadForm.jsp">点我</a>
+		-->
+		
 		<section class="head-search">
 			<ul>
 				<i class="logo"></i>
@@ -23,7 +26,19 @@
 				<input type="text" class="search-input inputIcon fl" name="keyword" style="margin-left:70px" placeholder="搜索艺术家/艺术品">
 				<!-- <cite class="searchBtn" onclick="goSearch();"></cite> -->
 				<code style="border-radius:0px;top:15px;font-size:15px">
-        		<a href="login.jsp">登录</a>
+        	
+        		<s:if test="#session.user==null">
+        			<a href="login.jsp">登录</a>
+        		</s:if>
+        		<s:else>
+        		<code>
+        			<a href="userManage.jsp">
+        				<img src='<s:property value="#session.user.avatar"/>' alt="头像"/>
+        			</a>
+        		</code>
+        			
+        		</s:else>	
+        		
         	</code>
 			</ul>
 		</section>
@@ -61,7 +76,7 @@
 						<s:iterator value="artistList">
   								<div class="swiper-slide" style="width:85px;">
 								<dl>
-								<a href="Index/artist/id/2905.html">
+								<a href="#">
 								<dt>
 								<img src="<s:property value="avatar"/>" alt=""/>
 								</dt>
@@ -94,8 +109,7 @@
 					</div>
 					<div class="water_user pdp4">
 					<dl><dt></dt><dt><s:property value="topic"/></dt>
-					<dd><s:property value="userByAuthorGuid.username"/></dd>
-					<dd><s:property value="createdOn"/></dd></dl>
+					<dd><s:property value="userByAuthorGuid.NickName"/></dd>
 					</div>
 					
 					 </s:a>
@@ -113,8 +127,7 @@
 					</div>
 					<div class="water_user pdp4">
 					<dl><dt></dt><dt><s:property value="topic"/></dt>
-					<dd><s:property value="userByAuthorGuid.username"/></dd>
-					<dd><s:property value="createdOn"/></dd></dl></div>
+					<dd><s:property value="userByAuthorGuid.NickName"/></dd>
 					</s:a>
 					</li>
 					</s:iterator>

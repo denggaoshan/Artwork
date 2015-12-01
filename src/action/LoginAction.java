@@ -20,6 +20,16 @@ public class LoginAction extends ActionSupport{
     private String password;
     private Map<String,Object> Result;  
     
+    
+    private User currentUser;
+    public User getCurrentUser() {
+        return currentUser;
+    }
+    
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+    
     public String execute(){
     	Result = new HashMap<String, Object>();  
     	
@@ -31,8 +41,8 @@ public class LoginAction extends ActionSupport{
     	
     	getUserService().login(username, password);
     	
-    	User user = Utils.getCurrentUser();
-    	if(user!=null){
+    	currentUser = Utils.getCurrentUser();
+    	if(currentUser!=null){
     		return ActionHelper.SuccessMessage(Result);
     	}else{
     		return ActionHelper.FailMessage(Result,"用户名或密码错误！");
