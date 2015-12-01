@@ -7,20 +7,22 @@
     <constant name="struts.devMode" value="true" />
     <constant name="struts.i18n.encoding" value="utf-8"></constant>
     
-	<package name="struts2" namespace="/jsp" extends="struts-default">
+	<package name="struts2" namespace="/jsp" extends="struts-default,json-default">
 	 
-		<action name="LoginAction" class="LoginAction">
-			<result name="success">success.jsp</result>
-			<result name="fail">login.jsp</result>
+		<action name="LoginAction" class="LoginAction" >
+			<result type="json">   
+				<param name="result">Result</param>  
+            </result> 
 		</action>
 
 		<action name="RegisterAction" class="RegisterAction">
-    		<result name="success">success.jsp</result>
-			<result name="fail">login.jsp</result>
+			<result type="json">   
+				<param name="result">Result</param>  
+            </result> 
 		</action>
 		
-		<action name="StartAction" class="IndexAction">
-                <result name="success">main.jsp</result>
+		<action name="IndexAction" class="IndexAction">
+                <result name="success">index.jsp</result>
    		 </action>
     
 	

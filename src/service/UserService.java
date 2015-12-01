@@ -10,4 +10,5 @@ public interface UserService {
 	public void login(String username,String password);
 	
 	public List<User> getAllArtists();
+	public boolean userExists(String account);
 }
