@@ -48,11 +48,9 @@ public class UserServiceImp implements UserService
 		if(users.size()>0 && users.get(0).getPassword().equals(md5Tmp)) 
 		{
 			Utils.setCurrentUser(users.get(0));
-		    System.out.print("success!!!");
 		}
 		else
 		{
-			System.out.print("fail!!!");
 		}
 
 	}
