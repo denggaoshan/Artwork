@@ -17,7 +17,7 @@
 <body>
 
 	昵称<s:property value="#session.user.nickName"/><br/>
-	头像<img src="<s:property value="#session.user.avator"/>"/><br/>
+	头像<img src="<s:property value="#session.user.avatar"/>"/><br/>
 	
 	<s:form action="addCommodity.jsp">
 		<button type="submit">添加商品</button>
