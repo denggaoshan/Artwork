@@ -89,9 +89,9 @@ public class UserServiceImp implements UserService
 	}
 
 	@Override
-	public void getAllArtists() {
+	public List<User> getAllArtists() {
 		List<User> alluser = getUserDao().findAll();
-	
+		return alluser;
 	}
 
 	@Override
