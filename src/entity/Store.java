@@ -8,8 +8,8 @@ import java.util.Set;
  * Store entity. @author MyEclipse Persistence Tools
  */
 
-public class Store implements java.io.Serializable {
-
+public class Store implements java.io.Serializable 
+{
 	// Fields
 
 	private String guid;

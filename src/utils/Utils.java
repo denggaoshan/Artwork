@@ -2,13 +2,14 @@ package utils;
 
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.ServletActionContext;
 import java.sql.*;
-
 import com.opensymphony.xwork2.ActionContext;
-
 import entity.User;
 
-public class Utils {
+
+public class Utils 
+{
 	public static String MD5(String md5) {
 		try {
 			java.security.MessageDigest md = java.security.MessageDigest
@@ -54,15 +55,23 @@ public class Utils {
 			"HTTP_X_FORWARDED", "HTTP_X_CLUSTER_CLIENT_IP", "HTTP_CLIENT_IP",
 			"HTTP_FORWARDED_FOR", "HTTP_FORWARDED", "HTTP_VIA", "REMOTE_ADDR" };
 
-	public static String getClientIpAddress(HttpServletRequest request) {
-		for (String header : HEADERS_TO_TRY) {
-			String ip = request.getHeader(header);
-			if (ip != null && ip.length() != 0
-					&& !"unknown".equalsIgnoreCase(ip)) {
-				return ip;
-			}
-		}
-		return request.getRemoteAddr();
+	public static String getClientIpAddress(HttpServletRequest request) 
+	{
+	    for (String header : HEADERS_TO_TRY) 
+	    {
+	        String ip = request.getHeader(header);
+	        if (ip != null && ip.length() != 0 && !"unknown".equalsIgnoreCase(ip)) 
+	            return ip;
+	    }
+	    return request.getRemoteAddr();
+	}
+	
+	public static HttpServletRequest getRequest(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		return request;
 	}
 
+	
+	
 }
+

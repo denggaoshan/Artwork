@@ -25,7 +25,8 @@
             </result> 
 		</action>
 		
-		<action name="UploadAction" class="action.UploadAction">
+		<action name="AdvertorialAction" class="AdvertorialAction">
+			<result name="success">advertorial.jsp</result>
 		</action>
 		
     

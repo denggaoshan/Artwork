@@ -1,8 +1,6 @@
 package dao;
 
-import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
@@ -37,12 +35,16 @@ public class CommodityDAO extends BaseHibernateDAO {
 	public static final String TOP_MOST = "topMost";
 	public static final String DEAL_STATUS = "dealStatus";
 
-	public void save(Commodity transientInstance) {
+	public void save(Commodity transientInstance) 
+	{
 		log.debug("saving Commodity instance");
-		try {
+		try
+		{
 			getSession().save(transientInstance);
 			log.debug("save successful");
-		} catch (RuntimeException re) {
+		}
+		catch (RuntimeException re) 
+		{
 			log.error("save failed", re);
 			throw re;
 		}
@@ -59,6 +61,21 @@ public class CommodityDAO extends BaseHibernateDAO {
 		}
 	}
 
+	public List findByHQL(String hql) 
+	{
+		log.debug("finding Commodity instance with query: " + hql);
+		try 
+		{
+			Query queryObject = getSession().createQuery(hql);
+			return queryObject.list();
+		} 
+		catch (RuntimeException re) 
+		{
+			log.error("find by queryString failed", re);
+			throw re;
+		}
+	}
+	
 	public Commodity findById(java.lang.String id) {
 		log.debug("getting Commodity instance with id: " + id);
 		try {

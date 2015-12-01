@@ -27,6 +27,11 @@
    
 	<bean id="IndexAction" class="action.IndexAction">
 	  <property name="userService" ref="userService"/>
+	   <property name="advertorialService" ref="advertorialService"/>
+	</bean>
+	
+	<bean id="AdvertorialAction" class="action.AdvertorialAction">
+	    <property name="advertorialService" ref="advertorialService"/>
 	</bean>
 
 
@@ -39,7 +44,6 @@
     <bean name="advertorialService" class="service.imp.AdvertorialServiceImp">
    	  <property name="advertorialDAO" ref="advertorialDAO"/>
    </bean>
-   
    
      <!-- Dao -->
     <bean name="userDAO" class="dao.UserDAO"/>

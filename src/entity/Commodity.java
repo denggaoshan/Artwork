@@ -8,8 +8,8 @@ import java.util.Set;
  * Commodity entity. @author MyEclipse Persistence Tools
  */
 
-public class Commodity implements java.io.Serializable {
-
+public class Commodity implements java.io.Serializable 
+{
 	// Fields
 
 	private String guid;
@@ -46,7 +46,8 @@ public class Commodity implements java.io.Serializable {
 			String abstract_, String description, String keyword,
 			String homeImage, String parameters, Timestamp createdOn,
 			Short type, Boolean topMost, Timestamp onlineTime,
-			Timestamp offlineTime, Short dealStatus) {
+			Timestamp offlineTime, Short dealStatus) 
+	{
 		this.guid = guid;
 		this.store = store;
 		this.commoditycategory = commoditycategory;

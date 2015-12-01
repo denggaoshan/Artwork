@@ -1,25 +1,46 @@
 package service.imp;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import dao.CommodityDAO;
 import entity.Commodity;
 import service.CommodityService;
+import utils.Utils;
 
 public class CommodityServiceImp implements CommodityService
 {
-
-	@Override
-	public ArrayList<Commodity> getAllCommodity() 
+	private CommodityDAO commodityDao;
+	
+	public void setCommodityDao(CommodityDAO commodityDao)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		this.commodityDao=commodityDao;
 	}
-
+	
+	public CommodityDAO getCommodityDao()
+	{
+		return this.commodityDao;
+	}
+	
 	@Override
-	public void addCommodity(Commodity commodity) 
+	public List<Commodity> getAllCommodity() 
 	{
 		// TODO Auto-generated method stub
+		List<Commodity> ret = getCommodityDao().findAll();
+		return ret;
+	}
+	
+	@Override
+	public List<Commodity> getSomeCommodity(String condition) 
+	{
+		// TODO Auto-generated method stub
+		String hql = "from Commodity as commodity where commodity.name like '%" + condition +"%'";
 		
+		List<Commodity> ret = getCommodityDao().findByHQL(hql);
+		
+		return ret;
 	}
 
 	@Override
@@ -29,4 +50,9 @@ public class CommodityServiceImp implements CommodityService
 		
 	}
 
+	@Override
+	public void addCommodity(Commodity commodity) {
+		// TODO Auto-generated method stub
+		
+	}
 }

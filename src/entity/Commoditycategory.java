@@ -7,7 +7,8 @@ import java.util.Set;
  * Commoditycategory entity. @author MyEclipse Persistence Tools
  */
 
-public class Commoditycategory implements java.io.Serializable {
+public class Commoditycategory implements java.io.Serializable 
+{
 
 	// Fields
 

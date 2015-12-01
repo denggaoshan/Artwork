@@ -1,7 +1,6 @@
 package dao;
 
 import java.util.List;
-import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
@@ -28,12 +27,16 @@ public class RoleDAO extends BaseHibernateDAO {
 	public static final String DESCRIPTION = "description";
 	public static final String COUNT = "count";
 
-	public void save(Role transientInstance) {
+	public void save(Role transientInstance) 
+	{
 		log.debug("saving Role instance");
-		try {
+		try
+		{
 			getSession().save(transientInstance);
 			log.debug("save successful");
-		} catch (RuntimeException re) {
+		}
+		catch (RuntimeException re)
+		{
 			log.error("save failed", re);
 			throw re;
 		}

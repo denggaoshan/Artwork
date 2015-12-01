@@ -8,7 +8,8 @@ import java.util.Set;
  * User entity. @author MyEclipse Persistence Tools
  */
 
-public class User implements java.io.Serializable {
+public class User implements java.io.Serializable 
+{
 
 	// Fields
 

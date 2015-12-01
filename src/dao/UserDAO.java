@@ -1,8 +1,6 @@
 package dao;
 
-import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
@@ -41,12 +39,16 @@ public class UserDAO extends BaseHibernateDAO {
 	public static final String LAST_LOGIN_IP = "lastLoginIp";
 	public static final String IS_ONLINE = "isOnline";
 
-	public void save(User transientInstance) {
+	public void save(User transientInstance) 
+	{
 		log.debug("saving User instance");
-		try {
+		try 
+		{
 			getSession().save(transientInstance);
 			log.debug("save successful");
-		} catch (RuntimeException re) {
+		} 
+		catch (RuntimeException re) 
+		{
 			log.error("save failed", re);
 			throw re;
 		}
@@ -84,6 +86,21 @@ public class UserDAO extends BaseHibernateDAO {
 			return results;
 		} catch (RuntimeException re) {
 			log.error("find by example failed", re);
+			throw re;
+		}
+	}
+	
+	public List findByHQL(String hql) 
+	{
+		log.debug("finding User instance with query: " + hql);
+		try 
+		{
+			Query queryObject = getSession().createQuery(hql);
+			return queryObject.list();
+		} 
+		catch (RuntimeException re) 
+		{
+			log.error("find by queryString failed", re);
 			throw re;
 		}
 	}

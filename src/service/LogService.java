@@ -1,5 +1,6 @@
 package service;
 
-public interface LogService {
+public interface LogService 
+{
 	
 }

@@ -1,5 +1,6 @@
-package action;
+﻿package action;
 
+import org.springframework.util.Assert;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import utils.ActionHelper;
 import com.googlecode.jsonplugin.annotations.JSON;
 import com.opensymphony.xwork2.ActionSupport;
 import entity.User;
+
 
 public class LoginAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;  
@@ -69,4 +71,5 @@ public class LoginAction extends ActionSupport{
     public UserService getUserService(){
     	return userService;
     }
+
 }

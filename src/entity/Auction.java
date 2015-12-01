@@ -6,7 +6,8 @@ import java.sql.Timestamp;
  * Auction entity. @author MyEclipse Persistence Tools
  */
 
-public class Auction implements java.io.Serializable {
+public class Auction implements java.io.Serializable 
+{
 
 	// Fields
 

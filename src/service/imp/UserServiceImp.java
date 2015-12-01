@@ -1,15 +1,8 @@
 package service.imp;
 
-import java.sql.Timestamp;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import com.opensymphony.xwork2.ActionContext;
-
 import dao.RoleDAO;
 import dao.UserDAO;
 import entity.Role;
@@ -23,20 +16,25 @@ public class UserServiceImp implements UserService
     private UserDAO userDao;
     
     
-    public void setUserDao(UserDAO userDao){
+    public void setUserDao(UserDAO userDao)
+    {
     	this.userDao = userDao;
     }
     
-    public UserDAO getUserDao(){
+    public UserDAO getUserDao()
+    {
     	return userDao;
     }
 	
     private RoleDAO roleDao;
-    public void setRoleDao(RoleDAO roleDao){
+    
+    public void setRoleDao(RoleDAO roleDao)
+    {
     	this.roleDao = roleDao;
     }
     
-    public RoleDAO getRoleDao(){
+    public RoleDAO getRoleDao()
+    {
     	return roleDao;
     }
     
@@ -89,9 +87,13 @@ public class UserServiceImp implements UserService
 	}
 
 	@Override
-	public List<User> getAllArtists() {
-		List<User> alluser = getUserDao().findAll();
-		return alluser;
+	public List<User> getAllArtists() 
+	{
+		String hql = "from User as u where u.role.name='Artist' order by u.registerTime";
+		
+		List<User> ret=getUserDao().findByHQL(hql);	
+		
+		return ret;
 	}
 
 	@Override

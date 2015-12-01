@@ -8,7 +8,6 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 
 import entity.Financelog;
-import entity.FinancelogId;
 
 /**
  * A data access object (DAO) providing persistence and search support for

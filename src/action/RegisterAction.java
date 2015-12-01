@@ -1,16 +1,18 @@
-package action;
+﻿package action;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-import org.apache.struts2.ServletActionContext;
-import service.UserService;
-import utils.ActionHelper;
-import utils.Utils;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
+import org.springframework.util.Assert;
+
+import service.UserService;
+import utils.*;
 import com.googlecode.jsonplugin.annotations.JSON;
 import com.opensymphony.xwork2.ActionSupport;
-
 import entity.User;
 
 public class RegisterAction extends ActionSupport{
