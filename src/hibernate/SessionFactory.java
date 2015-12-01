@@ -29,9 +29,9 @@ public class SessionFactory
 
 	static {
     	try {
-			configuration.configure(configFile);
+    		configuration.configure(configFile);
 			sessionFactory = configuration.buildSessionFactory();
-		} catch (Exception e) {
+    	} catch (Exception e) {
 			System.err.println("%%%% Error Creating SessionFactory %%%%");
 			e.printStackTrace();
 		}
