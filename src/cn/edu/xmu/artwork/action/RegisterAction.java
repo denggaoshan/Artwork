@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 
-import org.springframework.util.Assert;
-
 import cn.edu.xmu.artwork.entity.User;
 import cn.edu.xmu.artwork.service.UserService;
 import cn.edu.xmu.commom.utils.*;
@@ -22,6 +20,7 @@ public class RegisterAction extends ActionSupport{
     private String username;
     private String password;
     private String nickname;
+    private String justCheck;
     private Map<String,Object> Result;
     
     public String execute(){
@@ -30,6 +29,14 @@ public class RegisterAction extends ActionSupport{
     	//参数检查
     	if(!ActionHelper.CheckNotNull(username))
     		return ActionHelper.FailMessage(Result,"用户名未填写！");
+    	
+    	if(ActionHelper.CheckNotNull(justCheck)){
+    		if(getUserService().userExists(username))
+    			return ActionHelper.FailMessage(Result,"用户名已存在！");
+    		else
+    			return ActionHelper.SuccessMessage(Result);
+    	}
+    	
     	if(!ActionHelper.CheckNotNull(password))
     		return ActionHelper.FailMessage(Result,"密码未填写！");
     	if(!ActionHelper.CheckNotNull(nickname))
@@ -88,4 +95,13 @@ public class RegisterAction extends ActionSupport{
     public UserService getUserService(){
     	return userService;
     }
+
+    @JSON(serialize=false)  
+	public String getJustCheck() {
+		return justCheck;
+	}
+
+	public void setJustCheck(String justCheck) {
+		this.justCheck = justCheck;
+	}
 }

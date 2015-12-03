@@ -82,7 +82,12 @@ public class UserServiceImp implements UserService
 		
 		getUserDao().save(user);
 		tx.commit();
-		Utils.setCurrentUser(user);
+		
+		if(this.userExists(username)){
+			Utils.setCurrentUser(user);
+		}
+		
+		
 	}
 
 	@Override

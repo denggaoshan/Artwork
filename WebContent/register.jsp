@@ -25,10 +25,14 @@
 	<div class="login">
 		<ul>
 			<li><input type="text" class="input username" name="username"
-				placeholder="请输入用户名">
+				placeholder="请输入用户名"><span class="fl" id="verifyBtn" style="margin-top:5px;"></span>
 			</li>
 			<li><input type="password" class="input password"
 				name="password" placeholder="请输入密码">
+			</li>
+			<li><input type="password" class="input repassword"
+				name="repassword" placeholder="请再次输入密码">
+				<span class="fl" id="reVerifyBtn" style="margin-top:5px;"></span>
 			</li>
 			<li><input type="text" class="input nickname" name="nickName"
 				placeholder="请输入昵称">
@@ -48,6 +52,7 @@
 	function check() {
 		var username = $(".username").val();
 		var password = $(".password").val();
+		var repassword = $(".repassword").val();
 		var nickname = $('.nickname').val();
 
 		if (username == '') {
@@ -57,6 +62,11 @@
 		}
 		if (password == '') {
 			$('.tips').show().text("密码不能为空！");
+			closeTips();
+			return false;
+		}
+		if (password != repassword) {
+			$('.tips').show().text("两次输入密码不同！");
 			closeTips();
 			return false;
 		}
@@ -87,5 +97,36 @@
 		setTimeout("$('.tips').hide()", 3000);
 	}
 </script>
-
+	<script>
+		$(function() {
+			$(".username").blur(function(event) {
+				var username = $(".username").val();
+				if (username != '') {
+					$.post("RegisterAction.action", {
+						"username" : $(".username").val(),
+						"justCheck" : "1"
+					}, function(data) {
+						if (data.result.state == "success") {
+							$('#verifyBtn').css("color","green");
+							$('#verifyBtn').html("恭喜，账号可用！");
+						} else {
+							$('#verifyBtn').css("color","red");
+							$('#verifyBtn').html(data.result.message);
+						}
+					}, "json");
+				}
+			});
+			$(".repassword").blur(function(event) {
+				var password = $(".password").val();
+				var repassword = $(".repassword").val();
+				if(password!=repassword){
+					$('#reVerifyBtn').css("color","red");
+					$('#reVerifyBtn').html("两次输入密码不同！");
+				}
+				else{
+					$('#reVerifyBtn').html("");
+				}
+			});
+		})
+	</script>
 </html>
