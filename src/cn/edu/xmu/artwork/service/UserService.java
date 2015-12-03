@@ -13,5 +13,7 @@ public interface UserService
 	
 	public boolean userExists(String account);
 	
+	public boolean userExistsByGuid(String guid);
+	
 	public List<User> getAllArtists();
 }

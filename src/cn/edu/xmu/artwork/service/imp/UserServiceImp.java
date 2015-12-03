@@ -83,7 +83,7 @@ public class UserServiceImp implements UserService
 		getUserDao().save(user);
 		tx.commit();
 		
-		if(this.userExists(username)){
+		if(this.userExistsByGuid(user.getGuid())){
 			Utils.setCurrentUser(user);
 		}
 		
@@ -103,8 +103,15 @@ public class UserServiceImp implements UserService
 	@Override
 	public boolean userExists(String account) 
 	{
-		// TODO Auto-generated method stub
 	    List<User> ret = getUserDao().findByAccount(account);
 	    return !ret.isEmpty();
 	}
+
+	@Override
+	public boolean userExistsByGuid(String guid) {
+		User ret = getUserDao().findById(guid);
+	    return ret!=null;
+	}
+	
+	
 }
