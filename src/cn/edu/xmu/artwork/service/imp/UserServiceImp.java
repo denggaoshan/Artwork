@@ -68,7 +68,7 @@ public class UserServiceImp implements UserService
 		user.setGuid(Utils.createGUID());
 		user.setAccount(username);
 		user.setPassword(Utils.MD5(password));
-		user.setAvatar("/uploadImg/default.png");
+		user.setAvatar("uploadImg/Avatar/default.png");
 		user.setNickName(nickName);
 		user.setBalance(0.0);
 		user.setIsDisable(false);

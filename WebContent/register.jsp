@@ -79,7 +79,8 @@
 		$.post("RegisterAction.action", {
 			"username" : $(".username").val(),
 			"password" : $(".password").val(),
-			"nickname" : $(".nickname").val()
+			"nickname" : $(".nickname").val(),
+			"justCheck" : "0"
 		}, function(data) {
 			if (data.result.state == "success") {
 				$('.tips').show().text("注册成功！");

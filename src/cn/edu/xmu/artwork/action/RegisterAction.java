@@ -30,18 +30,16 @@ public class RegisterAction extends ActionSupport{
     	if(!ActionHelper.CheckNotNull(username))
     		return ActionHelper.FailMessage(Result,"用户名未填写！");
     	
-    	if(ActionHelper.CheckNotNull(justCheck)){
+    	if(justCheck.equals("1")){
     		if(getUserService().userExists(username))
     			return ActionHelper.FailMessage(Result,"用户名已存在！");
     		else
     			return ActionHelper.SuccessMessage(Result);
     	}
-    	
     	if(!ActionHelper.CheckNotNull(password))
     		return ActionHelper.FailMessage(Result,"密码未填写！");
     	if(!ActionHelper.CheckNotNull(nickname))
     		return ActionHelper.FailMessage(Result,"昵称未填写！");
-    	
     	HttpServletRequest request = ServletActionContext.getRequest();
     	String ip=Utils.getClientIpAddress(request);
     	getUserService().register(username, password, nickname,ip);
