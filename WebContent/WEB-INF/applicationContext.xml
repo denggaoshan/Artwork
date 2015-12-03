@@ -8,46 +8,38 @@
     xsi:schemaLocation="
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
- <!--
-	<bean name="RegisterAction" class="action.RegisterAction">  
-        <property name="service" ref="service"></property>  
-    </bean>  
-    
-	<bean name="service" class="service.imp.ServiceImp"></bean> 
-   -->
-   
+ 
    <!-- 给Action注入Service -->
-   <bean id="LoginAction" class="action.LoginAction">
+   <bean id="LoginAction" class="cn.edu.xmu.artwork.action.LoginAction">
       <property name="userService" ref="userService"/>
    </bean>
    
-   <bean id="RegisterAction" class="action.RegisterAction">
+   <bean id="RegisterAction" class="cn.edu.xmu.artwork.action.RegisterAction">
       <property name="userService" ref="userService"/>
    </bean>
    
-	<bean id="IndexAction" class="action.IndexAction">
+	<bean id="IndexAction" class="cn.edu.xmu.artwork.action.IndexAction">
 	  <property name="userService" ref="userService"/>
 	   <property name="advertorialService" ref="advertorialService"/>
 	</bean>
 	
-	<bean id="AdvertorialAction" class="action.AdvertorialAction">
+	<bean id="AdvertorialAction" class="cn.edu.xmu.artwork.action.AdvertorialAction">
 	    <property name="advertorialService" ref="advertorialService"/>
 	</bean>
 
-
    <!-- 给Service实现类注入DAO -->
-   <bean name="userService" class="service.imp.UserServiceImp">
+   <bean name="userService" class="cn.edu.xmu.artwork.service.imp.UserServiceImp">
    	  <property name="userDao" ref="userDAO"/>
    	   <property name="roleDao" ref="roleDAO"/>
    </bean>
    
-    <bean name="advertorialService" class="service.imp.AdvertorialServiceImp">
+    <bean name="advertorialService" class="cn.edu.xmu.artwork.service.imp.AdvertorialServiceImp">
    	  <property name="advertorialDAO" ref="advertorialDAO"/>
    </bean>
    
      <!-- Dao -->
-    <bean name="userDAO" class="dao.UserDAO"/>
-    <bean name="roleDAO" class="dao.RoleDAO"/>
-    <bean name="advertorialDAO" class="dao.AdvertorialDAO"/>
+    <bean name="userDAO" class="cn.edu.xmu.artwork.dao.UserDAO"/>
+    <bean name="roleDAO" class="cn.edu.xmu.artwork.dao.RoleDAO"/>
+    <bean name="advertorialDAO" class="cn.edu.xmu.artwork.dao.AdvertorialDAO"/>
 </beans>
 
