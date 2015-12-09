@@ -1,6 +1,5 @@
 package cn.edu.xmu.artwork.dao;
 
-import java.sql.Timestamp;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -8,33 +7,35 @@ import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 
-import cn.edu.xmu.artwork.entity.Notification;
+import cn.edu.xmu.artwork.entity.Advertorial;
+import cn.edu.xmu.artwork.entity.Information;
 
 /**
  * A data access object (DAO) providing persistence and search support for
- * Notification entities. Transaction control of the save(), update() and
+ * Information entities. Transaction control of the save(), update() and
  * delete() operations can directly support Spring container-managed
  * transactions or they can be augmented to handle user-managed Spring
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see cn.edu.xmu.artwork.entity.Notification
+ * @see cn.edu.xmu.artwork.dao.Information
  * @author MyEclipse Persistence Tools
  */
 
-public class NotificationDAO extends BaseHibernateDAO {
-	private static final Log log = LogFactory.getLog(NotificationDAO.class);
+public class InformationDao extends BaseHibernateDao 
+{
+	private static final Log log = LogFactory.getLog(InformationDao.class);
 	// property constants
 	public static final String TITLE = "title";
-	public static final String NOTI_CONTENT = "notiContent";
-	public static final String FROM_USER = "fromUser";
-	public static final String TO_USER = "toUser";
-	public static final String MESSAGE_TYPE = "messageType";
-	public static final String IS_READ = "isRead";
-	public static final String IS_HIDE = "isHide";
+	public static final String HOME_IMAGE = "homeImage";
+	public static final String TOPIC = "topic";
+	public static final String CONTNET = "contnet";
+	public static final String POSTION = "postion";
+	public static final String VERIFY_STATUS = "verifyStatus";
 
-	public void save(Notification transientInstance) {
-		log.debug("saving Notification instance");
+	public void save(Information transientInstance) 
+	{
+		log.debug("saving Information instance");
 		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
@@ -44,8 +45,8 @@ public class NotificationDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void delete(Notification persistentInstance) {
-		log.debug("deleting Notification instance");
+	public void delete(Information persistentInstance) {
+		log.debug("deleting Information instance");
 		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -55,11 +56,12 @@ public class NotificationDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Notification findById(java.lang.String id) {
-		log.debug("getting Notification instance with id: " + id);
+	public Information findById(java.lang.String id) 
+	{
+		log.debug("getting Information instance with id: " + id);
 		try {
-			Notification instance = (Notification) getSession().get(
-					"cn.edu.xmu.artwork.entity.Notification", id);
+			Information instance = (Information) getSession().get(
+					"cn.edu.xmu.artwork.entity.Information", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -67,11 +69,11 @@ public class NotificationDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(Notification instance) {
-		log.debug("finding Notification instance by example");
+	public List findByExample(Information instance) {
+		log.debug("finding Information instance by example");
 		try {
 			List results = getSession()
-					.createCriteria("cn.edu.xmu.artwork.entity.Notification")
+					.createCriteria("cn.edu.xmu.artwork.entity.Information")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -83,10 +85,10 @@ public class NotificationDAO extends BaseHibernateDAO {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding Notification instance with property: "
-				+ propertyName + ", value: " + value);
+		log.debug("finding Information instance with property: " + propertyName
+				+ ", value: " + value);
 		try {
-			String queryString = "from Notification as model where model."
+			String queryString = "from Information as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -101,34 +103,30 @@ public class NotificationDAO extends BaseHibernateDAO {
 		return findByProperty(TITLE, title);
 	}
 
-	public List findByNotiContent(Object notiContent) {
-		return findByProperty(NOTI_CONTENT, notiContent);
+	public List findByHomeImage(Object homeImage) {
+		return findByProperty(HOME_IMAGE, homeImage);
 	}
 
-	public List findByFromUser(Object fromUser) {
-		return findByProperty(FROM_USER, fromUser);
+	public List findByTopic(Object topic) {
+		return findByProperty(TOPIC, topic);
 	}
 
-	public List findByToUser(Object toUser) {
-		return findByProperty(TO_USER, toUser);
+	public List findByContnet(Object contnet) {
+		return findByProperty(CONTNET, contnet);
 	}
 
-	public List findByMessageType(Object messageType) {
-		return findByProperty(MESSAGE_TYPE, messageType);
+	public List findByPostion(Object postion) {
+		return findByProperty(POSTION, postion);
 	}
 
-	public List findByIsRead(Object isRead) {
-		return findByProperty(IS_READ, isRead);
-	}
-
-	public List findByIsHide(Object isHide) {
-		return findByProperty(IS_HIDE, isHide);
+	public List findByVerifyStatus(Object verifyStatus) {
+		return findByProperty(VERIFY_STATUS, verifyStatus);
 	}
 
 	public List findAll() {
-		log.debug("finding all Notification instances");
+		log.debug("finding all Information instances");
 		try {
-			String queryString = "from Notification";
+			String queryString = "from Information";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -137,10 +135,10 @@ public class NotificationDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Notification merge(Notification detachedInstance) {
-		log.debug("merging Notification instance");
+	public Information merge(Information detachedInstance) {
+		log.debug("merging Information instance");
 		try {
-			Notification result = (Notification) getSession().merge(
+			Information result = (Information) getSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -150,8 +148,8 @@ public class NotificationDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachDirty(Notification instance) {
-		log.debug("attaching dirty Notification instance");
+	public void attachDirty(Information instance) {
+		log.debug("attaching dirty Information instance");
 		try {
 			getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -161,8 +159,8 @@ public class NotificationDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachClean(Notification instance) {
-		log.debug("attaching clean Notification instance");
+	public void attachClean(Information instance) {
+		log.debug("attaching clean Information instance");
 		try {
 			getSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");

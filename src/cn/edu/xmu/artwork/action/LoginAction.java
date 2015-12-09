@@ -3,8 +3,8 @@
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.edu.xmu.artwork.entity.*;
 
-import cn.edu.xmu.artwork.entity.User;
 import cn.edu.xmu.artwork.service.UserService;
 import cn.edu.xmu.commom.utils.ActionHelper;
 import cn.edu.xmu.commom.utils.Utils;
@@ -13,7 +13,8 @@ import com.googlecode.jsonplugin.annotations.JSON;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-public class LoginAction extends ActionSupport{
+public class LoginAction extends ActionSupport
+{
 	private static final long serialVersionUID = 1L;  
 	
     private String username;
@@ -22,15 +23,19 @@ public class LoginAction extends ActionSupport{
     
     
     private User currentUser;
-    public User getCurrentUser() {
+    
+    public User getCurrentUser() 
+    {
         return currentUser;
     }
     
-    public void setCurrentUser(User currentUser) {
+    public void setCurrentUser(User currentUser) 
+    {
         this.currentUser = currentUser;
     }
     
-    public String execute(){
+    public String execute()
+    {
     	Result = new HashMap<String, Object>();  
     	
     	//参数检查

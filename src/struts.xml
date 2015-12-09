@@ -30,7 +30,6 @@
 			<result name="success">advertorialDetail.jsp</result>
 		</action>
 		
-    
 	</package>
 	
 </struts>   

@@ -20,26 +20,28 @@
    
 	<bean id="IndexAction" class="cn.edu.xmu.artwork.action.IndexAction">
 	  <property name="userService" ref="userService"/>
-	   <property name="advertorialService" ref="advertorialService"/>
+	   <property name="informationService" ref="informationService"/>
 	</bean>
 	
 	<bean id="AdvertorialAction" class="cn.edu.xmu.artwork.action.AdvertorialAction">
-	    <property name="advertorialService" ref="advertorialService"/>
+	    <property name="informationService" ref="informationService"/>
 	</bean>
 
    <!-- 给Service实现类注入DAO -->
    <bean name="userService" class="cn.edu.xmu.artwork.service.imp.UserServiceImp">
-   	  <property name="userDao" ref="userDAO"/>
-   	   <property name="roleDao" ref="roleDAO"/>
+   	  <property name="userDao" ref="userDao"/>
    </bean>
    
-    <bean name="advertorialService" class="cn.edu.xmu.artwork.service.imp.AdvertorialServiceImp">
-   	  <property name="advertorialDAO" ref="advertorialDAO"/>
+    <bean name="informationService" class="cn.edu.xmu.artwork.service.imp.InformationServiceImp">
+   	  <property name="informationDao" ref="informationDao"/>
+   	  <property name="advertisementDao" ref="advertisementDao"/>
+   	  <property name="advertorialDao" ref="advertorialDao"/>
    </bean>
    
      <!-- Dao -->
-    <bean name="userDAO" class="cn.edu.xmu.artwork.dao.UserDAO"/>
-    <bean name="roleDAO" class="cn.edu.xmu.artwork.dao.RoleDAO"/>
-    <bean name="advertorialDAO" class="cn.edu.xmu.artwork.dao.AdvertorialDAO"/>
+    <bean name="userDao" class="cn.edu.xmu.artwork.dao.UserDao"/>
+    <bean name="informationDao" class="cn.edu.xmu.artwork.dao.InformationDao"/>
+    <bean name="advertisementDao" class="cn.edu.xmu.artwork.dao.AdvertisementDao"/>
+    <bean name="advertorialDao" class="cn.edu.xmu.artwork.dao.AdvertorialDao"/>
 </beans>
 

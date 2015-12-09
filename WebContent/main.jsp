@@ -102,7 +102,7 @@
 					<s:iterator value="advertorialListLeft">
 					
 					<li>
-					 <s:a href="AdvertorialAction.action?id=%{guid}">
+					 <s:a href="AdvertorialAction.action?id=%{id}">
 					
 					<div>
 					<img src="<s:property value="homeImage"/>"/>
@@ -122,7 +122,7 @@
 				<s:iterator value="advertorialListRight">
 					<li><div>
 					
-					<s:a href="AdvertorialAction.action?id=%{guid}">
+					<s:a href="AdvertorialAction.action?id=%{id}">
 					
 					<img src="<s:property value="homeImage"/>"/>
 					</div>

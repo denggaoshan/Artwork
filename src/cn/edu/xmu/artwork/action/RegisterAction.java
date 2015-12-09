@@ -7,14 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 
-import cn.edu.xmu.artwork.entity.User;
+import cn.edu.xmu.artwork.entity.*;
 import cn.edu.xmu.artwork.service.UserService;
 import cn.edu.xmu.commom.utils.*;
 
 import com.googlecode.jsonplugin.annotations.JSON;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class RegisterAction extends ActionSupport{
+public class RegisterAction extends ActionSupport
+{
 	private static final long serialVersionUID = 2L;
 	
     private String username;
@@ -23,7 +24,10 @@ public class RegisterAction extends ActionSupport{
     private String justCheck;
     private Map<String,Object> Result;
     
-    public String execute(){
+    private String hello;
+ 
+	public String execute()
+	{
     	Result = new HashMap<String, Object>();  
     	
     	//参数检查
@@ -40,42 +44,50 @@ public class RegisterAction extends ActionSupport{
     		return ActionHelper.FailMessage(Result,"密码未填写！");
     	if(!ActionHelper.CheckNotNull(nickname))
     		return ActionHelper.FailMessage(Result,"昵称未填写！");
-    	HttpServletRequest request = ServletActionContext.getRequest();
-    	String ip=Utils.getClientIpAddress(request);
-    	getUserService().register(username, password, nickname,ip);
+    	
+    	getUserService().register(username, password, nickname);
     	
     	User user = Utils.getCurrentUser();
-    	if(user!=null){
+    	if(user!=null)
+    	{
     		return ActionHelper.SuccessMessage(Result);
-    	}else{
+    	}
+    	else
+    	{
     		return ActionHelper.FailMessage(Result,"系统错误！");
     	}
     }
     
-    public Map<String, Object> getResult() {  
+    public Map<String, Object> getResult() 
+    {  
         return Result;  
     }
     
     @JSON(serialize=false)  
-    public String getNickname() {
+    public String getNickname() 
+    {
         return nickname;
     }
     
-    public void setNickname(String nickName) {
+    public void setNickname(String nickName)
+    {
         this.nickname = nickName;
     }
     
     @JSON(serialize=false)  
-    public String getUsername() {
+    public String getUsername() 
+    {
         return username;
     }
     
-    public void setUsername(String username) {
+    public void setUsername(String username) 
+    {
         this.username = username;
     }
     
     @JSON(serialize=false)  
-    public String getPassword() {
+    public String getPassword() 
+    {
         return password;
     }
     

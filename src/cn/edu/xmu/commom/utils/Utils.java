@@ -5,10 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import java.sql.*;
 
-import cn.edu.xmu.artwork.entity.User;
+import cn.edu.xmu.artwork.entity.*;
 
 import com.opensymphony.xwork2.ActionContext;
-
 
 public class Utils 
 {

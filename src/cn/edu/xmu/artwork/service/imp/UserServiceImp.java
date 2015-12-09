@@ -4,114 +4,78 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import cn.edu.xmu.artwork.dao.RoleDAO;
-import cn.edu.xmu.artwork.dao.UserDAO;
-import cn.edu.xmu.artwork.entity.Role;
+
+import cn.edu.xmu.artwork.dao.UserDao;
+import cn.edu.xmu.artwork.entity.Artist;
 import cn.edu.xmu.artwork.entity.User;
 import cn.edu.xmu.artwork.service.UserService;
 import cn.edu.xmu.commom.utils.Utils;
 
 public class UserServiceImp implements UserService
 {
-	
-    private UserDAO userDao;
+    private UserDao userDao;
     
-    
-    public void setUserDao(UserDAO userDao)
+    public void setUserDao(UserDao userDao)
     {
     	this.userDao = userDao;
     }
     
-    public UserDAO getUserDao()
+    public UserDao getUserDao()
     {
     	return userDao;
     }
-	
-    private RoleDAO roleDao;
-    
-    public void setRoleDao(RoleDAO roleDao)
-    {
-    	this.roleDao = roleDao;
-    }
-    
-    public RoleDAO getRoleDao()
-    {
-    	return roleDao;
-    }
-    
+
 	@Override
-	public void login(String username, String password) 
+	public boolean register(String username, String password, String nickName)
+	{	
+		Session s=getUserDao().getSession();
+		Transaction tx=s.beginTransaction();
+		
+		User user = new User();
+		user.setId(Utils.createGUID());
+		user.setAccount(username);
+		user.setPassword(Utils.MD5(password));
+		user.setAvatar("/uploadImg/Avatar/default.png");
+		user.setNickName(nickName);
+		user.setBalance(0.0);
+		user.setIsDisable(false);
+		
+		getUserDao().save(user);
+		
+		tx.commit();
+		
+		return true;
+	}
+
+	@Override
+	public boolean login(String username, String password) 
 	{
-		String md5Tmp=Utils.MD5(password);	
+        String md5Tmp=Utils.MD5(password);	
 		
 		List<User> users= getUserDao().findByAccount(username);
 		
 		if(users.size()>0 && users.get(0).getPassword().equals(md5Tmp)) 
 		{
+			System.out.print(users.get(0).getNickName()+"--------------");
 			Utils.setCurrentUser(users.get(0));
-		}
-		else
-		{
-		}
-
-	}
-
-	@Override
-	public void register(String username, String password, String nickName,
-			String ip) {
-		
-		Session s=getUserDao().getSession();
-		Transaction tx=s.beginTransaction();
-
-		
-		User user = new User();
-		user.setGuid(Utils.createGUID());
-		user.setAccount(username);
-		user.setPassword(Utils.MD5(password));
-		user.setAvatar("uploadImg/Avatar/default.png");
-		user.setNickName(nickName);
-		user.setBalance(0.0);
-		user.setIsDisable(false);
-		user.setLastLoginIp(ip);
-		user.setRegisterTime(Utils.getCurrentTime());
-		user.setLastLoginTime(Utils.getCurrentTime());
-		user.setIsOnline(true);
-		
-		Role role = ((List<Role>)getRoleDao().findByName("buyer")).get(0);
-		user.setRole(role);
-		
-		getUserDao().save(user);
-		tx.commit();
-		
-		if(this.userExistsByGuid(user.getGuid())){
-			Utils.setCurrentUser(user);
+			getUserDao().getSession().clear();
+			return true;
 		}
 		
-		
-	}
-
-	@Override
-	public List<User> getAllArtists() 
-	{
-		String hql = "from User as u where u.role.name='Artist' order by u.registerTime";
-		
-		List<User> ret=getUserDao().findByHQL(hql);	
-		
-		return ret;
+		return false;
 	}
 
 	@Override
 	public boolean userExists(String account) 
 	{
-	    List<User> ret = getUserDao().findByAccount(account);
+		List<User> ret = getUserDao().findByAccount(account);
 	    return !ret.isEmpty();
 	}
 
 	@Override
-	public boolean userExistsByGuid(String guid) {
-		User ret = getUserDao().findById(guid);
-	    return ret!=null;
+	public List<Artist> getAllArtists() 
+	{	
+		List<Artist> ret = getUserDao().findAllByClassName("Artist");
+		return ret;
 	}
-	
-	
 }

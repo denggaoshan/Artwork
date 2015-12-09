@@ -2,18 +2,16 @@ package cn.edu.xmu.artwork.service;
 
 import java.util.List;
 
-import cn.edu.xmu.artwork.entity.User;
+import cn.edu.xmu.artwork.entity.*;
 
 
 public interface UserService 
 {	
-	public void register(String username,String password,String Nickname,String ip);
+	public boolean register(String username,String password,String Nickname);
 	
-	public void login(String username,String password);
+	public boolean login(String username,String password);
 	
 	public boolean userExists(String account);
 	
-	public boolean userExistsByGuid(String guid);
-	
-	public List<User> getAllArtists();
+	public List<Artist> getAllArtists();
 }

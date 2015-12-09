@@ -16,9 +16,9 @@
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 	</head>
 <body>
-	<s:property value="advertorial.topic"/><br/>
+	<s:property value="advertorial.title"/><br/>
 	<img src="<s:property value="advertorial.homeImage"/>"/><br/>
-	<s:property value="advertorial.abstract"/><br/>
+	<s:property value="advertorial.topic"/><br/>
 	<s:property value="advertorial.content"/>
 </body>
 </html>

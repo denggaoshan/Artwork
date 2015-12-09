@@ -1,43 +1,36 @@
 package cn.edu.xmu.artwork.action;
 
-import org.springframework.util.Assert;
-
-
 import cn.edu.xmu.artwork.entity.Advertorial;
-import cn.edu.xmu.artwork.service.AdvertorialService;
+import cn.edu.xmu.artwork.service.InformationService;
 import cn.edu.xmu.commom.utils.Utils;
-
 import com.opensymphony.xwork2.ActionSupport;
-
 
 public class AdvertorialAction extends ActionSupport
 {
-	private AdvertorialService advertorialService;
+	private InformationService informationService;
 	
-	public AdvertorialService getAdvertorialService() 
+	public InformationService getInformationService() 
 	{
-		return advertorialService;
+		return informationService;
 	}
 
-	public void setAdvertorialService(AdvertorialService advertorialService) 
+	public void setInformationService(InformationService informationService) 
 	{
-		this.advertorialService = advertorialService;
+		this.informationService = informationService;
 	}
 
 	private Advertorial advertorial;
 	
 	public Advertorial getAdvertorial() 
 	{
-		Assert.notNull(advertorial);
 		return advertorial;
 	}
 	
 	public String execute()
     {
 		String id=  Utils.getRequest().getParameter("id");
-   	    advertorial=getAdvertorialService().getAdvertorialById(id);
-		Assert.notNull(advertorial);
+   	    advertorial=getInformationService().getAdvertorialById(id);
+   	    
    	    return "success";
-		
     }
 }

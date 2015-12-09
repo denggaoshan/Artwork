@@ -3,17 +3,15 @@ package cn.edu.xmu.artwork.action;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import cn.edu.xmu.artwork.entity.*;
-import cn.edu.xmu.artwork.service.AdvertorialService;
+import cn.edu.xmu.artwork.service.InformationService;
 import cn.edu.xmu.artwork.service.UserService;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-
-
 public class IndexAction extends ActionSupport
 {
-	
 	 private UserService userService;
 	    
 	 public void setUserService(UserService userService)
@@ -26,21 +24,21 @@ public class IndexAction extends ActionSupport
 	     return userService;
 	 }
 	
-	 private AdvertorialService advertorialService;
+	 private InformationService informationService;
 	 
-	 public void setAdvertorialService(AdvertorialService advertorialService)
+	 public void setInformationService(InformationService informationService)
 	 {
-	     this.advertorialService = advertorialService;
+	     this.informationService = informationService;
 	 }
 	    
-	 public AdvertorialService getAdvertorialService()
+	 public InformationService getAdvertorialService()
 	 {
-	     return advertorialService;
+	     return this.informationService;
 	 }
 	
-	 List<User> artistList;
+	 List<Artist> artistList;
 	
-	 public List<User> getArtistList()
+	 public List<Artist> getArtistList()
 	 {
 		return artistList;
 	 }

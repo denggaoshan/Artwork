@@ -1,36 +1,34 @@
 package cn.edu.xmu.artwork.dao;
 
 import java.util.List;
-import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 
-import cn.edu.xmu.artwork.entity.Role;
+import cn.edu.xmu.artwork.entity.Advertisement;
 
 /**
- * A data access object (DAO) providing persistence and search support for Role
- * entities. Transaction control of the save(), update() and delete() operations
- * can directly support Spring container-managed transactions or they can be
- * augmented to handle user-managed Spring transactions. Each of these methods
- * provides additional information for how to configure it for the desired type
- * of transaction control.
+ * A data access object (DAO) providing persistence and search support for
+ * Advertisement entities. Transaction control of the save(), update() and
+ * delete() operations can directly support Spring container-managed
+ * transactions or they can be augmented to handle user-managed Spring
+ * transactions. Each of these methods provides additional information for how
+ * to configure it for the desired type of transaction control.
  * 
- * @see cn.edu.xmu.artwork.entity.Role
+ * @see cn.edu.xmu.artwork.dao.Advertisement
  * @author MyEclipse Persistence Tools
  */
 
-public class RoleDAO extends BaseHibernateDAO {
-	private static final Log log = LogFactory.getLog(RoleDAO.class);
-	// property constants
-	public static final String NAME = "name";
-	public static final String DESCRIPTION = "description";
-	public static final String COUNT = "count";
+public class AdvertisementDao extends BaseHibernateDao 
+{
+	private static final Log log = LogFactory.getLog(AdvertisementDao.class);
 
-	public void save(Role transientInstance) {
-		log.debug("saving Role instance");
+	// property constants
+
+	public void save(Advertisement transientInstance) {
+		log.debug("saving Advertisement instance");
 		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
@@ -40,8 +38,8 @@ public class RoleDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void delete(Role persistentInstance) {
-		log.debug("deleting Role instance");
+	public void delete(Advertisement persistentInstance) {
+		log.debug("deleting Advertisement instance");
 		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -51,11 +49,11 @@ public class RoleDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Role findById(java.lang.String id) {
-		log.debug("getting Role instance with id: " + id);
+	public Advertisement findById(java.lang.String id) {
+		log.debug("getting Advertisement instance with id: " + id);
 		try {
-			Role instance = (Role) getSession().get(
-					"cn.edu.xmu.artwork.entity.Role", id);
+			Advertisement instance = (Advertisement) getSession().get(
+					"cn.edu.xmu.artwork.entity.Advertisement", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -63,11 +61,11 @@ public class RoleDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(Role instance) {
-		log.debug("finding Role instance by example");
+	public List findByExample(Advertisement instance) {
+		log.debug("finding Advertisement instance by example");
 		try {
 			List results = getSession()
-					.createCriteria("cn.edu.xmu.artwork.entity.Role")
+					.createCriteria("cn.edu.xmu.artwork.entity.Advertisement")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -79,10 +77,10 @@ public class RoleDAO extends BaseHibernateDAO {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding Role instance with property: " + propertyName
-				+ ", value: " + value);
+		log.debug("finding Advertisement instance with property: "
+				+ propertyName + ", value: " + value);
 		try {
-			String queryString = "from Role as model where model."
+			String queryString = "from Advertisement as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -93,22 +91,10 @@ public class RoleDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByName(Object name) {
-		return findByProperty(NAME, name);
-	}
-
-	public List findByDescription(Object description) {
-		return findByProperty(DESCRIPTION, description);
-	}
-
-	public List findByCount(Object count) {
-		return findByProperty(COUNT, count);
-	}
-
 	public List findAll() {
-		log.debug("finding all Role instances");
+		log.debug("finding all Advertisement instances");
 		try {
-			String queryString = "from Role";
+			String queryString = "from Advertisement";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -117,10 +103,11 @@ public class RoleDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Role merge(Role detachedInstance) {
-		log.debug("merging Role instance");
+	public Advertisement merge(Advertisement detachedInstance) {
+		log.debug("merging Advertisement instance");
 		try {
-			Role result = (Role) getSession().merge(detachedInstance);
+			Advertisement result = (Advertisement) getSession().merge(
+					detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -129,8 +116,8 @@ public class RoleDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachDirty(Role instance) {
-		log.debug("attaching dirty Role instance");
+	public void attachDirty(Advertisement instance) {
+		log.debug("attaching dirty Advertisement instance");
 		try {
 			getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -140,8 +127,8 @@ public class RoleDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachClean(Role instance) {
-		log.debug("attaching clean Role instance");
+	public void attachClean(Advertisement instance) {
+		log.debug("attaching clean Advertisement instance");
 		try {
 			getSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");

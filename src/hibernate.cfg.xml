@@ -10,7 +10,7 @@
 			org.hibernate.dialect.MySQLDialect
 		</property>
 		<property name="connection.url">
-			jdbc:mysql://120.24.81.199:3306/artwork
+			jdbc:mysql://120.24.81.199:3306/test
 		</property>
 		<property name="connection.username">artwork</property>
 		<property name="connection.password">88888888</property>
@@ -20,29 +20,13 @@
 		<property name="myeclipse.connection.profile">
 			org.gjt.mm.mysql.Driver
 		</property>
-		<mapping resource="cn/edu/xmu/artwork/entity/Address.hbm.xml" />
-		<mapping
-			resource="cn/edu/xmu/artwork/entity/Advertorial.hbm.xml" />
-		<mapping
-			resource="cn/edu/xmu/artwork/entity/Advertorialscategory.hbm.xml" />
-		<mapping
-			resource="cn/edu/xmu/artwork/entity/Allotprivilege.hbm.xml" />
-		<mapping resource="cn/edu/xmu/artwork/entity/Auction.hbm.xml" />
-		<mapping resource="cn/edu/xmu/artwork/entity/Commodity.hbm.xml" />
-		<mapping
-			resource="cn/edu/xmu/artwork/entity/Commoditycategory.hbm.xml" />
-		<mapping
-			resource="cn/edu/xmu/artwork/entity/Financelog.hbm.xml" />
-		<mapping
-			resource="cn/edu/xmu/artwork/entity/Notification.hbm.xml" />
-		<mapping resource="cn/edu/xmu/artwork/entity/Order.hbm.xml" />
-		<mapping resource="cn/edu/xmu/artwork/entity/Privilege.hbm.xml" />
-		<mapping resource="cn/edu/xmu/artwork/entity/Role.hbm.xml" />
-		<mapping resource="cn/edu/xmu/artwork/entity/Store.hbm.xml" />
-		<mapping resource="cn/edu/xmu/artwork/entity/Systemlog.hbm.xml" />
-		<mapping resource="cn/edu/xmu/artwork/entity/User.hbm.xml" />
-		<mapping resource="cn/edu/xmu/artwork/entity/Userlog.hbm.xml" />
-
+		
+		<property name="hibernate.hbm2ddl.auto">update</property> 
+		
+		<mapping resource="cn/edu/xmu/artwork/entity/User.hbm.xml" />  
+		<mapping resource="cn/edu/xmu/artwork/entity/Information.hbm.xml" />  
+		
+		
 	</session-factory>
 
 </hibernate-configuration>

@@ -5,22 +5,23 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import cn.edu.xmu.artwork.dao.CommodityDAO;
-import cn.edu.xmu.artwork.entity.Commodity;
+import cn.edu.xmu.artwork.dao.CommodityDao;
+import cn.edu.xmu.artwork.entity.*;
+
 import cn.edu.xmu.artwork.service.CommodityService;
 import cn.edu.xmu.commom.utils.Utils;
 
 
 public class CommodityServiceImp implements CommodityService
 {
-	private CommodityDAO commodityDao;
+	private CommodityDao commodityDao;
 	
-	public void setCommodityDao(CommodityDAO commodityDao)
+	public void setCommodityDao(CommodityDao commodityDao)
 	{
 		this.commodityDao=commodityDao;
 	}
 	
-	public CommodityDAO getCommodityDao()
+	public CommodityDao getCommodityDao()
 	{
 		return this.commodityDao;
 	}
@@ -29,19 +30,14 @@ public class CommodityServiceImp implements CommodityService
 	public List<Commodity> getAllCommodity() 
 	{
 		// TODO Auto-generated method stub
-		List<Commodity> ret = getCommodityDao().findAll();
-		return ret;
+		return null;
 	}
 	
 	@Override
 	public List<Commodity> getSomeCommodity(String condition) 
 	{
 		// TODO Auto-generated method stub
-		String hql = "from Commodity as commodity where commodity.name like '%" + condition +"%'";
-		
-		List<Commodity> ret = getCommodityDao().findByType(hql);
-		
-		return ret;
+		return null;
 	}
 
 	@Override

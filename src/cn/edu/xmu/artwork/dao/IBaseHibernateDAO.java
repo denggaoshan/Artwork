@@ -2,11 +2,7 @@ package cn.edu.xmu.artwork.dao;
 
 import org.hibernate.Session;
 
-
-/**
- * Data access interface for domain model
- * @author MyEclipse Persistence Tools
- */
-public interface IBaseHibernateDAO {
+public interface IBaseHibernateDao 
+{
 	public Session getSession();
 }
