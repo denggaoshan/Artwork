@@ -1,6 +1,9 @@
 package cn.edu.xmu.commom.utils;
 
-import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import java.sql.*;
@@ -44,11 +47,11 @@ public class Utils
 		ctx.getSession().put("user", user);
 	}
 
-	public static Timestamp getCurrentTime() {
+	public static Date getCurrentTime() {
 		Calendar calendar = Calendar.getInstance();
 		java.util.Date now = calendar.getTime();
-		Timestamp currentTimestamp = new Timestamp(now.getTime());
-		return currentTimestamp;
+		java.sql.Date sqlDate=new java.sql.Date(now.getTime());
+		return sqlDate;
 	}
 
 	private static final String[] HEADERS_TO_TRY = { "X-Forwarded-For",
@@ -72,7 +75,20 @@ public class Utils
 		return request;
 	}
 
-	
+	public static int dateDiff(Date from, Date to){
+		int days = 0;
+		days = (int) Math.abs((to.getTime() - from.getTime()) / (24 * 60 * 60 * 1000)) + 1;
+		return days;
+	}
+
+	//加一天
+	public static Date dateIncrease(Date day,int value){
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(day);
+		cal.add(Calendar.DATE, value);
+		Date ret = new Date(cal.getTime().getTime());
+		return ret;
+	}
 	
 }
 

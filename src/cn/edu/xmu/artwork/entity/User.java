@@ -1,7 +1,9 @@
 package cn.edu.xmu.artwork.entity;
 
+import java.io.Serializable;
+
 //用户  + 买家
-public class User 
+public class User implements Serializable
 {
 	 
 	private String id;

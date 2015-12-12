@@ -1,20 +1,43 @@
 package cn.edu.xmu.artwork.entity;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class Information 
 {
-	
 	private String id;
-	private String title;
+	private String title;//标题
 	private String homeImage;
-	private String topic;
-	private String content;
+	private String topic;//摘要
+	private String content;//内容
+
+	private ChiefEditor chiefEditor; //审核人
+	private Editor editor;//作者
 	
-	private Timestamp beginTime;
-	private Timestamp endTime;
+	private Date beginTime;
+	private Date endTime;
 	
 	private Short position;
+	
+	private Short verifyStatus;//审核状态
+	
+	public ChiefEditor getChiefEditor() {
+		return chiefEditor;
+	}
+
+	public void setChiefEditor(ChiefEditor chiefEditor) {
+		this.chiefEditor = chiefEditor;
+	}
+
+	public Editor getEditor() {
+		return editor;
+	}
+
+	public void setEditor(Editor editor) {
+		this.editor = editor;
+	}
+	
+	
+	
 	
 	public String getId() 
 	{
@@ -49,16 +72,16 @@ public class Information
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Timestamp getBeginTime() {
+	public Date getBeginTime() {
 		return beginTime;
 	}
-	public void setBeginTime(Timestamp beginTime) {
+	public void setBeginTime(Date beginTime) {
 		this.beginTime = beginTime;
 	}
-	public Timestamp getEndTime() {
+	public Date getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(Timestamp endTime) {
+	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
 	public Short getPosition() {
@@ -73,6 +96,6 @@ public class Information
 	public void setVerifyStatus(Short verifyStatus) {
 		this.verifyStatus = verifyStatus;
 	}
-	private Short verifyStatus;
+	
 	
 }	

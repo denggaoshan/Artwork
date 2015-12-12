@@ -25,6 +25,7 @@
 		
 		<mapping resource="cn/edu/xmu/artwork/entity/User.hbm.xml" />  
 		<mapping resource="cn/edu/xmu/artwork/entity/Information.hbm.xml" />  
+		<mapping resource="cn/edu/xmu/artwork/entity/DatePosition.hbm.xml" />  
 		
 		
 	</session-factory>

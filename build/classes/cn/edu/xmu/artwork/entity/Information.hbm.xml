@@ -27,11 +27,11 @@
             <column name="Contnet" not-null="true" />
         </property>
 
-        <property name="beginTime" type="java.sql.Timestamp">
+        <property name="beginTime" type="java.sql.Date">
             <column name="BeginTime" />
         </property>
 
-        <property name="endTime" type="java.sql.Timestamp">
+        <property name="endTime" type="java.sql.Date">
             <column name="EndTime" />
         </property>
 
@@ -42,7 +42,15 @@
         <property name="verifyStatus" type="java.lang.Short">
             <column name="VerifyStatus" />
         </property>
-
+        
+        
+        <many-to-one name="editor" class="cn.edu.xmu.artwork.entity.Editor" >
+			<column name="EditorId" />
+		</many-to-one>
+		
+		<many-to-one name="chiefEditor" class="cn.edu.xmu.artwork.entity.ChiefEditor" >
+			<column name="ChiefEditorId" />
+		</many-to-one>
 
         <joined-subclass name="cn.edu.xmu.artwork.entity.Advertisement" table="advertisement"> 
             <key column="id"/> 
