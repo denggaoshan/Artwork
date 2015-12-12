@@ -6,17 +6,20 @@
 -->
 <hibernate-mapping>
     <class name="cn.edu.xmu.artwork.entity.DatePosition" table="datePosition">
-       
+      
        <composite-id>  
-        <key-many-to-one column="informationId" name="information" class="cn.edu.xmu.artwork.entity.Information"/>  
-        <key-property name="date"/>  
+        <key-property name="date" type="java.sql.Date"/>  
+        <key-property name="position" type="java.lang.Short"/>  
 	   </composite-id>  
+	   
+ 		<many-to-one name="information" class="cn.edu.xmu.artwork.entity.Information" >
+			<column name="InformationId" />
+		</many-to-one>
 
-       <property name="position" type="java.lang.Short">
-            <column name="Position" not-null="true"/>
+		<property name="sequence" type="java.lang.Short">
+            <column name="Sequence"  not-null="true" />
         </property>
-
-
+        
     </class>
 </hibernate-mapping>
 

@@ -5,11 +5,18 @@ import java.sql.Date;
 
 public class DatePosition implements Serializable{
 	
-	private Information information;
 	private Date date;
-	private Short position;
+	private Short position; //1 主页
 	
+	private Information information;
+	private Short sequence;//第几个
 	
+	public Short getSequence() {
+		return sequence;
+	}
+	public void setSequence(Short sequence) {
+		this.sequence = sequence;
+	}
 	public Information getInformation() {
 		return information;
 	}

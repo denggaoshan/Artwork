@@ -13,62 +13,69 @@ import com.opensymphony.xwork2.ActionSupport;
 public class IndexAction extends ActionSupport
 {
 	 private UserService userService;
-	    
-	 public void setUserService(UserService userService)
-	 {
-	     this.userService = userService;
-	 }
-	    
-	 public UserService getUserService()
-	 {
-	     return userService;
-	 }
-	
 	 private InformationService informationService;
 	 
-	 public void setInformationService(InformationService informationService)
-	 {
-	     this.informationService = informationService;
-	 }
-	    
-	 public InformationService getAdvertorialService()
-	 {
-	     return this.informationService;
-	 }
-	
 	 List<Artist> artistList;
-	
-	 public List<Artist> getArtistList()
-	 {
+	 List<Advertisement> advertisementList;
+	 List<Advertorial> advertorialList;
+	 
+
+	 public UserService getUserService() {
+		return userService;
+	}
+
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+
+	public InformationService getInformationService() {
+		return informationService;
+	}
+
+
+	public void setInformationService(InformationService informationService) {
+		this.informationService = informationService;
+	}
+
+
+	public List<Artist> getArtistList() {
 		return artistList;
-	 }
-	
-	 List<Advertorial> advertorialListRight;
-	 List<Advertorial> advertorialListLeft;
-	 
-	 public List<Advertorial> getAdvertorialListRight()
-	 {
-		return advertorialListRight;
-	 }
-	 
-	 public List<Advertorial> getAdvertorialListLeft()
-	 {
-		return advertorialListLeft;
-	 }
-	
+	}
+
+
+	public void setArtistList(List<Artist> artistList) {
+		this.artistList = artistList;
+	}
+
+
+	public List<Advertisement> getAdvertisementList() {
+		return advertisementList;
+	}
+
+
+	public void setAdvertisementList(List<Advertisement> advertisementList) {
+		this.advertisementList = advertisementList;
+	}
+
+
+	public List<Advertorial> getAdvertorialList() {
+		return advertorialList;
+	}
+
+
+	public void setAdvertorialList(List<Advertorial> advertorialList) {
+		advertorialList = advertorialList;
+	}
+
+
+	//加载首页的内容
      public String execute()
      {
     	artistList = getUserService().getAllArtists();
-    	List<Advertorial> tmp = getAdvertorialService().getAdvertorial(); 
-    	advertorialListLeft= new ArrayList<Advertorial>();
-    	advertorialListRight= new ArrayList<Advertorial>();
-    	for(int i=0;i<tmp.size();i++){
-    		if(i%2==0){
-    			advertorialListLeft.add(tmp.get(i));
-    		}else{
-    			advertorialListRight.add(tmp.get(i));
-    		}
-    	}
+    	advertisementList = getInformationService().getTodayAdvertisement();
+    	advertorialList =  getInformationService().getTodayAdvertorial();
 		 return "success";
 		 
     }

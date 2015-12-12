@@ -1,5 +1,7 @@
 package cn.edu.xmu.artwork.dao;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -7,7 +9,11 @@ import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 
+import cn.edu.xmu.artwork.entity.Advertisement;
 import cn.edu.xmu.artwork.entity.Advertorial;
+import cn.edu.xmu.artwork.entity.Editor;
+import cn.edu.xmu.artwork.service.imp.InformationServiceImp;
+import cn.edu.xmu.commom.utils.Utils;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -141,5 +147,22 @@ public class AdvertorialDao extends BaseHibernateDao
 			log.error("attach failed", re);
 			throw re;
 		}
+	}
+
+	public List findAllByDate(Date today) {
+		String queryString = "select ad from Advertorial as ad,DatePosition as dp where ad.id=dp.information.id and dp.date"
+				 + "= ?";
+		Query queryObject = getSession().createQuery(queryString);
+		queryObject.setParameter(0, today);
+		return queryObject.list();
+	}
+	
+	public static void main(String args[]){
+		AdvertorialDao advertorialDao = new AdvertorialDao();
+		List<Advertorial> ret =advertorialDao.findAllByDate(Utils.getCurrentTime());
+		System.out.println(ret.size());
+		Advertorial ad = ret.get(0);
+		System.out.println(ad.getTitle());
+		System.out.println(ad.getContent());
 	}
 }

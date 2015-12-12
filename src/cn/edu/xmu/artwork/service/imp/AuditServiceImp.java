@@ -3,16 +3,17 @@ package cn.edu.xmu.artwork.service.imp;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.util.Assert;
-
+import cn.edu.xmu.artwork.dao.AdvertisementDao;
 import cn.edu.xmu.artwork.dao.AdvertorialDao;
 import cn.edu.xmu.artwork.dao.DatePositionDao;
 import cn.edu.xmu.artwork.dao.EditorDao;
 import cn.edu.xmu.artwork.dao.InformationDao;
+import cn.edu.xmu.artwork.entity.Advertisement;
 import cn.edu.xmu.artwork.entity.Advertorial;
+import cn.edu.xmu.artwork.entity.ChiefEditor;
 import cn.edu.xmu.artwork.entity.DatePosition;
 import cn.edu.xmu.artwork.entity.Editor;
 import cn.edu.xmu.artwork.entity.Information;
@@ -22,6 +23,7 @@ import cn.edu.xmu.commom.utils.Utils;
 public class AuditServiceImp implements AuditService{
 	
 	AdvertorialDao advertorialDao;
+	AdvertisementDao advertisementDao;
 	DatePositionDao datePositionDao;
 	
 	public DatePositionDao getDatePositionDao() {
@@ -47,14 +49,29 @@ public class AuditServiceImp implements AuditService{
 		return ret;
 	}
 	
-	
 	@Override
-	public boolean passAudit(Information information) {
+	public List<Advertisement> getAuditAdvertisements() {
+		List<Advertisement> ret =getAdvertisementDao().findByProperty("verifyStatus",0);
+		return ret;
+	}
+	
+	
+	public AdvertisementDao getAdvertisementDao() {
+		return advertisementDao;
+	}
+
+	public void setAdvertisementDao(AdvertisementDao advertisementDao) {
+		this.advertisementDao = advertisementDao;
+	}
+
+
+	@Override
+	public boolean passAudit(ChiefEditor chiefEditor,Information information) {
 		Session s=getAdvertorialDao().getSession();
 		
 		Transaction tx=s.beginTransaction();
-		//s.update(information);
-		//information.setVerifyStatus((short) 1);
+		s.update(information);
+		information.setVerifyStatus((short) 1);
 		
 		Date begin = information.getBeginTime();
 		Date end = information.getEndTime();
@@ -63,43 +80,53 @@ public class AuditServiceImp implements AuditService{
 		//加到 DatePosition
 		for(int i=0;i<cmp;i++){
 			//创建
-			Session sd = getDatePositionDao().getSession();
-			Transaction txd=sd.beginTransaction();
 			
 			DatePosition tmp = new DatePosition();
 			tmp.setInformation(information);
 			
 			tmp.setDate(Utils.dateIncrease(begin,i));
 			tmp.setPosition(information.getPosition());
+			tmp.setSequence((short) 1);
 			
 			getDatePositionDao().save(tmp);
-			txd.commit();
+			
 		}
-		
+		information.setChiefEditor(chiefEditor);
 		tx.commit();
 		return true;
 	}
 
 	@Override
-	public boolean rejectAudit(Information information) {
+	public boolean rejectAudit(ChiefEditor chiefEditor,Information information) {
 		Session s=getAdvertorialDao().getSession();
 		Transaction tx=s.beginTransaction();
 		s.update(information);
 		information.setVerifyStatus((short) 2);
+		information.setChiefEditor(chiefEditor);
 		tx.commit();
 		return true;
 	}
 	
+	/*
 	public static void main(String args[]){
 		AuditServiceImp auditServiceImp=new AuditServiceImp();
 		auditServiceImp.setAdvertorialDao(new AdvertorialDao());
+		auditServiceImp.setAdvertisementDao(new AdvertisementDao());
 		auditServiceImp.setDatePositionDao(new DatePositionDao());
-		
+	
 		List<Advertorial> ret = auditServiceImp.getAuditAdvertorials();
 		Assert.notNull(ret);
 		auditServiceImp.passAudit(ret.get(0));
 		System.out.println(ret.size());
+		
+		List<Advertisement> ret = auditServiceImp.getAuditAdvertisements();
+		Assert.notNull(ret);
+		
+		//auditServiceImp.passAudit(ret.get(0));
+		System.out.println(ret.size());
+		
 	}
 
+	*/
 
 }

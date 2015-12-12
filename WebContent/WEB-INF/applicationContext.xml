@@ -28,12 +28,23 @@
 	</bean>
 
    <!-- 给Service实现类注入DAO -->
+  
    <bean name="userService" class="cn.edu.xmu.artwork.service.imp.UserServiceImp">
    	  <property name="userDao" ref="userDao"/>
    </bean>
    
+   <bean name="commodityService" class="cn.edu.xmu.artwork.service.imp.CommodityServiceImp">
+   	  <property name="commodityDao" ref="commodityDao"/>
+   </bean>
+   
     <bean name="informationService" class="cn.edu.xmu.artwork.service.imp.InformationServiceImp">
-   	  <property name="informationDao" ref="informationDao"/>
+   	  <property name="datePositionDao" ref="datePositionDao"/>
+   	  <property name="advertisementDao" ref="advertisementDao"/>
+   	  <property name="advertorialDao" ref="advertorialDao"/>
+   </bean>
+   
+    <bean name="auditService" class="cn.edu.xmu.artwork.service.imp.AuditServiceImp">
+   	  <property name="datePositionDao" ref="datePositionDao"/>
    	  <property name="advertisementDao" ref="advertisementDao"/>
    	  <property name="advertorialDao" ref="advertorialDao"/>
    </bean>
@@ -43,5 +54,7 @@
     <bean name="informationDao" class="cn.edu.xmu.artwork.dao.InformationDao"/>
     <bean name="advertisementDao" class="cn.edu.xmu.artwork.dao.AdvertisementDao"/>
     <bean name="advertorialDao" class="cn.edu.xmu.artwork.dao.AdvertorialDao"/>
+    <bean name="datePositionDao" class="cn.edu.xmu.artwork.dao.DatePositionDao"/>
+     <bean name="commodityDao" class="cn.edu.xmu.artwork.dao.CommodityDao"/>
 </beans>
 

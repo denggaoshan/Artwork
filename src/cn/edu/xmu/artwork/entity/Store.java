@@ -1,5 +1,7 @@
 package cn.edu.xmu.artwork.entity;
 
-public class Store {
+import java.io.Serializable;
 
+public class Store  implements Serializable{
+	
 }

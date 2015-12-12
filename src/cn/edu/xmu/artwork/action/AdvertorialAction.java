@@ -29,7 +29,7 @@ public class AdvertorialAction extends ActionSupport
 	public String execute()
     {
 		String id=  Utils.getRequest().getParameter("id");
-   	    advertorial=getInformationService().getAdvertorialById(id);
+   	    //advertorial=getInformationService().getAdvertorialById(id);
    	    
    	    return "success";
     }

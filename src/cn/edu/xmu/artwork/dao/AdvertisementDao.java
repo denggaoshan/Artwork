@@ -1,5 +1,6 @@
 package cn.edu.xmu.artwork.dao;
 
+import java.sql.Date;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -136,5 +137,14 @@ public class AdvertisementDao extends BaseHibernateDao
 			log.error("attach failed", re);
 			throw re;
 		}
+	}
+	
+	public List findAllByDate(Date today) {
+		today.setDate(16);
+		String queryString = "select ad from Advertisement as ad,DatePosition as dp where ad.id=dp.information.id and dp.date"
+				 + "= ?";
+		Query queryObject = getSession().createQuery(queryString);
+		queryObject.setParameter(0, today);
+		return queryObject.list();
 	}
 }

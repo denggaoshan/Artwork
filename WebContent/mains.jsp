@@ -202,14 +202,18 @@
 										<div class="swiper-pagination"></div>
 										<div class="swiper-wrapper">
 										<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!! 这里是banner -->
-											<div style="background-image:url(img/slider/1.png)"
+									
+										<s:iterator value="advertisementList">
+											<div style="background-image:url(<s:property value="homeImage"/>)"
 												class="swiper-slide">
 												<div class="slide-text">
-													<p>广告名</p>
+													<p><s:property value="title"/></p>
 													<h2>**</h2>
 													<a href="#">查看详情</a>
 												</div>
 											</div>
+										</s:iterator>
+										
 										</div>
 									</div>
 								</div>
@@ -217,7 +221,7 @@
 							<!-- shop discover area start-->
 							<div class="features-product">
 								<div class="section-heading">
-									<h3>软文推荐</h3>
+									<h3>精彩资讯</h3>
 								</div>
 								<div class="clear"></div>
 								<div class="ks-slider-custom">
@@ -227,23 +231,26 @@
 										class="swiper-container2 swiper-init">
 										<div class="swiper-wrapper">
 										<!-- !!!!!!!!!!!!!! 软文 -->
+										<s:iterator value="advertorialList">
+										
 											<div class="swiper-slide">
 												<div class="single-project">
 													<div class="product-img">
-														<a href="#"><img src="img/product/1.jpg" alt="" /> </a> 
+														<a href="#"><img src="<s:property value="homeImage"/>" alt="" /> </a> 
 														<span>Top</span>
 													</div>
 													<div class="product-content">
 														<h2 class="product-name">
-															<a href="#">软文名</a>
+															<a href="#"><s:property value="title"/></a>
 														</h2>
 														<div class="price-box">
-															<span class="new-price">作者</span> <span
+															<span class="new-price"><s:property value="editor.nickName"/></span> <span
 																class="old-price">日期</span>
 														</div>
 													</div>
 												</div>
 											</div>
+										</s:iterator>
 											
 										</div>
 									</div>
