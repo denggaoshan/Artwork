@@ -11,7 +11,7 @@
 	<package name="struts2" namespace="/" extends="struts-default,json-default">
 	 
 	 	<action name="IndexAction" class="IndexAction">
-	 		<result name="success">main.jsp</result>
+	 		<result name="success">mains.jsp</result>
 	 	</action>
 		
 		<action name="LoginAction" class="LoginAction" >
