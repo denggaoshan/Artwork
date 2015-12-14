@@ -48,7 +48,7 @@ public class EditorAction extends ActionSupport
 	public void loadAdvertorials(){
 		showList = this.getInformationService().getAdvertorialByEditor(editor);
 	}
-
+	
 	//加载首页的内容
      public String execute()
      {
@@ -57,6 +57,7 @@ public class EditorAction extends ActionSupport
     	
     	Utils.setSession("showTableType","Advertorial");
     	loadAdvertorials();
+    	
     	
     	return "success";
 		 
