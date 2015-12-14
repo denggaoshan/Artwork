@@ -46,31 +46,11 @@
 										<i class="fa fa-home"></i>
 									</div>
 									<div class="item-inner">
-										<div class="item-title">个人中心</div>
+										<div class="item-title">mmm</div>
 										<div class="item-after"></div>
 									</div> </a>
 							</li>
-							<li><a
-								class="item-link close-panel item-content close-popup open-login-screen"
-								href="#">
-									<div class="item-media">
-										<i class="fa fa-sign-in"></i>
-									</div>
-									<div class="item-inner">
-										<div class="item-title">登录</div>
-										<div class="item-after"></div>
-									</div> </a>
-							</li>
-							<li><a data-popup=".popup-register"
-								class="item-link close-panel item-content open-popup" href="#">
-									<div class="item-media">
-										<i class="fa fa-user-plus"></i>
-									</div>
-									<div class="item-inner">
-										<div class="item-title">注册</div>
-										<div class="item-after"></div>
-									</div> </a>
-							</li>
+							
 						</ul>
 					</nav>
 				</div>
@@ -173,13 +153,16 @@
 			<div class="popover popover-links">
 				<div class="popover-angle"></div>
 				<div class="popover-inner">
-					<div class="list-block">
+					<s:if test="#session.user==null">
+						<div class="list-block">
 						<ul>
-							<li><a href="dashbord.html"
-								class="list-button item-link clickopen">用户中心</a></li>
-							<li><a href="#" class="list-button item-link clickopen">登出</a></li>
+							<li><a href="#"
+								class="list-button item-link clickopen open-login-screen">登陆</a></li>
+							<li><a href="#" class="list-button item-link clickopen open-popup">注册</a></li>
 						</ul>
-					</div>
+						</div>
+					</s:if>
+					
 				</div>
 			</div>
 			<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->

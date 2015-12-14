@@ -31,8 +31,9 @@ public class AdminAction extends ActionSupport
     		Utils.setUserType("Manager");
     		return "manager";
     	}
-
-    	Assert.isNull(user,"不应该在这一行");
+    	
+    	Assert.isNull(user,"如果看到这一行，说明是普通用户在后台登陆。未完成");
+    	
     	return "error";
     }
 }
