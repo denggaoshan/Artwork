@@ -9,6 +9,8 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 
 import cn.edu.xmu.artwork.entity.Advertisement;
+import cn.edu.xmu.artwork.entity.Artist;
+import cn.edu.xmu.artwork.entity.ChiefEditor;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -139,12 +141,32 @@ public class AdvertisementDao extends BaseHibernateDao
 		}
 	}
 	
-	public List findAllByDate(Date today) {
-		today.setDate(16);
+	public List findAllByDate(Date today,short pos) 
+	{
 		String queryString = "select ad from Advertisement as ad,DatePosition as dp where ad.id=dp.information.id and dp.date"
-				 + "= ?";
+				 + "= ?" + " and ad.position= ?";
 		Query queryObject = getSession().createQuery(queryString);
 		queryObject.setParameter(0, today);
+		queryObject.setParameter(1, pos);
+		return queryObject.list();
+	}
+	
+	public List findAllByArtist(Artist artist)
+	{
+		String queryString = "from Advertisement as ad where ad.artist.id = ? order by ad.verifyStatus";
+		
+		Query queryObject = getSession().createQuery(queryString);
+		queryObject.setParameter(0, artist.getId());
+		
+		return queryObject.list();
+	}
+	
+	public List findAllByChiefEditor(ChiefEditor chiefEditor)
+	{
+		String queryString = "from Advertisement as ad where ad.chiefEditor.id = ? order by ad.verifyStatus";
+		Query queryObject = getSession().createQuery(queryString);
+		queryObject.setParameter(0, chiefEditor.getId());
+		
 		return queryObject.list();
 	}
 }

@@ -13,7 +13,7 @@
 	 	<action name="IndexAction" class="IndexAction">
 	 		<result name="success">mains.jsp</result>
 	 	</action>
-		
+	 	
 		<action name="LoginAction" class="LoginAction" >
 			<result type="json">   
 				<param name="result">Result</param>  
@@ -29,9 +29,32 @@
 		<action name="AdvertorialAction" class="AdvertorialAction">
 			<result name="success">advertorialDetail.jsp</result>
 		</action>
+
+		</package>
+	
+	<package name="adminPkg" namespace="/Admin" extends="struts-default,json-default">
+		
+		<action name="AdminAction" class="AdminAction">
+      	 	<result name="editor" type="redirectAction">EditorAction</result>
+    		<result name="manager" type="redirectAction">ManagerAction</result>
+    		<result name="chiefEditor" type="redirectAction">ChiefEditorAction</result>
+    		<result name="error" type="redirectAction">ChiefEditorAction</result>
+    	</action>
+ 
+		<action name="EditorAction" class="EditorAction">
+			<result name="success">./datalist.jsp</result>
+		</action>
+		
+		<action name="ManagerAction" class="ManagerAction">
+			<result name="success">./datalist.jsp</result>
+		</action>
+		
+		<action name="ChiefEditorAction" class="ChiefEditorAction">
+			<result name="success">./datalist.jsp</result>
+		</action>
 		
 	</package>
 	
-</struts>   
+	</struts>   
   
 

@@ -1,21 +1,17 @@
 package cn.edu.xmu.artwork.service.imp;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.util.Assert;
 import cn.edu.xmu.artwork.dao.AdvertisementDao;
 import cn.edu.xmu.artwork.dao.AdvertorialDao;
+import cn.edu.xmu.artwork.dao.ChiefEditorDao;
 import cn.edu.xmu.artwork.dao.DatePositionDao;
-import cn.edu.xmu.artwork.dao.EditorDao;
-import cn.edu.xmu.artwork.dao.InformationDao;
 import cn.edu.xmu.artwork.entity.Advertisement;
 import cn.edu.xmu.artwork.entity.Advertorial;
 import cn.edu.xmu.artwork.entity.ChiefEditor;
 import cn.edu.xmu.artwork.entity.DatePosition;
-import cn.edu.xmu.artwork.entity.Editor;
 import cn.edu.xmu.artwork.entity.Information;
 import cn.edu.xmu.artwork.service.AuditService;
 import cn.edu.xmu.commom.utils.Utils;
@@ -107,26 +103,25 @@ public class AuditServiceImp implements AuditService{
 		return true;
 	}
 	
-	/*
+	
 	public static void main(String args[]){
 		AuditServiceImp auditServiceImp=new AuditServiceImp();
 		auditServiceImp.setAdvertorialDao(new AdvertorialDao());
 		auditServiceImp.setAdvertisementDao(new AdvertisementDao());
 		auditServiceImp.setDatePositionDao(new DatePositionDao());
 	
-		List<Advertorial> ret = auditServiceImp.getAuditAdvertorials();
-		Assert.notNull(ret);
-		auditServiceImp.passAudit(ret.get(0));
-		System.out.println(ret.size());
+		ChiefEditorDao ced=new ChiefEditorDao();
+		ChiefEditor ce=ced.findById("c890b3b6-3996-4908-bee0-306fbe3adaaf");
+		
+		//List<Advertorial> ret = auditServiceImp.getAuditAdvertorials();
+		
+		//auditServiceImp.passAudit(ce,ret.get(0));
 		
 		List<Advertisement> ret = auditServiceImp.getAuditAdvertisements();
-		Assert.notNull(ret);
 		
-		//auditServiceImp.passAudit(ret.get(0));
+		auditServiceImp.passAudit(ce,ret.get(0));
 		System.out.println(ret.size());
 		
 	}
-
-	*/
 
 }

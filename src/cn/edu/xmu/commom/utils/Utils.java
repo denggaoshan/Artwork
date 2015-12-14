@@ -30,6 +30,18 @@ public class Utils
 		}
 		return null;
 	}
+	
+	public static void setUserType(String type){
+		ActionContext context=ActionContext.getContext();
+		//往session里放
+		context.getSession().put("userType",type);
+	}
+	
+	public static void setSession(String name,String value){
+		ActionContext context=ActionContext.getContext();
+		//往session里放
+		context.getSession().put(name,value);
+	}
 
 	public static String createGUID() {
 		UUID uuid = UUID.randomUUID();

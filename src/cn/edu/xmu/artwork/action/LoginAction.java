@@ -47,6 +47,7 @@ public class LoginAction extends ActionSupport
     	getUserService().login(username, password);
     	
     	currentUser = Utils.getCurrentUser();
+    	
     	if(currentUser!=null){
     		return ActionHelper.SuccessMessage(Result);
     	}else{

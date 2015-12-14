@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Struts2Diagram version="2.0">
-  <package name="struts2" location="10,10" size="180,350">
-    <action name="LoginAction" location="15,23" size="150,40">
+  <package name="struts2" location="10,10" size="187,422">
+    <action name="IndexAction" location="22,122" size="150,41">
       <result name="success">
-        <resourceEdge source="success" routing="0" target="success.jsp" />
+        <resourceEdge source="success" routing="0" target="mains.jsp" />
       </result>
     </action>
-    <action name="RegisterAction" location="15,163" size="150,40" />
-    <action name="UploadAction" location="15,303" size="150,40" />
+    <action name="LoginAction" location="27,35" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="RegisterAction" location="27,175" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="AdvertorialAction" location="22,372" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advertorialDetail.jsp" />
+      </result>
+    </action>
   </package>
-  <webResource name="success.jsp" path="/jsp/success.jsp" location="0,0" size="150,55" />
+  <webResource name="success.jsp" path="/jsp/success.jsp" location="200,50" size="150,55" />
+  <webResource name="mains.jsp" path="mains.jsp" location="350,50" size="150,55" />
+  <webResource name="datalist.jsp" path="Admin/datalist.jsp" location="200,200" size="150,55" />
+  <webResource name="advertorialDetail.jsp" path="advertorialDetail.jsp" location="500,200" size="150,55" />
+  <package name="adminPkg" location="271,421" size="173,262">
+    <action name="EditorAction" location="16,24" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="datalist.jsp" />
+      </result>
+    </action>
+    <action name="ManagerAction" location="15,115" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="datalist.jsp" />
+      </result>
+    </action>
+    <action name="ChiefEditorAction" location="14,214" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="datalist.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="index.html" path="index.html" location="500,350" size="150,55" />
+  <webResource name="datalist.jsp" path="./datalist.jsp" location="50,500" size="150,55" />
 </Struts2Diagram>
 

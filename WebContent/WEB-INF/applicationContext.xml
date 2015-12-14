@@ -26,6 +26,24 @@
 	<bean id="AdvertorialAction" class="cn.edu.xmu.artwork.action.AdvertorialAction">
 	    <property name="informationService" ref="informationService"/>
 	</bean>
+	
+	<bean id="AdminAction" class="cn.edu.xmu.artwork.action.admin.AdminAction">
+	</bean>
+	
+	<bean id="ManagerAction" class="cn.edu.xmu.artwork.action.admin.ManagerAction">
+		 <property name="userService" ref="userService"/>
+		  <property name="informationService" ref="informationService"/>
+	</bean>
+	
+	<bean id="EditorAction" class="cn.edu.xmu.artwork.action.admin.EditorAction">
+		<property name="informationService" ref="informationService"/>
+	</bean>
+	
+	<bean id="ChiefEditorAction" class="cn.edu.xmu.artwork.action.admin.ChiefEditorAction">
+		<property name="informationService" ref="informationService"/>
+	</bean>
+	
+	
 
    <!-- 给Service实现类注入DAO -->
   

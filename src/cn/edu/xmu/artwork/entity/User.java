@@ -5,16 +5,14 @@ import java.io.Serializable;
 //用户  + 买家
 public class User implements Serializable
 {
-	 
 	private String id;
 	
-	private String account;
+	private String phone;//用于登陆
 	private String password;
 	private String avatar;
 	private String nickName;
 	private Short age;
 	private Boolean sex;
-	private String phone;
 	private String mailbox;
 	
 	private Boolean isCheckedMailbox;
@@ -36,14 +34,13 @@ public class User implements Serializable
 	{
 		this.id = id;
 	}
-
-	public String getAccount() 
-	{
-		return account;
+	
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setAccount(String account) {
-		this.account = account;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getPassword() {
@@ -84,14 +81,6 @@ public class User implements Serializable
 
 	public void setSex(Boolean sex) {
 		this.sex = sex;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 
 	public String getMailbox() {

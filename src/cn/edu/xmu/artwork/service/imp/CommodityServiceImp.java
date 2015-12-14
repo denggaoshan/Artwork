@@ -2,15 +2,9 @@ package cn.edu.xmu.artwork.service.imp;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import cn.edu.xmu.artwork.dao.CommodityDao;
 import cn.edu.xmu.artwork.entity.*;
-
 import cn.edu.xmu.artwork.service.CommodityService;
-import cn.edu.xmu.commom.utils.Utils;
-
 
 public class CommodityServiceImp implements CommodityService
 {

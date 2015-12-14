@@ -11,8 +11,8 @@
              <generator class="uuid" />
         </id>
 
-       <property name="account" type="java.lang.String">
-            <column name="Account" not-null="true" unique="true" />
+       <property name="phone" type="java.lang.String">
+            <column name="Phone" not-null="true" unique="true" />
         </property>
 
         <property name="password" type="java.lang.String">
@@ -33,10 +33,6 @@
 
         <property name="sex" type="java.lang.Boolean">
             <column name="Sex" />
-        </property>
-
-        <property name="phone" type="java.lang.String">
-            <column name="Phone" length="20" />
         </property>
 
         <property name="mailbox" type="java.lang.String">
@@ -71,7 +67,7 @@
             <key column="id"/> 
         </joined-subclass> 
 
-        <joined-subclass name="cn.edu.xmu.artwork.entity.Manager" table="artist"> 
+        <joined-subclass name="cn.edu.xmu.artwork.entity.Manager" table="manager"> 
             <key column="id"/> 
         </joined-subclass> 
 

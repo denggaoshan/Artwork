@@ -1,7 +1,6 @@
 package cn.edu.xmu.artwork.service;
 
 import java.util.List;
-
 import cn.edu.xmu.artwork.entity.Advertisement;
 import cn.edu.xmu.artwork.entity.Advertorial;
 import cn.edu.xmu.artwork.entity.ChiefEditor;

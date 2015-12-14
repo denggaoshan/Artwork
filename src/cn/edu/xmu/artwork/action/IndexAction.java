@@ -2,8 +2,6 @@ package cn.edu.xmu.artwork.action;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
 import cn.edu.xmu.artwork.entity.*;
 import cn.edu.xmu.artwork.service.InformationService;
 import cn.edu.xmu.artwork.service.UserService;
@@ -74,9 +72,10 @@ public class IndexAction extends ActionSupport
      public String execute()
      {
     	artistList = getUserService().getAllArtists();
-    	advertisementList = getInformationService().getTodayAdvertisement();
-    	advertorialList =  getInformationService().getTodayAdvertorial();
-		 return "success";
+    	advertisementList = getInformationService().getTodayAdvertisementByPos( (short) 1);
+    	advertorialList =  getInformationService().getTodayAdvertorialByPos( (short) 2);
+		
+    	return "success";
 		 
     }
 }

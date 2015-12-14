@@ -11,6 +11,7 @@ import org.hibernate.criterion.Example;
 
 import cn.edu.xmu.artwork.entity.Advertisement;
 import cn.edu.xmu.artwork.entity.Advertorial;
+import cn.edu.xmu.artwork.entity.ChiefEditor;
 import cn.edu.xmu.artwork.entity.Editor;
 import cn.edu.xmu.artwork.service.imp.InformationServiceImp;
 import cn.edu.xmu.commom.utils.Utils;
@@ -149,17 +150,37 @@ public class AdvertorialDao extends BaseHibernateDao
 		}
 	}
 
-	public List findAllByDate(Date today) {
+	public List findAllByDatePos(Date today,short pos) 
+	{
 		String queryString = "select ad from Advertorial as ad,DatePosition as dp where ad.id=dp.information.id and dp.date"
-				 + "= ?";
+				 + "= ?" + " and ad.position = ?";
 		Query queryObject = getSession().createQuery(queryString);
 		queryObject.setParameter(0, today);
+		queryObject.setParameter(1, pos);
+		return queryObject.list();
+	}
+	
+	public List findAllByEditor(Editor editor)
+	{
+		String queryString = "select ad from Advertorial as ad where ad.editor.id = ?";
+		Query queryObject = getSession().createQuery(queryString);
+		queryObject.setParameter(0, editor.getId());
+		
+		return queryObject.list();
+	}
+	
+	public List findAllByChiefEditor(ChiefEditor chiefEditor)
+	{
+		String queryString = "from Advertorial as ad where ad.chiefEditor.id = ? order by ad.verifyStatus";
+		Query queryObject = getSession().createQuery(queryString);
+		queryObject.setParameter(0, chiefEditor.getId());
+		
 		return queryObject.list();
 	}
 	
 	public static void main(String args[]){
 		AdvertorialDao advertorialDao = new AdvertorialDao();
-		List<Advertorial> ret =advertorialDao.findAllByDate(Utils.getCurrentTime());
+		List<Advertorial> ret =advertorialDao.findAllByDatePos(Utils.getCurrentTime(),(short) 2);
 		System.out.println(ret.size());
 		Advertorial ad = ret.get(0);
 		System.out.println(ad.getTitle());
