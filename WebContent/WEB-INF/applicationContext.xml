@@ -18,6 +18,10 @@
       <property name="userService" ref="userService"/>
    </bean>
    
+   <bean id="AddAdvertorialAction" class="cn.edu.xmu.artwork.action.admin.AddAdvertorialAction">
+      <property name="informationService" ref="informationService"/>
+   </bean>
+   
 	<bean id="IndexAction" class="cn.edu.xmu.artwork.action.IndexAction">
 	  <property name="userService" ref="userService"/>
 	   <property name="informationService" ref="informationService"/>
@@ -42,8 +46,6 @@
 	<bean id="ChiefEditorAction" class="cn.edu.xmu.artwork.action.admin.ChiefEditorAction">
 		<property name="informationService" ref="informationService"/>
 	</bean>
-	
-	
 
    <!-- 给Service实现类注入DAO -->
   

@@ -103,9 +103,9 @@
 								class="fa fa-angle-down"></i>
 						</span> </a>
 						<ul class="dropdown-menu profile animated fadeIn">
-							<li><a href="#help"> <i class="fa fa-info"></i> Help </a></li>
+							<li><a href="#help"> <i class="fa fa-info"></i> 帮助 </a></li>
 							<li class="last"><a href="ui-login.html"> <i
-									class="fa fa-lock"></i> Logout </a></li>
+									class="fa fa-lock"></i> 登出 </a></li>
 						</ul></li>
 					<li class="chat-toggle-wrapper"><a href="#"
 						data-toggle="chatbar" class="toggle_chat"> <i
@@ -150,34 +150,34 @@
 
 
 									<div class="form-group">
-										<label class="form-label" for="field-1">标题</label> <span
+										<label class="form-label" for="title">标题</label> <span
 											class="desc">不能超过20个字</span>
 										<div class="controls">
-											<input type="text" class="form-control" id="title">
+											<input value="采编软文测试" type="text" class="form-control" id="title"/>
 										</div>
 									</div>
 									
 									<div class="form-group">
-										<label class="form-label" for="field-1">摘要</label> <span
+										<label class="form-label" for="topic">摘要</label> <span
 											class="desc">不能超过50个字</span>
 										<div class="controls">
-											<input type="text" class="form-control" id="topic">
+											<input value="这是一个摘要。" type="text" class="form-control" id="topic">
 										</div>
 									</div>
 									
 									<div class="form-group">
-										<label class="form-label" for="field-1">封面图片</label> <span
+										<label class="form-label" for="homeImage">封面图片</label> <span
 											class="desc"> 例 “”</span>
 										<div class="controls">
-											<input type="text" class="form-control" id="homeImage">
+											<input value="http://86bizhi.manmankan.com/bizhipic/201502/5222/1_1280x800.jpg" type="text" class="form-control" id="homeImage">
 										</div>
 									</div>
 									
 									<div class="form-group">
-										<label class="form-label" for="field-1">位置</label> <span
+										<label class="form-label" for="position">位置</label> <span
 											class="desc"> 例 "1"：表示主页广告</span>
 										<div class="controls">
-											<input type="text" class="form-control" id="position">
+											<input value="1" type="text" class="form-control" id="position">
 										</div>
 									</div>
 									
@@ -196,8 +196,8 @@
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
 
-									<textarea class="bootstrap-wysihtml5-textarea"
-										placeholder="Enter text ..."
+									<textarea value="这是一个简单的内容。" id="content" class="bootstrap-wysihtml5-textarea"
+										placeholder="输入内容"
 										style="width: 100%; height: 250px; font-size: 14px; line-height: 23px;padding:15px;"></textarea>
 
 								</div>
@@ -216,27 +216,25 @@
 								<div class="col-md-12 col-sm-12 col-xs-12">
 
 									<div class="form-group">
-										<label class="form-label" for="field-5">开始时间</label> <span
+										<label class="form-label" for="begin">开始时间</label> <span
 											class="desc">例 "04/03/2015"</span>
 										<div class="controls">
-											<input type="text" class="form-control" id="beginTime"
-												data-mask="date">
+											<input type="text" class="form-control" id="begin"
+												>
 										</div>
 									</div>
 									
 									<div class="form-group">
-										<label class="form-label" for="field-5">结束时间</label> <span
+										<label class="form-label" for="end">结束时间</label> <span
 											class="desc">例 "04/03/2015"</span>
 										<div class="controls">
-											<input type="text" class="form-control" id="endTime"
-												data-mask="date">
+											<input type="text" class="form-control" id="end"
+												>
 										</div>
 									</div>
 
-
-
 									<div class="form-group">
-										<button type="button" class="btn btn-primary ">提交申请</button>
+										<button onclick="publish();" type="button" class="btn btn-primary ">提交申请</button>
 									</div>
 								</div>
 							</div>
@@ -346,25 +344,27 @@
 	<script src="assets/js/chart-sparkline.js" type="text/javascript"></script>
 	<!-- Sidebar Graph - END -->
 
-	<!-- General section box modal start -->
-	<div class="modal" id="section-settings" tabindex="-1" role="dialog"
-		aria-labelledby="ultraModal-Label" aria-hidden="true">
-		<div class="modal-dialog animated bounceInDown">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Section Settings</h4>
-				</div>
-				<div class="modal-body">Body goes here...</div>
-				<div class="modal-footer">
-					<button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-					<button class="btn btn-success" type="button">Save changes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- modal end -->
+	<script type="text/javascript">
+	function publish() {
+			$.post("AddAdvertorialAction.action", {
+				"homeImg" : $("#homeImage").val(),
+				"begin" : $("#begin").val(),
+				"end" : $("#end").val(),
+				"position" : $("#position").val(),
+				"title" : $("#title").val(),
+				"topic" : $("#topic").val(),
+				"content" : $("#content").val()
+			}, function(data) {
+				if (data.result.state == "success") {
+					window.location.href = "AdminAction.action";
+				} else {
+					alert(data.result.message);
+				}
+			}, "json");
+
+			return false;
+		}
+	</script>
 </body>
 
 </html>

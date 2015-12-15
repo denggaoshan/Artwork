@@ -2735,7 +2735,7 @@ jQuery(function($) {
                 var $this = $(e),
                     options = {
                         minViewMode: getValue($this, 'minViewMode', 0),
-                        format: getValue($this, 'format', 'mm/dd/yyyy'),
+                        format: getValue($this, 'format', 'yyyy-mm-dd'),
                         startDate: getValue($this, 'startDate', ''),
                         endDate: getValue($this, 'endDate', ''),
                         daysOfWeekDisabled: getValue($this, 'disabledDays', ''),
@@ -2763,7 +2763,6 @@ jQuery(function($) {
                 }
             });
         }
-
 
 
         /*-------------------------------------------*/

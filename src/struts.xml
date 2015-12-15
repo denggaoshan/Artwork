@@ -38,11 +38,17 @@
       	 	<result name="editor" type="redirectAction">EditorAction</result>
     		<result name="manager" type="redirectAction">ManagerAction</result>
     		<result name="chiefEditor" type="redirectAction">ChiefEditorAction</result>
-    		<result name="error" type="redirectAction">ChiefEditorAction</result>
+    		<result name="error" type="redirectAction">../IndexAction</result>
     	</action>
  
 		<action name="EditorAction" class="EditorAction">
 			<result name="success">./datalist.jsp</result>
+		</action>
+		
+		<action name="addAdvertorial" class="EditorAction" method="addAdvertorial">
+			<result type="json">   
+				<param name="result">Result</param>  
+            </result> 
 		</action>
 		
 		<action name="ManagerAction" class="ManagerAction">
@@ -52,6 +58,12 @@
 		<action name="ChiefEditorAction" class="ChiefEditorAction">
 			<result name="success">./datalist.jsp</result>
 		</action>
+		
+		<action name="AddAdvertorialAction" class="AddAdvertorialAction">
+	 		<result type="json">   
+				<param name="result">Result</param>  
+            </result> 
+	 	</action>
 		
 	</package>
 	

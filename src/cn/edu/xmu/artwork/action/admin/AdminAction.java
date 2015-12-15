@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.springframework.util.Assert;
-
 import cn.edu.xmu.artwork.entity.*;
 import cn.edu.xmu.artwork.service.InformationService;
 import cn.edu.xmu.artwork.service.UserService;
@@ -31,8 +29,6 @@ public class AdminAction extends ActionSupport
     		Utils.setUserType("Manager");
     		return "manager";
     	}
-    	
-    	Assert.isNull(user,"如果看到这一行，说明是普通用户在后台登陆。未完成");
     	
     	return "error";
     }

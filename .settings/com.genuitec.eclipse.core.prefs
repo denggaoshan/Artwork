@@ -1,8 +1,8 @@
-#Mon Dec 14 14:50:12 CST 2015
+#Tue Dec 15 19:18:51 CST 2015
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=origin/master
 eclipse.preferences.version=1
-validator.Checked=WebContent/Admin,WebContent/js/jquery-1.11.3.min.js
+validator.Checked=WebContent/Admin/login.html,WebContent/js,WebContent/Admin/assets,WebContent/Admin/login.jsp
 validator.Revalidate=true
 validator.Unchecked=
