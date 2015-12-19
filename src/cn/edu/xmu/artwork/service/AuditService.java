@@ -16,7 +16,7 @@ public interface AuditService {
 		
 	
 	//通过审核
-	public boolean passAudit(ChiefEditor chiefEditor,Information information);
+	public boolean passAudit(ChiefEditor chiefEditor,String informationId);
 	//拒绝审核
-	public boolean rejectAudit(ChiefEditor chiefEditor,Information information);
+	public boolean rejectAudit(ChiefEditor chiefEditor,String informationId);
 }

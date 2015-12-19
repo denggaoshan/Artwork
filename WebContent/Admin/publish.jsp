@@ -37,11 +37,7 @@
 <link
 	href="assets/plugins/bootstrap3-wysihtml5/css/bootstrap3-wysihtml5.min.css"
 	rel="stylesheet" type="text/css" media="screen" />
-<link href="assets/plugins/uikit/css/uikit.min.css" rel="stylesheet"
-	type="text/css" media="screen" />
-<link href="assets/plugins/uikit/vendor/codemirror/codemirror.css"
-	rel="stylesheet" type="text/css" media="screen" />
-<link href="assets/plugins/uikit/css/components/htmleditor.css"
+<link href="assets/plugins/daterangepicker/css/daterangepicker-bs3.css"
 	rel="stylesheet" type="text/css" media="screen" />
 <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
@@ -61,7 +57,8 @@
 				<ul class="info-menu left-links list-inline list-unstyled">
 					<li class="sidebar-toggle-wrap"><a href="#"
 						data-toggle="sidebar" class="sidebar_toggle"> <i
-							class="fa fa-bars"></i> </a></li>
+							class="fa fa-bars"></i> </a>
+					</li>
 					<li class="message-toggle-wrapper"><a href="#"
 						data-toggle="dropdown" class="toggle"> <i
 							class="fa fa-envelope"></i> <span class="badge badge-primary">7</span>
@@ -79,11 +76,15 @@
 													class="time small">通知时间</span> <span
 													class="profile-status available pull-right"></span> </span> <span
 													class="desc small"> 通知内容 </span>
-											</div> </a></li>
-								</ul></li>
+											</div> </a>
+									</li>
+								</ul>
+							</li>
 							<li class="external"><a href="javascript:;"> <span>查看所有通知</span>
-							</a></li>
-						</ul></li>
+							</a>
+							</li>
+						</ul>
+					</li>
 					<li class="hidden-sm hidden-xs searchform">
 						<div class="input-group">
 							<span class="input-group-addon input-focus"> <i
@@ -92,7 +93,8 @@
 								<input type="text" class="form-control animated fadeIn"
 									placeholder="搜索"> <input type='submit' value="">
 							</form>
-						</div></li>
+						</div>
+					</li>
 				</ul>
 			</div>
 			<div class='pull-right'>
@@ -100,17 +102,20 @@
 					<li class="profile"><a href="#" data-toggle="dropdown"
 						class="toggle"> <img src="assets/images/defaultAvatar.png"
 							alt="user-image" class="img-circle img-inline"> <span>用户名&nbsp;<i
-								class="fa fa-angle-down"></i>
-						</span> </a>
+								class="fa fa-angle-down"></i> </span> </a>
 						<ul class="dropdown-menu profile animated fadeIn">
-							<li><a href="#help"> <i class="fa fa-info"></i> 帮助 </a></li>
+							<li><a href="#help"> <i class="fa fa-info"></i> 帮助 </a>
+							</li>
 							<li class="last"><a href="ui-login.html"> <i
-									class="fa fa-lock"></i> 登出 </a></li>
-						</ul></li>
+									class="fa fa-lock"></i> 登出 </a>
+							</li>
+						</ul>
+					</li>
 					<li class="chat-toggle-wrapper"><a href="#"
 						data-toggle="chatbar" class="toggle_chat"> <i
 							class="fa fa-comments"></i> <span class="badge badge-warning">9</span>
-							<i class="fa fa-times"></i> </a></li>
+							<i class="fa fa-times"></i> </a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -120,7 +125,7 @@
 	<!-- START CONTAINER -->
 	<div class="page-container row-fluid">
 
-		<%@include file="leftMenu.jsp"%>
+		<%@include file="LeftMenu.jsp"%>
 
 		<!-- START CONTENT -->
 		<section id="main-content" class=" ">
@@ -130,10 +135,10 @@
 						<div class="pull-left">
 							<h1 class="title">添加软文</h1>
 						</div>
-						
+
 					</div>
 				</div>
-				
+
 				<div class="clearfix"></div>
 
 				<div class="col-lg-12">
@@ -153,34 +158,47 @@
 										<label class="form-label" for="title">标题</label> <span
 											class="desc">不能超过20个字</span>
 										<div class="controls">
-											<input value="采编软文测试" type="text" class="form-control" id="title"/>
+											<input value="采编软文测试" type="text" class="form-control"
+												id="title" />
 										</div>
 									</div>
-									
+
 									<div class="form-group">
 										<label class="form-label" for="topic">摘要</label> <span
 											class="desc">不能超过50个字</span>
 										<div class="controls">
-											<input value="这是一个摘要。" type="text" class="form-control" id="topic">
+											<input value="这是一个摘要。" type="text" class="form-control"
+												id="topic">
 										</div>
 									</div>
-									
+
 									<div class="form-group">
 										<label class="form-label" for="homeImage">封面图片</label> <span
 											class="desc"> 例 “”</span>
 										<div class="controls">
-											<input value="http://86bizhi.manmankan.com/bizhipic/201502/5222/1_1280x800.jpg" type="text" class="form-control" id="homeImage">
+											<input
+												value="http://86bizhi.manmankan.com/bizhipic/201502/5222/1_1280x800.jpg"
+												type="text" class="form-control" id="homeImage">
 										</div>
 									</div>
-									
+
 									<div class="form-group">
 										<label class="form-label" for="position">位置</label> <span
 											class="desc"> 例 "1"：表示主页广告</span>
 										<div class="controls">
-											<input value="1" type="text" class="form-control" id="position">
+											<input value="1" type="text" class="form-control"
+												id="position">
 										</div>
 									</div>
-									
+
+									<div class="form-group">
+										<label class="form-label" for="daterange">上线时间</label>
+										<div class="controls">
+											<input type="text" id="daterange"
+												class="form-control daterange">
+										</div>
+									</div>
+
 								</div>
 							</div>
 						</div>
@@ -196,45 +214,14 @@
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
 
-									<textarea value="这是一个简单的内容。" id="content" class="bootstrap-wysihtml5-textarea"
-										placeholder="输入内容"
-										style="width: 100%; height: 250px; font-size: 14px; line-height: 23px;padding:15px;"></textarea>
-
-								</div>
-							</div>
-						</div>
-					</section>
-					<section class="box ">
-						<header class="panel_header">
-							<h2 class="title pull-left">上线时间与位置</h2>
-							<div class="actions panel_actions pull-right">
-								<i class="box_toggle fa fa-chevron-down"></i>
-							</div>
-						</header>
-						<div class="content-body">
-							<div class="row">
-								<div class="col-md-12 col-sm-12 col-xs-12">
-
 									<div class="form-group">
-										<label class="form-label" for="begin">开始时间</label> <span
-											class="desc">例 "04/03/2015"</span>
-										<div class="controls">
-											<input type="text" class="form-control" id="begin"
-												>
-										</div>
+										<textarea value="这是一个简单的内容。" id="content"
+											class="bootstrap-wysihtml5-textarea" placeholder="输入内容"
+											style="width: 100%; height: 250px; font-size: 14px; line-height: 23px;padding:15px;"></textarea>
 									</div>
-									
 									<div class="form-group">
-										<label class="form-label" for="end">结束时间</label> <span
-											class="desc">例 "04/03/2015"</span>
-										<div class="controls">
-											<input type="text" class="form-control" id="end"
-												>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<button onclick="publish();" type="button" class="btn btn-primary ">提交申请</button>
+										<button onclick="publish();" type="button"
+											class="btn btn-primary ">提交申请</button>
 									</div>
 								</div>
 							</div>
@@ -268,7 +255,8 @@
 						</div>
 						<div class="user-status available">
 							<i class="fa fa-circle"></i>
-						</div></li>
+						</div>
+					</li>
 					<li class="user-row" id='chat_user_2' data-user-id='2'>
 						<div class="user-img">
 							<a href="#"><img src="assets/images/defaultAvatar.png" alt="">
@@ -282,7 +270,8 @@
 						</div>
 						<div class="user-status offline">
 							<i class="fa fa-circle"></i>
-						</div></li>
+						</div>
+					</li>
 				</ul>
 			</div>
 
@@ -316,21 +305,9 @@
 		type="text/javascript"></script>
 	<script src="assets/plugins/ckeditor/ckeditor.js"
 		type="text/javascript"></script>
-	<script src="assets/plugins/uikit/js/uikit.min.js"
+	<script src="assets/plugins/daterangepicker/js/moment.min.js"
 		type="text/javascript"></script>
-	<script src="assets/plugins/uikit/vendor/codemirror/codemirror.js"
-		type="text/javascript"></script>
-	<script src="assets/plugins/uikit/vendor/codemirror/codemirror.js"
-		type="text/javascript"></script>
-	<script
-		src="assets/plugins/uikit/vendor/codemirror/mode/markdown/markdown.js"></script>
-	<script
-		src="assets/plugins/uikit/vendor/codemirror/addon/mode/overlay.js"></script>
-	<script src="assets/plugins/uikit/vendor/codemirror/mode/xml/xml.js"></script>
-	<script src="assets/plugins/uikit/vendor/codemirror/mode/gfm/gfm.js"></script>
-	<script src="assets/plugins/uikit/vendor/marked/marked.min.js"
-		type="text/javascript"></script>
-	<script src="assets/plugins/uikit/js/components/htmleditor.js"
+	<script src="assets/plugins/daterangepicker/js/daterangepicker.js"
 		type="text/javascript"></script>
 	<!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
@@ -345,11 +322,12 @@
 	<!-- Sidebar Graph - END -->
 
 	<script type="text/javascript">
-	function publish() {
-			$.post("AddAdvertorialAction.action", {
+		function publish() {
+			var time = $("#daterange").val().split(' ~ ');
+			$.post("Editor_AddAdvertorial.action", {
 				"homeImg" : $("#homeImage").val(),
-				"begin" : $("#begin").val(),
-				"end" : $("#end").val(),
+				"begin" : time[0],
+				"end" : time[1],
 				"position" : $("#position").val(),
 				"title" : $("#title").val(),
 				"topic" : $("#topic").val(),
@@ -364,6 +342,8 @@
 
 			return false;
 		}
+
+		$("#daterange").daterangepicker({});
 	</script>
 </body>
 

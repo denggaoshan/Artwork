@@ -8,6 +8,7 @@ import cn.edu.xmu.artwork.dao.AdvertisementDao;
 import cn.edu.xmu.artwork.dao.AdvertorialDao;
 import cn.edu.xmu.artwork.dao.ChiefEditorDao;
 import cn.edu.xmu.artwork.dao.DatePositionDao;
+import cn.edu.xmu.artwork.dao.InformationDao;
 import cn.edu.xmu.artwork.entity.Advertisement;
 import cn.edu.xmu.artwork.entity.Advertorial;
 import cn.edu.xmu.artwork.entity.ChiefEditor;
@@ -21,7 +22,18 @@ public class AuditServiceImp implements AuditService{
 	AdvertorialDao advertorialDao;
 	AdvertisementDao advertisementDao;
 	DatePositionDao datePositionDao;
+	InformationDao informationDao;
 	
+	
+	//_fold_start
+	public InformationDao getInformationDao() {
+		return informationDao;
+	}
+
+	public void setInformationDao(InformationDao informationDao) {
+		this.informationDao = informationDao;
+	}
+
 	public DatePositionDao getDatePositionDao() {
 		return datePositionDao;
 	}
@@ -37,6 +49,15 @@ public class AuditServiceImp implements AuditService{
 	public void setAdvertorialDao(AdvertorialDao advertorialDao) {
 		this.advertorialDao = advertorialDao;
 	}
+	
+	public AdvertisementDao getAdvertisementDao() {
+		return advertisementDao;
+	}
+
+	public void setAdvertisementDao(AdvertisementDao advertisementDao) {
+		this.advertisementDao = advertisementDao;
+	}
+	//_fold_end
 
 	
 	@Override
@@ -51,20 +72,12 @@ public class AuditServiceImp implements AuditService{
 		return ret;
 	}
 	
-	
-	public AdvertisementDao getAdvertisementDao() {
-		return advertisementDao;
-	}
-
-	public void setAdvertisementDao(AdvertisementDao advertisementDao) {
-		this.advertisementDao = advertisementDao;
-	}
-
 
 	@Override
-	public boolean passAudit(ChiefEditor chiefEditor,Information information) {
-		Session s=getAdvertorialDao().getSession();
+	public boolean passAudit(ChiefEditor chiefEditor,String informationId) {
+		Information information = getInformationDao().findById(informationId);
 		
+		Session s=getAdvertorialDao().getSession();
 		Transaction tx=s.beginTransaction();
 		s.update(information);
 		information.setVerifyStatus((short) 1);
@@ -93,7 +106,9 @@ public class AuditServiceImp implements AuditService{
 	}
 
 	@Override
-	public boolean rejectAudit(ChiefEditor chiefEditor,Information information) {
+	public boolean rejectAudit(ChiefEditor chiefEditor,String informationId) {
+		Information information = getInformationDao().findById(informationId);
+		
 		Session s=getAdvertorialDao().getSession();
 		Transaction tx=s.beginTransaction();
 		s.update(information);
@@ -119,7 +134,7 @@ public class AuditServiceImp implements AuditService{
 		
 		List<Advertisement> ret = auditServiceImp.getAuditAdvertisements();
 		
-		auditServiceImp.passAudit(ce,ret.get(0));
+		//auditServiceImp.passAudit(ce,ret.get(0));
 		System.out.println(ret.size());
 		
 	}

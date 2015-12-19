@@ -46,17 +46,6 @@
 								</li>
 							</ul>
 						</li>
-						<li class="hidden-sm hidden-xs searchform">
-							<div class="input-group">
-								<span class="input-group-addon input-focus">
-                                    <i class="fa fa-search"></i>
-                                </span>
-								<form action="search.html" method="post">
-									<input type="text" class="form-control animated fadeIn" placeholder="搜索">
-									<input type='submit' value="">
-								</form>
-							</div>
-						</li>
 					</ul>
 				</div>
 				<div class='pull-right'>
@@ -73,8 +62,8 @@
 										<i class="fa fa-info"></i> 帮助
 									</a>
 								</li>
-								<li class="last">
-									<a href="login.html">
+								<li>
+									<a href="Login.jsp">
 										<i class="fa fa-lock"></i> 退出
 									</a>
 								</li>

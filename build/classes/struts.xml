@@ -2,71 +2,48 @@
 <!DOCTYPE struts PUBLIC
    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
    "http://struts.apache.org/dtds/struts-2.3.dtd">
-    
+
 <struts>
-    <constant name="struts.devMode" value="true" />
-    
-    <constant name="struts.i18n.encoding" value="utf-8"></constant>
-    
-	<package name="struts2" namespace="/" extends="struts-default,json-default">
-	 
-	 	<action name="IndexAction" class="IndexAction">
-	 		<result name="success">mains.jsp</result>
-	 	</action>
-	 	
-		<action name="LoginAction" class="LoginAction" >
-			<result type="json">   
-				<param name="result">Result</param>  
-            </result> 
+	<constant name="struts.devMode" value="true" />
+
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+
+	<package name="struts2" namespace="/" extends="json-default">
+
+		<action name="IndexAction" class="IndexAction">
+			<result name="success">mains.jsp</result>
 		</action>
 
-		<action name="RegisterAction" class="RegisterAction">
-			<result type="json">   
-				<param name="result">Result</param>  
-            </result> 
-		</action>
-		
-		<action name="AdvertorialAction" class="AdvertorialAction">
-			<result name="success">advertorialDetail.jsp</result>
+		<action name="User_*" method="{1}" class="UserAction">
+			<result type="json">
+				<param name="result">Result</param>
+			</result>
 		</action>
 
-		</package>
-	
-	<package name="adminPkg" namespace="/Admin" extends="struts-default,json-default">
-		
-		<action name="AdminAction" class="AdminAction">
-      	 	<result name="editor" type="redirectAction">EditorAction</result>
-    		<result name="manager" type="redirectAction">ManagerAction</result>
-    		<result name="chiefEditor" type="redirectAction">ChiefEditorAction</result>
-    		<result name="error" type="redirectAction">../IndexAction</result>
-    	</action>
- 
-		<action name="EditorAction" class="EditorAction">
-			<result name="success">./datalist.jsp</result>
-		</action>
-		
-		<action name="addAdvertorial" class="EditorAction" method="addAdvertorial">
-			<result type="json">   
-				<param name="result">Result</param>  
-            </result> 
-		</action>
-		
-		<action name="ManagerAction" class="ManagerAction">
-			<result name="success">./datalist.jsp</result>
-		</action>
-		
-		<action name="ChiefEditorAction" class="ChiefEditorAction">
-			<result name="success">./datalist.jsp</result>
-		</action>
-		
-		<action name="AddAdvertorialAction" class="AddAdvertorialAction">
-	 		<result type="json">   
-				<param name="result">Result</param>  
-            </result> 
-	 	</action>
-		
 	</package>
-	
-	</struts>   
+
+	<package name="struts2admin" namespace="/Admin"
+		extends="json-default">
+
+		<action name="AdminAction" class="AdminAction">
+			<result name="success">DataTable.jsp</result>
+			<result name="fail">Login.jsp</result>
+		</action>
+
+		<action name="Editor_*" method="{1}" class="EditorAction">
+			<result type="json">
+				<param name="result">Result</param>
+			</result>
+		</action>
+		
+		<action name="ChiefEditor_*" method="{1}" class="ChiefEditorAction">
+			<result type="json">
+				<param name="result">Result</param>
+			</result>
+		</action>
+
+	</package>
+
+</struts>   
   
 

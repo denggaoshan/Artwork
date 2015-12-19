@@ -1,80 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--  This is the Spring configuration file.  This file declares all of the Spring beans that
-			will be used by the Struts 2 Portfolio, starting with Chapter Nine.
--->
+<!-- This is the Spring configuration file. This file declares all of the 
+	Spring beans that will be used by the Struts 2 Portfolio, starting with Chapter 
+	Nine. -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:tx="http://www.springframework.org/schema/tx"
-    xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
- 
-   <!-- 给Action注入Service -->
-   <bean id="LoginAction" class="cn.edu.xmu.artwork.action.LoginAction">
-      <property name="userService" ref="userService"/>
-   </bean>
-   
-   <bean id="RegisterAction" class="cn.edu.xmu.artwork.action.RegisterAction">
-      <property name="userService" ref="userService"/>
-   </bean>
-   
-   <bean id="AddAdvertorialAction" class="cn.edu.xmu.artwork.action.admin.AddAdvertorialAction">
-      <property name="informationService" ref="informationService"/>
-   </bean>
-   
-	<bean id="IndexAction" class="cn.edu.xmu.artwork.action.IndexAction">
-	  <property name="userService" ref="userService"/>
-	   <property name="informationService" ref="informationService"/>
+
+	<!-- 给Action注入Service -->
+	<bean id="UserAction" class="cn.edu.xmu.artwork.action.UserAction">
+		<property name="userService" ref="userService" />
 	</bean>
-	
-	<bean id="AdvertorialAction" class="cn.edu.xmu.artwork.action.AdvertorialAction">
-	    <property name="informationService" ref="informationService"/>
+
+	<bean id="IndexAction" class="cn.edu.xmu.artwork.action.IndexAction">
+		<property name="userService" ref="userService" />
+		<property name="informationService" ref="informationService" />
 	</bean>
 	
 	<bean id="AdminAction" class="cn.edu.xmu.artwork.action.admin.AdminAction">
-	</bean>
-	
-	<bean id="ManagerAction" class="cn.edu.xmu.artwork.action.admin.ManagerAction">
-		 <property name="userService" ref="userService"/>
-		  <property name="informationService" ref="informationService"/>
+		<property name="informationService" ref="informationService" />
+		<property name="userService" ref="userService" />
+		<property name="auditService" ref="auditService" />
 	</bean>
 	
 	<bean id="EditorAction" class="cn.edu.xmu.artwork.action.admin.EditorAction">
-		<property name="informationService" ref="informationService"/>
+		<property name="informationService" ref="informationService" />
 	</bean>
 	
 	<bean id="ChiefEditorAction" class="cn.edu.xmu.artwork.action.admin.ChiefEditorAction">
-		<property name="informationService" ref="informationService"/>
+		<property name="auditService" ref="auditService" />
 	</bean>
 
-   <!-- 给Service实现类注入DAO -->
-  
-   <bean name="userService" class="cn.edu.xmu.artwork.service.imp.UserServiceImp">
-   	  <property name="userDao" ref="userDao"/>
-   </bean>
-   
-   <bean name="commodityService" class="cn.edu.xmu.artwork.service.imp.CommodityServiceImp">
-   	  <property name="commodityDao" ref="commodityDao"/>
-   </bean>
-   
-    <bean name="informationService" class="cn.edu.xmu.artwork.service.imp.InformationServiceImp">
-   	  <property name="datePositionDao" ref="datePositionDao"/>
-   	  <property name="advertisementDao" ref="advertisementDao"/>
-   	  <property name="advertorialDao" ref="advertorialDao"/>
-   </bean>
-   
-    <bean name="auditService" class="cn.edu.xmu.artwork.service.imp.AuditServiceImp">
-   	  <property name="datePositionDao" ref="datePositionDao"/>
-   	  <property name="advertisementDao" ref="advertisementDao"/>
-   	  <property name="advertorialDao" ref="advertorialDao"/>
-   </bean>
-   
-     <!-- Dao -->
-    <bean name="userDao" class="cn.edu.xmu.artwork.dao.UserDao"/>
-    <bean name="informationDao" class="cn.edu.xmu.artwork.dao.InformationDao"/>
-    <bean name="advertisementDao" class="cn.edu.xmu.artwork.dao.AdvertisementDao"/>
-    <bean name="advertorialDao" class="cn.edu.xmu.artwork.dao.AdvertorialDao"/>
-    <bean name="datePositionDao" class="cn.edu.xmu.artwork.dao.DatePositionDao"/>
-     <bean name="commodityDao" class="cn.edu.xmu.artwork.dao.CommodityDao"/>
+	<!-- 给Service实现类注入DAO -->
+
+	<bean name="userService" class="cn.edu.xmu.artwork.service.imp.UserServiceImp">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<bean name="commodityService" class="cn.edu.xmu.artwork.service.imp.CommodityServiceImp">
+		<property name="commodityDao" ref="commodityDao" />
+	</bean>
+
+	<bean name="informationService" class="cn.edu.xmu.artwork.service.imp.InformationServiceImp">
+		<property name="datePositionDao" ref="datePositionDao" />
+		<property name="advertisementDao" ref="advertisementDao" />
+		<property name="advertorialDao" ref="advertorialDao" />
+	</bean>
+
+	<bean name="auditService" class="cn.edu.xmu.artwork.service.imp.AuditServiceImp">
+		<property name="datePositionDao" ref="datePositionDao" />
+		<property name="advertisementDao" ref="advertisementDao" />
+		<property name="advertorialDao" ref="advertorialDao" />
+		<property name="informationDao" ref="informationDao"/>
+	</bean>
+
+	<!-- Dao -->
+	<bean name="userDao" class="cn.edu.xmu.artwork.dao.UserDao" />
+	<bean name="informationDao" class="cn.edu.xmu.artwork.dao.InformationDao" />
+	<bean name="advertisementDao" class="cn.edu.xmu.artwork.dao.AdvertisementDao" />
+	<bean name="advertorialDao" class="cn.edu.xmu.artwork.dao.AdvertorialDao" />
+	<bean name="datePositionDao" class="cn.edu.xmu.artwork.dao.DatePositionDao" />
+	<bean name="commodityDao" class="cn.edu.xmu.artwork.dao.CommodityDao" />
 </beans>
 

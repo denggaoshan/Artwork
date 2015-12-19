@@ -1,75 +1,66 @@
 package cn.edu.xmu.artwork.action.admin;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-import cn.edu.xmu.artwork.dao.InformationDao;
 import cn.edu.xmu.artwork.entity.*;
-import cn.edu.xmu.artwork.service.InformationService;
-import cn.edu.xmu.artwork.service.UserService;
+import cn.edu.xmu.artwork.service.AuditService;
+import cn.edu.xmu.commom.utils.ActionHelper;
 import cn.edu.xmu.commom.utils.Utils;
 
+import com.googlecode.jsonplugin.annotations.JSON;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ChiefEditorAction extends ActionSupport
-{
+public class ChiefEditorAction extends ActionSupport {
+	private static final long serialVersionUID = -6538049599778272437L;
 	
-	private ChiefEditor chiefEditor;
-	private InformationService informationService;
+	private Map<String, Object> Result;
+	private AuditService auditService;
+
+	public String PassAdvertorial() {
+		Result = new HashMap<String, Object>();
+
+		String id = Utils.getRequest().getParameter("id");
+		
+		User chiefEditor = Utils.getCurrentUser();
+		if(!(chiefEditor instanceof ChiefEditor))
+			return ActionHelper.FailMessage(Result, "没有权限！");
+		
+		boolean result=getAuditService().passAudit((ChiefEditor)chiefEditor, id);
+   	    
+		if(result==false)
+			return ActionHelper.FailMessage(Result,"系统错误");
+		else
+			return ActionHelper.SuccessMessage(Result);
+	}
 	
-	List showList;
+	public String RejectAdvertorial() {
+		Result = new HashMap<String, Object>();
+
+		String id = Utils.getRequest().getParameter("id");
+		
+		User chiefEditor = Utils.getCurrentUser();
+		if(!(chiefEditor instanceof ChiefEditor))
+			return ActionHelper.FailMessage(Result, "没有权限！");
+		
+		boolean result=getAuditService().rejectAudit((ChiefEditor)chiefEditor, id);
+   	    
+		if(result==false)
+			return ActionHelper.FailMessage(Result,"系统错误");
+		else
+			return ActionHelper.SuccessMessage(Result);
+	}
+
+	@JSON(serialize = false)
+	public AuditService getAuditService() {
+		return auditService;
+	}
+
+	public void setAuditService(AuditService auditService) {
+		this.auditService = auditService;
+	}
 	
-	private String chooseType;
-	
-	public String getChooseType() {
-		return chooseType;
+	public Map<String, Object> getResult() {
+		return Result;
 	}
-
-	public void setChooseType(String chooseType) {
-		this.chooseType = chooseType;
-	}
-
-	public ChiefEditor getChiefEditor() {
-		return chiefEditor;
-	}
-
-	public void setChiefEditor(ChiefEditor chiefEditor) {
-		this.chiefEditor = chiefEditor;
-	}
- 
-	public InformationService getInformationService() {
-		return informationService;
-	}
-
-	public void setInformationService(InformationService informationService) {
-		this.informationService = informationService;
-	}
-
-	public List getShowList() {
-		return showList;
-	}
-
-	public void setShowList(List showList) {
-		this.showList = showList;
-	}
-
-	private void loadChecked(){
-		showList = this.getInformationService().getAdvertorialByChiefEditor(chiefEditor);
-	}
-
-	//加载首页的内容
-     public String execute()
-     {
-    	chiefEditor = (ChiefEditor) Utils.getCurrentUser();
-    	if(chooseType.equals("checked")){
-    		//审核过的
-    		Utils.setSession("showTableType","Advertorial");
-    		loadChecked();
-    	}else if(chooseType.equals("check")){
-    		//等待审核的
-    		
-    	}
-    	return "success";
-		 
-    }
 }

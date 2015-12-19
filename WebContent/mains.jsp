@@ -162,7 +162,15 @@
 						</ul>
 						</div>
 					</s:if>
-					
+					<s:if test="#session.user!=null">
+						<div class="list-block">
+						<ul>
+							<li><a href="#"
+								class="list-button item-link clickopen">个人中心</a></li>
+							<li><a href="#" class="list-button item-link clickopen">登出</a></li>
+						</ul>
+						</div>
+					</s:if>
 				</div>
 			</div>
 			<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
@@ -277,7 +285,7 @@
 				return false;
 			}
 
-			$.post("LoginAction.action", {
+			$.post("User_Login.action", {
 				"username" : $(".loginusername").val(),
 				"password" : $(".loginpassword").val()
 			}, function(data) {
@@ -301,9 +309,8 @@
 			$(".registerusername").blur(function(event) {
 				var username = $(".registerusername").val();
 				if (username != '') {
-					$.post("RegisterAction.action", {
-						"username" : $(".registerusername").val(),
-						"justCheck" : "1"
+					$.post("User_AccountCheck.action", {
+						"username" : $(".registerusername").val()
 					}, function(data) {
 						if (data.result.state == "success") {
 							$('#verifyBtn').css("color", "green");
@@ -354,11 +361,10 @@
 				return false;
 			}
 
-			$.post("RegisterAction.action", {
+			$.post("User_Register.action", {
 				"username" : $(".registerusername").val(),
 				"password" : $(".registerpassword").val(),
-				"nickname" : $(".registernickname").val(),
-				"justCheck" : "0"
+				"nickname" : $(".registernickname").val()
 			}, function(data) {
 				if (data.result.state == "success") {
 					$('.tips').show().text("注册成功！");
